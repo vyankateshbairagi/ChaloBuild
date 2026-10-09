@@ -26,7 +26,7 @@ export default function DemoAboutPage() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-600">
                 Core Gym Standards
               </p>
               <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
@@ -62,9 +62,9 @@ export default function DemoAboutPage() {
               ].map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-xs transition-colors hover:border-blue-300 hover:bg-white"
+                  className="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-xs transition-colors hover:border-red-300 hover:bg-white"
                 >
-                  <Icon className="size-6 text-blue-600" />
+                  <Icon className="size-6 text-red-600" />
                   <h3 className="mt-3 text-base font-bold text-slate-900">
                     {title}
                   </h3>

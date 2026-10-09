@@ -24,8 +24,8 @@ export default function DemoPricingPage() {
       <section className="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 sm:grid-cols-3">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-xs hover:border-blue-300 hover:shadow-md transition-all">
-              <ShieldCheck className="mx-auto size-8 text-blue-600" />
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-xs hover:border-red-300 hover:shadow-md transition-all">
+              <ShieldCheck className="mx-auto size-8 text-red-600" />
               <h3 className="mt-4 text-base font-bold text-slate-900">
                 Zero Hidden Admission Fees
               </h3>
@@ -34,7 +34,7 @@ export default function DemoPricingPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-xs hover:border-blue-300 hover:shadow-md transition-all">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-xs hover:border-red-300 hover:shadow-md transition-all">
               <Sparkles className="mx-auto size-8 text-amber-600" />
               <h3 className="mt-4 text-base font-bold text-slate-900">
                 Flexible Freeze Policy
@@ -44,7 +44,7 @@ export default function DemoPricingPage() {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-xs hover:border-blue-300 hover:shadow-md transition-all">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-xs hover:border-red-300 hover:shadow-md transition-all">
               <Trophy className="mx-auto size-8 text-emerald-600" />
               <h3 className="mt-4 text-base font-bold text-slate-900">
                 Complimentary Body Assessment

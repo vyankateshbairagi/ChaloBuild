@@ -48,7 +48,7 @@ export function AboutSection({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 right-5 text-white">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-300">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-rose-300">
                   Built For Lifters
                 </span>
                 <p className="text-base font-bold">
@@ -60,13 +60,13 @@ export function AboutSection({
             {/* Stat Callout Cards */}
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-3xl font-extrabold text-blue-600">5,000+</p>
+                <p className="text-3xl font-extrabold text-red-600">5,000+</p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Sq Ft Training Floor
                 </p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-3xl font-extrabold text-blue-600">100%</p>
+                <p className="text-3xl font-extrabold text-red-600">100%</p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
                   Certified Coaches
                 </p>
@@ -89,7 +89,7 @@ export function AboutSection({
                   className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 transition-colors hover:border-slate-300 hover:bg-slate-50"
                 >
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="size-4 text-blue-600 shrink-0" />
+                    <CheckCircle2 className="size-4 text-red-600 shrink-0" />
                     <h4 className="text-sm font-bold text-slate-900">
                       {s.title}
                     </h4>
@@ -104,7 +104,7 @@ export function AboutSection({
             <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Button
                 asChild
-                className="bg-blue-600 px-6 py-6 font-semibold uppercase tracking-wider text-white hover:bg-blue-700 shadow-sm"
+                className="bg-red-600 px-6 py-6 font-semibold uppercase tracking-wider text-white hover:bg-red-700 shadow-sm"
               >
                 <Link href={`${prefix}/pricing`}>
                   <span>Explore Membership Options</span>

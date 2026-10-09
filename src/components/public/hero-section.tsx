@@ -29,14 +29,14 @@ export function HeroSection({
       <div className="relative z-10 mx-auto grid max-w-7xl flex-1 items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:px-8 lg:py-24">
         {/* Left Column: Headlines & Actions */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-blue-700">
-            <span className="flex size-2 rounded-full bg-blue-600 animate-pulse" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-red-700">
+            <span className="flex size-2 rounded-full bg-red-600 animate-pulse" />
             <span>{config.hero.badge}</span>
           </div>
 
           <h1 className="text-4xl font-extrabold uppercase leading-[1.05] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
             {config.hero.headlinePart1}{" "}
-            <span className="text-blue-600">
+            <span className="text-red-600">
               {config.hero.headlineHighlight}
             </span>
           </h1>
@@ -54,7 +54,7 @@ export function HeroSection({
             <Button
               asChild
               size="lg"
-              className="bg-blue-600 px-7 py-6 text-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 transition-all hover:scale-[1.01]"
+              className="bg-red-600 px-7 py-6 text-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-red-600/20 hover:bg-red-700 transition-all hover:scale-[1.01]"
             >
               <Link href={`${prefix}/pricing`}>
                 <span>View Membership Plans</span>
@@ -77,7 +77,7 @@ export function HeroSection({
           {/* Trust Highlights */}
           <div className="pt-6 border-t border-slate-200 flex flex-wrap items-center gap-6 text-xs text-slate-600">
             <span className="flex items-center gap-2">
-              <ShieldCheck className="size-4 text-blue-600" />
+              <ShieldCheck className="size-4 text-red-600" />
               <span>Certified Strength Coaches</span>
             </span>
             <span className="flex items-center gap-2">
@@ -108,7 +108,7 @@ export function HeroSection({
             <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/20 bg-white/90 p-4 backdrop-blur-md shadow-lg">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-blue-600">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-red-600">
                     {config.name}
                   </p>
                   <p className="text-sm font-bold text-slate-900">
@@ -117,7 +117,7 @@ export function HeroSection({
                 </div>
                 <Link
                   href={`${prefix}/gallery`}
-                  className="inline-flex size-9 items-center justify-center rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                  className="inline-flex size-9 items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 transition-colors"
                   title="Explore Gallery"
                 >
                   <ChevronRight className="size-4" />
@@ -137,7 +137,7 @@ export function HeroSection({
               className="px-4 py-5 text-center sm:px-6 sm:py-6"
             >
               <p className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
-                <span className="text-blue-600">{stat.value}</span>
+                <span className="text-red-600">{stat.value}</span>
               </p>
               <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-slate-500 sm:text-xs">
                 {stat.label}

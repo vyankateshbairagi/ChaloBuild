@@ -33,7 +33,7 @@ export function PricingSection({
                 key={plan.id}
                 className={`relative flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 ${
                   isPopular
-                    ? "border-2 border-blue-600 bg-blue-50/15 shadow-xl shadow-blue-900/5 lg:-translate-y-2"
+                    ? "border-2 border-red-600 bg-red-50/20 shadow-xl shadow-red-900/5 lg:-translate-y-2"
                     : "border border-slate-200 bg-white shadow-xs hover:border-slate-300 hover:shadow-md"
                 }`}
               >
@@ -43,7 +43,7 @@ export function PricingSection({
                     <span
                       className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-sm ${
                         isPopular
-                          ? "bg-blue-600"
+                          ? "bg-red-600"
                           : "bg-slate-800"
                       }`}
                     >
@@ -63,7 +63,7 @@ export function PricingSection({
                     </p>
 
                     <div className="mt-6 flex items-baseline gap-1">
-                      <span className="text-2xl font-extrabold text-blue-600">
+                      <span className="text-2xl font-extrabold text-red-600">
                         ₹
                       </span>
                       <span className="text-5xl font-black tracking-tight text-slate-900">
@@ -90,8 +90,8 @@ export function PricingSection({
                           key={feature}
                           className="flex items-start gap-2.5 text-xs text-slate-700"
                         >
-                          <div className="rounded-full bg-blue-50 p-0.5 mt-0.5">
-                            <Check className="size-3 text-blue-600 shrink-0" />
+                          <div className="rounded-full bg-red-50 p-0.5 mt-0.5">
+                            <Check className="size-3 text-red-600 shrink-0" />
                           </div>
                           <span>{feature}</span>
                         </li>
@@ -107,7 +107,7 @@ export function PricingSection({
                     size="lg"
                     className={`w-full font-semibold uppercase tracking-wider text-xs transition-all ${
                       isPopular
-                        ? "bg-blue-600 text-white shadow-md shadow-blue-600/20 hover:bg-blue-700"
+                        ? "bg-red-600 text-white shadow-md shadow-red-600/20 hover:bg-red-700"
                         : "border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 shadow-xs"
                     }`}
                   >
@@ -136,8 +136,8 @@ export function PricingSection({
         <div className="mt-14 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div className="space-y-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 flex items-center gap-1.5">
-                <Flame className="size-3.5 text-blue-600" /> Not sure which plan fits?
+              <span className="text-xs font-bold uppercase tracking-wider text-red-600 flex items-center gap-1.5">
+                <Flame className="size-3.5 text-red-600" /> Not sure which plan fits?
               </span>
               <h4 className="text-lg font-bold text-slate-900">
                 Book a 1-Day Trial Session — 100% Free
@@ -149,7 +149,7 @@ export function PricingSection({
 
             <Button
               asChild
-              className="bg-blue-600 shrink-0 font-semibold uppercase tracking-wider text-xs text-white hover:bg-blue-700 shadow-sm"
+              className="bg-red-600 shrink-0 font-semibold uppercase tracking-wider text-xs text-white hover:bg-red-700 shadow-sm"
             >
               <Link href={`${prefix}/contact#trial`}>
                 <span>Claim Free Workout Pass</span>

@@ -55,9 +55,9 @@ export function PublicHeader({
               href="https://chalobuild.in"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold text-blue-700 hover:bg-blue-100 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-2.5 py-0.5 text-[11px] font-semibold text-red-700 hover:bg-red-100 transition-colors"
             >
-              <Sparkles className="size-3 text-blue-600" />
+              <Sparkles className="size-3 text-red-600" />
               <span>ChaloBuild Platform</span>
             </a>
             <span className="hidden sm:inline text-slate-500">
@@ -70,13 +70,13 @@ export function PublicHeader({
               href={`tel:${config.contact.phoneRaw}`}
               className="hidden md:inline-flex items-center gap-1 font-medium text-slate-600 hover:text-slate-900 transition-colors"
             >
-              <Phone className="size-3 text-blue-600" />
+              <Phone className="size-3 text-red-600" />
               <span>{config.contact.phoneFormatted}</span>
             </a>
             <span className="hidden md:inline text-slate-300">|</span>
             <Link
               href="/login"
-              className="inline-flex items-center gap-1.5 font-medium text-slate-700 hover:text-blue-600 transition-colors"
+              className="inline-flex items-center gap-1.5 font-medium text-slate-700 hover:text-red-600 transition-colors"
             >
               <LogIn className="size-3.5 text-slate-500" />
               <span>Staff Login</span>
@@ -124,8 +124,8 @@ export function PublicHeader({
                   href={item.href}
                   className={`text-sm font-semibold uppercase tracking-wider transition-colors ${
                     active
-                      ? "text-blue-600 font-bold"
-                      : "text-slate-600 hover:text-blue-600"
+                      ? "text-red-600 font-bold"
+                      : "text-slate-600 hover:text-red-600"
                   }`}
                 >
                   {item.label}
@@ -151,7 +151,7 @@ export function PublicHeader({
 
             <Button
               asChild
-              className="bg-blue-600 font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-blue-700 transition-all"
+              className="bg-red-600 font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-red-700 transition-all"
             >
               <Link href={`${prefix}/contact#trial`}>
                 <span>Free Trial Pass</span>
@@ -189,7 +189,7 @@ export function PublicHeader({
                     onClick={() => setMobileMenuOpen(false)}
                     className={`rounded-lg px-4 py-3 text-sm font-semibold uppercase tracking-wider transition ${
                       active
-                        ? "bg-blue-50 text-blue-700 font-bold border-l-3 border-blue-600"
+                        ? "bg-red-50 text-red-700 font-bold border-l-3 border-red-600"
                         : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                     }`}
                   >
@@ -201,7 +201,7 @@ export function PublicHeader({
               <div className="mt-4 pt-4 border-t border-slate-200 flex flex-col gap-3">
                 <Button
                   asChild
-                  className="w-full bg-blue-600 py-3 font-semibold uppercase tracking-wider text-white hover:bg-blue-700"
+                  className="w-full bg-red-600 py-3 font-semibold uppercase tracking-wider text-white hover:bg-red-700"
                 >
                   <Link
                     href={`${prefix}/contact#trial`}
@@ -227,18 +227,18 @@ export function PublicHeader({
                     href={`tel:${config.contact.phoneRaw}`}
                     className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-100"
                   >
-                    <Phone className="size-3.5 text-blue-600" />
+                    <Phone className="size-3.5 text-red-600" />
                     <span>Call Us</span>
                   </a>
                 </div>
 
                 <div className="mt-2 text-xs text-slate-500 space-y-1.5 px-1">
                   <p className="flex items-center gap-2">
-                    <MapPin className="size-3.5 text-blue-600 shrink-0" />
+                    <MapPin className="size-3.5 text-red-600 shrink-0" />
                     <span>{config.contact.city}, {config.contact.state}</span>
                   </p>
                   <p className="flex items-center gap-2">
-                    <Clock className="size-3.5 text-blue-600 shrink-0" />
+                    <Clock className="size-3.5 text-red-600 shrink-0" />
                     <span>{config.openingHours.weekdays}</span>
                   </p>
                 </div>
@@ -246,7 +246,7 @@ export function PublicHeader({
                 <Link
                   href="/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="mt-2 flex items-center justify-center gap-2 py-2 text-xs font-semibold text-slate-600 hover:text-blue-600"
+                  className="mt-2 flex items-center justify-center gap-2 py-2 text-xs font-semibold text-slate-600 hover:text-red-600"
                 >
                   <LogIn className="size-3.5" />
                   <span>Management Staff / Owner Login</span>

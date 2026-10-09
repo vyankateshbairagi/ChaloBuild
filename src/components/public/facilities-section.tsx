@@ -22,7 +22,7 @@ export function FacilitiesSection({
           {config.facilities.map((fac) => (
             <div
               key={fac.id}
-              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-blue-300 hover:shadow-md transition-all duration-300"
+              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-red-300 hover:shadow-md transition-all duration-300"
             >
               {/* Facility Image */}
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
@@ -37,10 +37,10 @@ export function FacilitiesSection({
 
               {/* Facility Body */}
               <div className="p-6">
-                <h3 className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-red-600 transition-colors">
                   {fac.title}
                 </h3>
-                <p className="mt-1 text-xs font-semibold text-blue-600 uppercase tracking-wide">
+                <p className="mt-1 text-xs font-semibold text-red-600 uppercase tracking-wide">
                   {fac.tagline}
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -57,7 +57,7 @@ export function FacilitiesSection({
                         key={feat}
                         className="flex items-center gap-2 text-xs text-slate-700"
                       >
-                        <Check className="size-3 text-blue-600 shrink-0" />
+                        <Check className="size-3 text-red-600 shrink-0" />
                         <span className="truncate">{feat}</span>
                       </li>
                     ))}

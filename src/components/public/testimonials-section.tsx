@@ -25,7 +25,7 @@ export function TestimonialsSection({
           {config.testimonials.map((t) => (
             <div
               key={t.id}
-              className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:border-blue-300 hover:shadow-md transition-all duration-300"
+              className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:border-red-300 hover:shadow-md transition-all duration-300"
             >
               <div>
                 {/* Rating stars */}
@@ -44,7 +44,7 @@ export function TestimonialsSection({
               {/* Author & Milestone */}
               <div className="mt-6 border-t border-slate-100 pt-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex size-10 items-center justify-center rounded-full bg-blue-600 font-bold text-xs text-white uppercase tracking-wider shrink-0 shadow-xs">
+                  <div className="flex size-10 items-center justify-center rounded-full bg-red-600 font-bold text-xs text-white uppercase tracking-wider shrink-0 shadow-xs">
                     {t.avatarInitials}
                   </div>
                   <div className="min-w-0">
@@ -58,8 +58,8 @@ export function TestimonialsSection({
                 </div>
 
                 {/* Milestone Badge */}
-                <div className="mt-3 flex items-center gap-1.5 rounded-lg border border-blue-200 bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-blue-700">
-                  <Trophy className="size-3 text-blue-600 shrink-0" />
+                <div className="mt-3 flex items-center gap-1.5 rounded-lg border border-red-200 bg-red-50 px-2.5 py-1 text-[11px] font-semibold text-red-700">
+                  <Trophy className="size-3 text-red-600 shrink-0" />
                   <span className="truncate">{t.goalAchieved}</span>
                 </div>
               </div>

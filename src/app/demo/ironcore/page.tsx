@@ -29,11 +29,11 @@ export default function IronCoreDemoPage() {
   return (
     <PublicPage config={gymConfig} basePath="/demo/ironcore">
       {/* Top Demo Explainer Banner */}
-      <div className="bg-blue-600 px-4 py-2 text-center text-xs font-semibold text-white">
+      <div className="bg-red-600 px-4 py-2 text-center text-xs font-semibold text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-blue-100 hover:text-white transition-colors"
+            className="inline-flex items-center gap-1.5 text-red-100 hover:text-white transition-colors"
           >
             <ArrowLeft className="size-3.5" />
             <span>Back to ChaloBuild Homepage</span>

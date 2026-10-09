@@ -34,7 +34,7 @@ export function TrainersSection({
             <Button
               asChild
               variant="outline"
-              className="border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-blue-500 hover:text-blue-600 shrink-0 self-start md:self-auto shadow-xs"
+              className="border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-red-500 hover:text-red-600 shrink-0 self-start md:self-auto shadow-xs"
             >
               <Link href={`${prefix}/trainers`}>
                 <span>Meet All Coaches</span>
@@ -48,7 +48,7 @@ export function TrainersSection({
           {displayTrainers.map((trainer) => (
             <div
               key={trainer.id}
-              className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-blue-300 hover:shadow-md transition-all duration-300"
+              className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xs hover:border-red-300 hover:shadow-md transition-all duration-300"
             >
               <div>
                 {/* Trainer Photo */}
@@ -63,7 +63,7 @@ export function TrainersSection({
 
                   {/* Experience Badge */}
                   <div className="absolute top-3 left-3">
-                    <span className="rounded-md border border-white/20 bg-white/90 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-700 backdrop-blur-xs shadow-xs">
+                    <span className="rounded-md border border-white/20 bg-white/90 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-red-700 backdrop-blur-xs shadow-xs">
                       {trainer.experience}
                     </span>
                   </div>
@@ -71,10 +71,10 @@ export function TrainersSection({
 
                 {/* Trainer Info */}
                 <div className="p-5">
-                  <h3 className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-xl font-bold tracking-tight text-slate-900 group-hover:text-red-600 transition-colors">
                     {trainer.name}
                   </h3>
-                  <p className="mt-1 text-xs font-semibold text-blue-600 uppercase tracking-wide">
+                  <p className="mt-1 text-xs font-semibold text-red-600 uppercase tracking-wide">
                     {trainer.role}
                   </p>
 

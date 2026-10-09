@@ -32,7 +32,7 @@ export function FloatingCta({
       {/* Direct Call Button (Visible on mobile/tablet) */}
       <a
         href={`tel:${config.contact.phoneRaw}`}
-        className="flex sm:hidden size-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-xl shadow-blue-950/20 hover:bg-blue-700 transition-all"
+        className="flex sm:hidden size-12 items-center justify-center rounded-full bg-red-600 text-white shadow-xl shadow-red-950/20 hover:bg-red-700 transition-all"
         title="Call Gym"
       >
         <Phone className="size-5" />

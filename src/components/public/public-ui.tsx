@@ -16,7 +16,7 @@ export function PublicPage({
   basePath?: string;
 }) {
   return (
-    <div className="public-site min-h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+    <div className="public-site min-h-screen flex flex-col bg-white text-slate-900 selection:bg-red-100 selection:text-red-900">
       <PublicHeader config={config} basePath={basePath} />
       <main className="flex-1">{children}</main>
       <FloatingCta config={config} />
@@ -39,13 +39,13 @@ export function SectionHeading({
   return (
     <div className={`max-w-3xl ${centered ? "mx-auto text-center" : ""}`}>
       <div
-        className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 ${
+        className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-red-600 ${
           centered ? "justify-center" : ""
         }`}
       >
-        <span className="h-px w-6 bg-blue-600" />
+        <span className="h-px w-6 bg-red-600" />
         <span>{eyebrow}</span>
-        {centered && <span className="h-px w-6 bg-blue-600" />}
+        {centered && <span className="h-px w-6 bg-red-600" />}
       </div>
       <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
         {title}
@@ -72,8 +72,8 @@ export function PageIntro({
     <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
-            <Sparkles className="size-3.5 text-blue-600" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-red-700">
+            <Sparkles className="size-3.5 text-red-600" />
             {eyebrow}
           </div>
           <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
@@ -104,8 +104,8 @@ export function CtaSection({
   return (
     <section className="relative overflow-hidden border-t border-slate-200 bg-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="relative mx-auto max-w-5xl rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-8 sm:p-14 text-center shadow-lg shadow-slate-900/5">
-        <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
-          <Sparkles className="size-3.5 text-blue-600" />
+        <div className="inline-flex items-center gap-2 rounded-full border border-red-200 bg-red-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-red-700">
+          <Sparkles className="size-3.5 text-red-600" />
           START YOUR JOURNEY TODAY
         </div>
         <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
@@ -119,7 +119,7 @@ export function CtaSection({
           <Button
             asChild
             size="lg"
-            className="bg-blue-600 px-8 py-6 font-semibold uppercase tracking-wider text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 transition-all hover:scale-[1.01]"
+            className="bg-red-600 px-8 py-6 font-semibold uppercase tracking-wider text-white shadow-md shadow-red-600/20 hover:bg-red-700 transition-all hover:scale-[1.01]"
           >
             <Link href={href}>
               {primary} <ArrowRight className="ml-2 size-4" />
@@ -146,7 +146,7 @@ export function BackLink({ href = "/" }: { href?: string }) {
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition-colors"
+      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-red-600 transition-colors"
     >
       <ArrowLeft className="size-3.5" /> Back to Home
     </Link>

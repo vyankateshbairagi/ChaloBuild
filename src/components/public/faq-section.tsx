@@ -45,7 +45,7 @@ export function FaqSection({
                   </span>
                   <div
                     className={`flex size-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-600 transition-transform duration-200 ${
-                      isOpen ? "rotate-180 bg-blue-50 text-blue-600" : ""
+                      isOpen ? "rotate-180 bg-red-50 text-red-600" : ""
                     }`}
                   >
                     <ChevronDown className="size-4" />

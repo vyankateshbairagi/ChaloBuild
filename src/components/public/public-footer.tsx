@@ -43,7 +43,7 @@ export function PublicFooter({
                 </span>
               )}
             </Link>
-            <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
+            <p className="text-xs font-bold uppercase tracking-wider text-red-600">
               {config.tagline}
             </p>
             <p className="text-sm leading-relaxed text-slate-600">
@@ -54,7 +54,7 @@ export function PublicFooter({
                 href={config.socialLinks.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all shadow-xs"
+                className="flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-red-500 hover:bg-red-50 hover:text-red-600 transition-all shadow-xs"
                 title="Instagram"
               >
                 <svg
@@ -81,7 +81,7 @@ export function PublicFooter({
               </a>
               <a
                 href={`tel:${config.contact.phoneRaw}`}
-                className="flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all shadow-xs"
+                className="flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-red-500 hover:bg-red-50 hover:text-red-600 transition-all shadow-xs"
                 title="Call"
               >
                 <Phone className="size-4" />
@@ -96,14 +96,14 @@ export function PublicFooter({
             </h3>
             <ul className="mt-5 space-y-3 text-sm text-slate-600">
               <li>
-                <Link href={prefix || "/"} className="hover:text-blue-600 transition-colors">
+                <Link href={prefix || "/"} className="hover:text-red-600 transition-colors">
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   href={`${prefix}/about`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-red-600 transition-colors"
                 >
                   About the Gym
                 </Link>
@@ -111,7 +111,7 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/programs`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-red-600 transition-colors"
                 >
                   Training Programs
                 </Link>
@@ -119,7 +119,7 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/pricing`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-red-600 transition-colors"
                 >
                   Membership Plans
                 </Link>
@@ -127,7 +127,7 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/trainers`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-red-600 transition-colors"
                 >
                   Elite Coaches
                 </Link>
@@ -135,7 +135,7 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/gallery`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-red-600 transition-colors"
                 >
                   Photo Gallery
                 </Link>
@@ -143,7 +143,7 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/contact`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-red-600 transition-colors"
                 >
                   Contact &amp; Location
                 </Link>
@@ -161,7 +161,7 @@ export function PublicFooter({
                 <li key={p.id}>
                   <Link
                     href={`${prefix}/programs#${p.id}`}
-                    className="hover:text-blue-600 transition-colors flex items-center gap-1.5"
+                    className="hover:text-red-600 transition-colors flex items-center gap-1.5"
                   >
                     <span>{p.title}</span>
                   </Link>
@@ -170,7 +170,7 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/programs`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-blue-600 hover:text-blue-700 pt-2"
+                  className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-red-600 hover:text-red-700 pt-2"
                 >
                   <span>View all programs →</span>
                 </Link>
@@ -185,32 +185,32 @@ export function PublicFooter({
             </h3>
             <div className="space-y-3 text-sm text-slate-600">
               <p className="flex items-start gap-2.5">
-                <MapPin className="size-4 text-blue-600 shrink-0 mt-0.5" />
+                <MapPin className="size-4 text-red-600 shrink-0 mt-0.5" />
                 <span className="leading-snug">
                   {config.contact.address}, {config.contact.city}
                 </span>
               </p>
               <p className="flex items-center gap-2.5">
-                <Phone className="size-4 text-blue-600 shrink-0" />
+                <Phone className="size-4 text-red-600 shrink-0" />
                 <a
                   href={`tel:${config.contact.phoneRaw}`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-red-600 transition-colors"
                 >
                   {config.contact.phoneFormatted}
                 </a>
               </p>
               <p className="flex items-center gap-2.5">
-                <Mail className="size-4 text-blue-600 shrink-0" />
+                <Mail className="size-4 text-red-600 shrink-0" />
                 <a
                   href={`mailto:${config.contact.email}`}
-                  className="hover:text-blue-600 transition-colors"
+                  className="hover:text-red-600 transition-colors"
                 >
                   {config.contact.email}
                 </a>
               </p>
               <div className="pt-2 border-t border-slate-200 space-y-1 text-xs">
                 <p className="font-semibold text-slate-900 flex items-center gap-1.5">
-                  <Clock className="size-3.5 text-blue-600" /> Opening Hours
+                  <Clock className="size-3.5 text-red-600" /> Opening Hours
                 </p>
                 <p className="text-slate-500">Mon – Fri: {config.openingHours.weekdays}</p>
                 <p className="text-slate-500">Saturday: {config.openingHours.saturday}</p>
@@ -225,8 +225,8 @@ export function PublicFooter({
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="space-y-1.5 max-w-xl">
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-blue-50 border border-blue-200 px-2 py-0.5 text-xs font-bold text-blue-700">
-                  <Sparkles className="size-3 text-blue-600" />
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-red-50 border border-red-200 px-2 py-0.5 text-xs font-bold text-red-700">
+                  <Sparkles className="size-3 text-red-600" />
                   ChaloBuild Commercial Solution
                 </span>
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
@@ -244,7 +244,7 @@ export function PublicFooter({
                 href="https://chalobuild.in"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-blue-700 transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-red-700 transition-all"
               >
                 <span>Explore ChaloBuild</span>
                 <ArrowUpRight className="size-4" />
@@ -268,7 +268,7 @@ export function PublicFooter({
               href="https://chalobuild.in"
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+              className="font-semibold text-red-600 hover:text-red-700 hover:underline transition-colors"
             >
               ChaloBuild
             </a>

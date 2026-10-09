@@ -47,8 +47,8 @@ export function ContactSection({
             className="lg:col-span-7 rounded-3xl border border-slate-200 bg-white p-7 sm:p-10 shadow-sm"
           >
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
-                <Sparkles className="size-3 text-blue-600" />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-700">
+                <Sparkles className="size-3 text-red-600" />
                 1-Day VIP Pass
               </span>
               <span className="text-xs text-slate-500">• 100% Free</span>
@@ -108,7 +108,7 @@ export function ContactSection({
                       type="text"
                       required
                       placeholder="e.g. Rahul Sharma"
-                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
                     />
                     {state.fieldErrors?.fullName && (
                       <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.fullName}</p>
@@ -128,7 +128,7 @@ export function ContactSection({
                       type="tel"
                       required
                       placeholder="e.g. 9876543210"
-                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
                     />
                     {state.fieldErrors?.phone && (
                       <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.phone}</p>
@@ -148,7 +148,7 @@ export function ContactSection({
                       id="trial-slot"
                       name="slot"
                       defaultValue="Morning (6:00 AM – 10:00 AM)"
-                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
                     >
                       <option>Morning (6:00 AM – 10:00 AM)</option>
                       <option>Afternoon (11:00 AM – 4:00 PM)</option>
@@ -168,7 +168,7 @@ export function ContactSection({
                       id="trial-goal"
                       name="goal"
                       defaultValue="Muscle Building & Strength"
-                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
                     >
                       <option>Muscle Building & Strength</option>
                       <option>Fat Loss & Toning</option>
@@ -190,7 +190,7 @@ export function ContactSection({
                     name="email"
                     type="email"
                     placeholder="e.g. rahul@example.com"
-                    className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                    className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
                   />
                   {state.fieldErrors?.email && (
                     <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.email}</p>
@@ -202,7 +202,7 @@ export function ContactSection({
                     type="submit"
                     size="lg"
                     disabled={isPending}
-                    className="w-full bg-blue-600 py-6 text-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 transition-all disabled:opacity-70"
+                    className="w-full bg-red-600 py-6 text-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-red-600/20 hover:bg-red-700 transition-all disabled:opacity-70"
                   >
                     {isPending ? (
                       <>
@@ -228,12 +228,12 @@ export function ContactSection({
           <div className="lg:col-span-5 space-y-6">
             {/* Address & Hours */}
             <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-red-600">
                 Gym Location &amp; Contact
               </h4>
               <div className="mt-5 space-y-4 text-sm text-slate-600">
                 <p className="flex items-start gap-3">
-                  <MapPin className="size-5 text-blue-600 shrink-0 mt-0.5" />
+                  <MapPin className="size-5 text-red-600 shrink-0 mt-0.5" />
                   <span>
                     <strong className="text-slate-900 block font-semibold">
                       {config.name}
@@ -247,10 +247,10 @@ export function ContactSection({
                 </p>
 
                 <p className="flex items-center gap-3">
-                  <Phone className="size-4 text-blue-600 shrink-0" />
+                  <Phone className="size-4 text-red-600 shrink-0" />
                   <a
                     href={`tel:${config.contact.phoneRaw}`}
-                    className="hover:text-blue-600 transition-colors font-medium text-slate-900"
+                    className="hover:text-red-600 transition-colors font-medium text-slate-900"
                   >
                     {config.contact.phoneFormatted}
                   </a>
@@ -271,10 +271,10 @@ export function ContactSection({
                 </p>
 
                 <p className="flex items-center gap-3">
-                  <Mail className="size-4 text-blue-600 shrink-0" />
+                  <Mail className="size-4 text-red-600 shrink-0" />
                   <a
                     href={`mailto:${config.contact.email}`}
-                    className="hover:text-blue-600 transition-colors"
+                    className="hover:text-red-600 transition-colors"
                   >
                     {config.contact.email}
                   </a>
@@ -284,7 +284,7 @@ export function ContactSection({
               {/* Operating Hours Box */}
               <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4">
                 <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900">
-                  <Clock className="size-3.5 text-blue-600" /> Facility Operating Hours
+                  <Clock className="size-3.5 text-red-600" /> Facility Operating Hours
                 </p>
                 <div className="mt-2 space-y-1 text-xs text-slate-600">
                   <div className="flex justify-between py-1 border-b border-slate-200">
@@ -316,7 +316,7 @@ export function ContactSection({
                   rel="noreferrer"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 py-3 text-xs font-semibold uppercase tracking-wider text-slate-800 hover:bg-slate-100 transition-colors"
                 >
-                  <MapPin className="size-4 text-blue-600" />
+                  <MapPin className="size-4 text-red-600" />
                   <span>Open in Google Maps</span>
                   <ArrowRight className="size-3.5" />
                 </a>
