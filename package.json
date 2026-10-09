@@ -12,7 +12,11 @@
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:report": "playwright show-report",
     "test:e2e:seed": "tsx scripts/seed-e2e.ts",
+    "seed": "tsx prisma/seed.ts",
     "bootstrap:production": "tsx scripts/bootstrap-production.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
