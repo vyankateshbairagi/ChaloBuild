@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- Crest Icon -->
+  <g transform="translate(10, 8)">
+    <!-- Hexagonal shield outer -->
+    <path d="M32 0 L60 16 L60 48 L32 64 L4 48 L4 16 Z" fill="#0f0f11" stroke="#e11d48" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- Subtle inner shield glow -->
+    <path d="M32 6 L54 19 L54 45 L32 58 L10 45 L10 19 Z" fill="url(#crest-grad)" fill-opacity="0.35"/>
+    <!-- Barbell Icon inside crest -->
+    <rect x="29" y="16" width="6" height="32" rx="3" fill="#ffffff"/>
+    <rect x="22" y="24" width="20" height="4" rx="2" fill="#e11d48"/>
+    <rect x="18" y="22" width="4" height="20" rx="2" fill="#ffffff"/>
+    <rect x="42" y="22" width="4" height="20" rx="2" fill="#ffffff"/>
+    <rect x="14" y="25" width="3" height="14" rx="1.5" fill="#f43f5e"/>
+    <rect x="47" y="25" width="3" height="14" rx="1.5" fill="#f43f5e"/>
+  </g>
+  <!-- Typography -->
+  <text x="82" y="44" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" letter-spacing="1.5">IRON<tspan fill="#e11d48">CORE</tspan></text>
+  <text x="83" y="61" fill="#a1a1aa" font-family="system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="4.5">FITNESS CLUB</text>
+
+  <defs>
+    <linearGradient id="crest-grad" x1="4" y1="0" x2="60" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e11d48" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+</svg>
