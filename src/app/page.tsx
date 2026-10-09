@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  ArrowUpRight,
   CalendarCheck,
   CheckCircle2,
   Clock,
@@ -12,11 +11,13 @@ import {
   Lock,
   MessageCircle,
   ShieldCheck,
-  Sparkles,
   Users,
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ChaloBuildHeader } from "@/components/home/chalobuild-header";
+import { ChaloBuildHero } from "@/components/home/chalobuild-hero";
+import { ChaloBuildFeatureStrip } from "@/components/home/chalobuild-feature-strip";
 
 export const metadata: Metadata = {
   title: "ChaloBuild — Turnkey Gym Websites & Management Platform",
@@ -34,124 +35,17 @@ export const metadata: Metadata = {
 export default function ChaloBuildHomePage() {
   return (
     <div className="min-h-screen bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
-      {/* 1. Header */}
-      <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* ChaloBuild Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="flex size-10 items-center justify-center rounded-xl bg-blue-600 text-white font-black text-lg shadow-sm group-hover:bg-blue-700 transition-colors">
-              CB
-            </div>
-            <div className="leading-none">
-              <span className="text-xl font-black tracking-tight text-slate-900">
-                Chalo<span className="text-blue-600">Build</span>
-              </span>
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mt-0.5">
-                Gym Platform
-              </p>
-            </div>
-          </Link>
+      {/* 1. Header matching reference */}
+      <ChaloBuildHeader />
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600">
-            <a href="#offering" className="hover:text-blue-600 transition-colors">
-              The 2-in-1 Platform
-            </a>
-            <a href="#features" className="hover:text-blue-600 transition-colors">
-              Features
-            </a>
-            <a href="#how-it-works" className="hover:text-blue-600 transition-colors">
-              How It Works
-            </a>
-            <Link
-              href="/demo/ironcore"
-              className="inline-flex items-center gap-1 text-blue-600 font-bold hover:text-blue-700 transition-colors"
-            >
-              <span>Interactive Demo</span>
-              <ArrowUpRight className="size-3.5" />
-            </Link>
-          </nav>
+      {/* 2. Hero Section matching reference */}
+      <ChaloBuildHero />
 
-          {/* Actions */}
-          <div className="flex items-center gap-3">
-            <Link
-              href="/login"
-              className="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-blue-600 transition-colors px-2 py-1"
-            >
-              Dashboard Login
-            </Link>
-            <Button
-              asChild
-              className="bg-blue-600 font-semibold uppercase tracking-wider text-xs text-white shadow-sm hover:bg-blue-700"
-            >
-              <a href="#enquire">Get Started</a>
-            </Button>
-          </div>
-        </div>
-      </header>
+      {/* 3. Feature Strip matching reference */}
+      <ChaloBuildFeatureStrip />
 
-      {/* 2. Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white py-20 px-4 sm:px-6 lg:px-8 lg:py-28 border-b border-slate-200">
-        <div className="mx-auto max-w-7xl">
-          <div className="text-center max-w-3xl mx-auto space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-700">
-              <Sparkles className="size-3.5 text-blue-600" />
-              <span>Turnkey Solution for Gym Owners &amp; Fitness Studios</span>
-            </div>
-
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl leading-[1.08]">
-              A Professional Website &amp; Management System for{" "}
-              <span className="text-blue-600">Your Gym.</span>
-            </h1>
-
-            <p className="text-lg text-slate-600 sm:text-xl leading-relaxed">
-              Attract paying members with a custom-branded public website, and run daily operations with connected attendance, subscriptions, receipts, and member tracking.
-            </p>
-
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="w-full sm:w-auto bg-blue-600 px-8 py-6 text-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 hover:scale-[1.01] transition-all"
-              >
-                <Link href="/demo/ironcore">
-                  <span>Explore Live Gym Demo</span>
-                  <ArrowRight className="ml-2 size-4" />
-                </Link>
-              </Button>
-
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto border-slate-300 bg-white px-8 py-6 text-sm font-semibold uppercase tracking-wider text-slate-800 hover:bg-slate-50 shadow-xs"
-              >
-                <a href="#enquire">
-                  <span>Book Free Consultation</span>
-                </a>
-              </Button>
-            </div>
-
-            <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-slate-500">
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="size-4 text-blue-600" />
-                <span>48-Hour Setup &amp; Deployment</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="size-4 text-blue-600" />
-                <span>Custom Domain &amp; Branding</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="size-4 text-blue-600" />
-                <span>Zero Coding Required</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. The 2-in-1 Platform Section */}
-      <section id="offering" className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
+      {/* 4. The 2-in-1 Platform Section */}
+      <section id="platform" className="py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-7xl">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
