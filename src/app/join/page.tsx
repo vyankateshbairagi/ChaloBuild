@@ -15,21 +15,21 @@ export default function JoinPage() {
     {
       num: "01",
       title: "Claim a Free 1-Day Trial",
-      desc: "Experience the facility, test out our machines, and meet our coaches without any commitment.",
+      desc: "Experience the facility, test out our equipment, and meet our coaches without any upfront commitment.",
       href: "/contact#trial",
       cta: "Book Trial Pass",
     },
     {
       num: "02",
       title: "Choose Your Membership Tier",
-      desc: "Select between our Starter (₹999/mo), Pro (₹1,499/mo), or Elite (₹2,499/mo) plans based on your workout frequency.",
+      desc: "Select the plan tailored to your workout routine with transparent monthly or annual pricing.",
       href: "/pricing",
       cta: "Compare Plans",
     },
     {
       num: "03",
       title: "Complete Movement Walkthrough",
-      desc: "Receive a complimentary 30-minute equipment screening and form check with our lead coach on day one.",
+      desc: "Receive a complimentary equipment screening and form check with our lead coach on day one.",
       href: `https://wa.me/${gymConfig.contact.whatsappRaw}?text=${encodeURIComponent(
         `Hi ${gymConfig.name}! I'm ready to get started with my membership onboarding.`
       )}`,
@@ -46,31 +46,31 @@ export default function JoinPage() {
         text={`Joining ${gymConfig.name} is quick and straightforward. No pushy sales pressure, no hidden fees, and no confusing contracts.`}
       />
 
-      <section className="bg-[#09090b] py-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 md:grid-cols-3">
             {steps.map((step) => (
               <div
                 key={step.num}
-                className="group flex flex-col justify-between rounded-3xl border border-white/10 bg-[#121217] p-8 transition-all hover:border-rose-500/50 hover:shadow-2xl hover:shadow-rose-950/40"
+                className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-8 shadow-xs transition-all hover:border-blue-300 hover:shadow-md"
               >
                 <div>
-                  <span className="text-3xl font-black text-rose-500">
+                  <span className="text-3xl font-extrabold text-blue-600">
                     {step.num}
                   </span>
-                  <h3 className="mt-4 text-xl font-bold uppercase text-white group-hover:text-rose-400 transition-colors">
+                  <h3 className="mt-4 text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
                     {step.desc}
                   </p>
                 </div>
 
-                <div className="pt-8 border-t border-white/5 mt-6">
+                <div className="pt-8 border-t border-slate-100 mt-6">
                   {step.external ? (
                     <Button
                       asChild
-                      className="w-full bg-emerald-600 font-bold uppercase tracking-wider text-xs text-white hover:bg-emerald-500"
+                      className="w-full bg-emerald-600 font-semibold uppercase tracking-wider text-xs text-white hover:bg-emerald-700 shadow-sm"
                     >
                       <a
                         href={step.href}
@@ -84,7 +84,7 @@ export default function JoinPage() {
                   ) : (
                     <Button
                       asChild
-                      className="w-full bg-rose-600 font-bold uppercase tracking-wider text-xs text-white hover:bg-rose-500"
+                      className="w-full bg-blue-600 font-semibold uppercase tracking-wider text-xs text-white hover:bg-blue-700 shadow-sm"
                     >
                       <Link href={step.href}>
                         <span>{step.cta}</span>
@@ -98,21 +98,21 @@ export default function JoinPage() {
           </div>
 
           {/* Member Guarantees */}
-          <div className="mt-16 rounded-3xl border border-white/10 bg-[#141419] p-8 sm:p-12">
-            <h3 className="text-2xl font-black uppercase text-white">
-              The IronCore Membership Promise
+          <div className="mt-16 rounded-3xl border border-slate-200 bg-slate-50 p-8 sm:p-12">
+            <h3 className="text-2xl font-bold tracking-tight text-slate-900">
+              The {gymConfig.name} Membership Promise
             </h3>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-sm text-zinc-300">
+            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 text-sm text-slate-700">
               <div className="flex items-start gap-3">
-                <Check className="size-5 text-rose-500 shrink-0 mt-0.5" />
+                <Check className="size-5 text-blue-600 shrink-0 mt-0.5" />
                 <span>Zero administrative joining fees or surprise desk surcharges.</span>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="size-5 text-rose-500 shrink-0 mt-0.5" />
-                <span>Complimentary locker and rainfall shower access with every active tier.</span>
+                <Check className="size-5 text-blue-600 shrink-0 mt-0.5" />
+                <span>Complimentary locker and shower access with every active tier.</span>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="size-5 text-rose-500 shrink-0 mt-0.5" />
+                <Check className="size-5 text-blue-600 shrink-0 mt-0.5" />
                 <span>Freedom to freeze your membership for up to 30 days during travel.</span>
               </div>
             </div>

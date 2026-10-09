@@ -6,7 +6,7 @@ import { gymConfig } from "@/config/gym";
 
 export const metadata: Metadata = {
   title: `Elite Coaches — ${gymConfig.name}`,
-  description: `Meet the certified personal trainers and strength coaches at ${gymConfig.name}. Specialized in barbell mechanics, fat loss, and athletic performance.`,
+  description: `Meet the certified personal trainers and strength coaches at ${gymConfig.name}. Specialized in barbell mechanics, functional fitness, and athletic performance.`,
 };
 
 export default function TrainersPage() {
@@ -15,24 +15,24 @@ export default function TrainersPage() {
       <PageIntro
         eyebrow="Certified Strength Coaches"
         title="Guidance for the Work You Want to Do."
-        text="Every coach at IronCore is thoroughly certified, continually educated, and deeply dedicated to teaching proper technique and building resilient lifters."
+        text={`Every coach at ${gymConfig.name} is thoroughly certified, continually educated, and dedicated to teaching proper technique and building resilient lifters.`}
       />
 
       {/* Full Coaches Grid */}
       <TrainersSection showAllLink={false} />
 
       {/* Coaching Standards */}
-      <section className="bg-[#0c0c10] py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+      <section className="bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-rose-500">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
               Coaching Code of Conduct
             </span>
-            <h2 className="mt-3 text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
               What Sets Our Coaches Apart.
             </h2>
-            <p className="mt-3 text-sm text-zinc-400">
-              We hold our training staff to strict international fitness standards to ensure your safety and continuous progression.
+            <p className="mt-3 text-sm text-slate-600">
+              We hold our coaching staff to rigorous standards to ensure member safety, form integrity, and continuous progression.
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export default function TrainersPage() {
               {
                 icon: ShieldCheck,
                 title: "Accredited Certifications Only",
-                desc: "All trainers must hold accredited credentials (CSCS, ACE, NSCA, K11) and up-to-date CPR/AED certifications.",
+                desc: "All trainers hold verified credentials (CSCS, ACE, NSCA, K11) and up-to-date CPR/AED certifications.",
               },
               {
                 icon: Target,
@@ -56,15 +56,15 @@ export default function TrainersPage() {
             ].map(({ icon: Icon, title, desc }) => (
               <div
                 key={title}
-                className="rounded-2xl border border-white/10 bg-[#121217] p-7 transition-colors hover:border-rose-500/30"
+                className="rounded-2xl border border-slate-200 bg-white p-7 shadow-xs hover:border-blue-300 hover:shadow-md transition-all"
               >
-                <div className="flex size-12 items-center justify-center rounded-xl bg-rose-500/10 text-rose-400">
+                <div className="flex size-12 items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-600">
                   <Icon className="size-6" />
                 </div>
-                <h3 className="mt-5 text-lg font-bold text-white uppercase">
+                <h3 className="mt-5 text-lg font-bold text-slate-900">
                   {title}
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-zinc-400">
+                <p className="mt-2 text-xs leading-relaxed text-slate-600">
                   {desc}
                 </p>
               </div>

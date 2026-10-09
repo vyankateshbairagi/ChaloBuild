@@ -1,43 +1,39 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-// Note: intentionally not using next/font/google here — this build
-// environment blocks network access to Google Fonts. System fonts avoid an
-// unnecessary build-time network dependency; swap in next/font later if
-// you want a custom typeface.
-
-import { gymConfig } from "@/config/gym";
-
 export const metadata: Metadata = {
   title: {
-    default: `${gymConfig.name} — ${gymConfig.tagline}`,
-    template: `%s | ${gymConfig.name}`,
+    default: "ChaloBuild — Turnkey Gym Websites & Management Platform",
+    template: "%s | ChaloBuild",
   },
-  description: gymConfig.shortDescription,
-  applicationName: gymConfig.name,
+  description:
+    "Commercial platform for gym owners. Launch a high-converting branded website and an all-in-one gym management system in 48 hours.",
+  applicationName: "ChaloBuild",
   keywords: [
-    "Gym",
-    "Fitness Club",
-    "Strength Training",
-    "Bodybuilding",
-    "Functional Training",
-    "Personal Trainer",
-    "Pune Gym",
-    "IronCore Fitness",
-    "ChaloBuild Gym Website",
+    "Gym Website",
+    "Gym Management System",
+    "Gym Software",
+    "Fitness Club Website",
+    "ChaloBuild",
+    "GymFlow",
+    "Gym Attendance Software",
+    "Gym Membership Management",
   ],
-  authors: [{ name: gymConfig.provider.name, url: gymConfig.provider.url }],
+  authors: [{ name: "ChaloBuild", url: "https://chalobuild.in" }],
   openGraph: {
-    title: `${gymConfig.name} — ${gymConfig.tagline}`,
-    description: gymConfig.shortDescription,
-    siteName: gymConfig.name,
+    title: "ChaloBuild — Turnkey Gym Websites & Management Platform",
+    description:
+      "Commercial platform for gym owners: professional public website plus connected member management software.",
+    siteName: "ChaloBuild",
     type: "website",
     locale: "en_IN",
+    url: "https://chalobuild.in",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${gymConfig.name} — ${gymConfig.tagline}`,
-    description: gymConfig.shortDescription,
+    title: "ChaloBuild — Turnkey Gym Websites & Management Platform",
+    description:
+      "Commercial platform for gym owners: professional public website plus connected member management software.",
   },
 };
 
@@ -48,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className="h-full antialiased">
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans bg-white text-slate-900">{children}</body>
     </html>
   );
 }

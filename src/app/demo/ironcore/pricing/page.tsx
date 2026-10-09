@@ -6,23 +6,21 @@ import { FaqSection } from "@/components/public/faq-section";
 import { gymConfig } from "@/config/gym";
 
 export const metadata: Metadata = {
-  title: `Membership Plans & Pricing — ${gymConfig.name}`,
+  title: `Membership Plans & Pricing — ${gymConfig.name} (ChaloBuild Demo)`,
   description: `Flexible membership plans at ${gymConfig.name}. Transparent pricing with zero hidden admission fees.`,
 };
 
-export default function PricingPage() {
+export default function DemoPricingPage() {
   return (
-    <PublicPage>
+    <PublicPage config={gymConfig} basePath="/demo/ironcore">
       <PageIntro
         eyebrow="Simple & Transparent Pricing"
         title="Choose a Membership That Honors Your Commitment."
-        text={`All ${gymConfig.name} memberships include full access to our calibrated strength floor, modern cardio equipment, and pristine locker amenities. Zero lock-in traps.`}
+        text={`All ${gymConfig.name} memberships include full access to our calibrated strength floor, modern cardio equipment, and pristine amenities.`}
       />
 
-      {/* Main Pricing Cards with full feature comparison table */}
-      <PricingSection showDetailedComparison={true} />
+      <PricingSection showDetailedComparison={true} config={gymConfig} basePath="/demo/ironcore" />
 
-      {/* Membership Guarantee & Policy */}
       <section className="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 sm:grid-cols-3">
@@ -59,14 +57,14 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Pricing FAQs */}
-      <FaqSection />
+      <FaqSection config={gymConfig} />
 
       <CtaSection
         title="Want to Test the Facility Before Deciding?"
         text="Claim a complimentary 1-Day Trial Pass and work out with full floor access at zero cost."
         primary="Claim 1-Day Trial Pass"
-        href="/contact#trial"
+        href="/demo/ironcore/contact#trial"
+        config={gymConfig}
       />
     </PublicPage>
   );

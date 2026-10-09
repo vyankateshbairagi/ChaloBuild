@@ -6,26 +6,22 @@ import { WhyChooseUs } from "@/components/public/why-choose-us";
 import { gymConfig } from "@/config/gym";
 
 export const metadata: Metadata = {
-  title: `About Us — ${gymConfig.name}`,
+  title: `About Us — ${gymConfig.name} (ChaloBuild Demo)`,
   description: `Discover the philosophy, facility standards, and coaching approach behind ${gymConfig.name}.`,
 };
 
-export default function AboutPage() {
+export default function DemoAboutPage() {
   return (
-    <PublicPage>
+    <PublicPage config={gymConfig} basePath="/demo/ironcore">
       <PageIntro
         eyebrow="Our Mission & Philosophy"
         title="Training Built for Real Human Strength."
         text={`${gymConfig.name} is built around a singular principle: real progress comes from disciplined consistency, competition-grade equipment, and science-backed programming.`}
       />
 
-      {/* Core Narrative & Stats */}
-      <AboutSection />
+      <AboutSection config={gymConfig} basePath="/demo/ironcore" />
+      <WhyChooseUs config={gymConfig} />
 
-      {/* 6 Core Pillars */}
-      <WhyChooseUs />
-
-      {/* Gym Values & Culture */}
       <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
@@ -84,9 +80,10 @@ export default function AboutPage() {
 
       <CtaSection
         title="Ready to Tour the Gym in Person?"
-        text={`Claim your complimentary 1-Day Trial Pass and see why members call ${gymConfig.name} a premier athletic strength facility.`}
+        text={`Claim your complimentary 1-Day Trial Pass and experience why members choose ${gymConfig.name}.`}
         primary="Claim 1-Day Pass"
-        href="/contact#trial"
+        href="/demo/ironcore/contact#trial"
+        config={gymConfig}
       />
     </PublicPage>
   );

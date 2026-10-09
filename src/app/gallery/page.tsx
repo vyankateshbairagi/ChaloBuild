@@ -22,16 +22,16 @@ export default function GalleryPage() {
       <GallerySection showAllLink={false} />
 
       {/* Equipment Showcase & Brands */}
-      <section className="bg-[#0c0c10] py-16 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+      <section className="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
         <div className="mx-auto max-w-7xl">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-rose-500">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
               Commercial Grade Gear
             </span>
-            <h2 className="mt-2 text-2xl font-black uppercase text-white sm:text-3xl">
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl">
               Equipped with Industry-Standard Hardware.
             </h2>
-            <p className="mt-3 text-xs text-zinc-400">
+            <p className="mt-3 text-xs text-slate-600">
               We do not compromise on bar knurling, cable smoothness, or plate tolerances.
             </p>
           </div>
@@ -39,33 +39,33 @@ export default function GalleryPage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                title: "Rogue & Eleiko Barbells",
-                desc: "Precision knurled 20kg Olympic bars with needle bearings for smooth spin.",
+                title: "Precision Barbells",
+                desc: "Precision knurled 20kg Olympic bars with needle bearings for smooth, safe rotation.",
               },
               {
                 title: "Calibrated Bumper Plates",
-                desc: "Competition drop-tested virgin rubber bumpers accurate to within 10 grams.",
+                desc: "Competition drop-tested virgin rubber bumpers accurate to rigorous tolerances.",
               },
               {
-                title: "Concept2 Rowers & Ergs",
-                desc: "Gold standard cardio and metabolic testing equipment with PM5 monitors.",
+                title: "Ergometers & Rowers",
+                desc: "Industry-standard cardio and metabolic testing equipment with performance monitors.",
               },
               {
-                title: "InBody 270 Body Analyzer",
+                title: "Body Composition Analyzer",
                 desc: "Clinical bio-impedance body composition assessment in under 60 seconds.",
               },
             ].map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl border border-white/10 bg-[#121217] p-5 text-center"
+                className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-xs hover:border-blue-300 hover:shadow-md transition-all"
               >
-                <div className="mx-auto flex size-10 items-center justify-center rounded-xl bg-rose-500/10 text-rose-400 mb-3">
+                <div className="mx-auto flex size-10 items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-600 mb-3">
                   <Dumbbell className="size-5" />
                 </div>
-                <h3 className="text-sm font-bold uppercase text-white">
+                <h3 className="text-sm font-bold text-slate-900">
                   {item.title}
                 </h3>
-                <p className="mt-1.5 text-xs text-zinc-400 leading-relaxed">
+                <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
                   {item.desc}
                 </p>
               </div>

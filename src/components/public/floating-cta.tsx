@@ -1,9 +1,13 @@
 "use client";
 
 import { MessageCircle, Phone } from "lucide-react";
-import { gymConfig } from "@/config/gym";
+import { gymConfig, type GymConfig } from "@/config/gym";
 
-export function FloatingCta() {
+export function FloatingCta({
+  config = gymConfig,
+}: {
+  config?: GymConfig;
+}) {
   return (
     <aside
       aria-label="Quick contact actions"
@@ -11,24 +15,24 @@ export function FloatingCta() {
     >
       {/* WhatsApp Floating Button */}
       <a
-        href={`https://wa.me/${gymConfig.contact.whatsappRaw}?text=${encodeURIComponent(
-          gymConfig.contact.whatsappMessage
+        href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
+          config.contact.whatsappMessage
         )}`}
         target="_blank"
         rel="noreferrer"
-        className="group flex items-center gap-2.5 rounded-full bg-emerald-500 p-3.5 sm:px-4 sm:py-3 text-white shadow-2xl shadow-emerald-950/60 transition-all hover:scale-105 hover:bg-emerald-400 focus:outline-none focus:ring-4 focus:ring-emerald-500/40"
+        className="group flex items-center gap-2.5 rounded-full bg-emerald-600 p-3.5 sm:px-4 sm:py-3 text-white shadow-xl shadow-emerald-950/20 transition-all hover:scale-105 hover:bg-emerald-700 focus:outline-none focus:ring-4 focus:ring-emerald-500/30"
         title="Chat on WhatsApp"
       >
         <MessageCircle className="size-5 shrink-0 fill-current" />
-        <span className="hidden sm:inline text-xs font-bold uppercase tracking-wider">
+        <span className="hidden sm:inline text-xs font-semibold uppercase tracking-wider">
           Chat on WhatsApp
         </span>
       </a>
 
       {/* Direct Call Button (Visible on mobile/tablet) */}
       <a
-        href={`tel:${gymConfig.contact.phoneRaw}`}
-        className="flex sm:hidden size-12 items-center justify-center rounded-full bg-rose-600 text-white shadow-xl shadow-rose-950/50 hover:bg-rose-500 transition-all"
+        href={`tel:${config.contact.phoneRaw}`}
+        className="flex sm:hidden size-12 items-center justify-center rounded-full bg-blue-600 text-white shadow-xl shadow-blue-950/20 hover:bg-blue-700 transition-all"
         title="Call Gym"
       >
         <Phone className="size-5" />

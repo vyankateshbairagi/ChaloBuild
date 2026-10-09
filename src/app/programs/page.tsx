@@ -5,7 +5,7 @@ import { gymConfig } from "@/config/gym";
 
 export const metadata: Metadata = {
   title: `Training Programs — ${gymConfig.name}`,
-  description: `Explore specialized workout programs at ${gymConfig.name}: Strength & Hypertrophy, Functional HIIT, 1-on-1 Personal Training, and Olympic Lifting.`,
+  description: `Explore specialized workout programs at ${gymConfig.name}: Strength & Hypertrophy, Functional Turf Conditioning, 1-on-1 Personal Training, and Powerlifting.`,
 };
 
 export default function ProgramsPage() {
@@ -14,23 +14,23 @@ export default function ProgramsPage() {
       <PageIntro
         eyebrow="Specialized Coaching & Routines"
         title="Training Programs Engineered for Progress."
-        text="Whether you want to build lean muscle mass, strip body fat, or prepare for competitive powerlifting, our coaches design structured, periodized training cycles tailored to you."
+        text="Whether you want to build lean muscle mass, improve cardiovascular conditioning, or prepare for athletic performance, our coaches design structured, periodized training cycles tailored to you."
       />
 
       {/* Full Programs Grid */}
       <ProgramsSection showAllLink={false} />
 
       {/* Program Schedule & Weekly Rhythm Section */}
-      <section className="bg-[#0c0c10] py-20 px-4 sm:px-6 lg:px-8 border-t border-white/10">
+      <section className="bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-rose-500">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
               Structured Weekly Rhythm
             </span>
-            <h2 className="mt-3 text-3xl font-black uppercase text-white sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
               How Our Members Train Throughout the Week.
             </h2>
-            <p className="mt-3 text-sm text-zinc-400">
+            <p className="mt-3 text-sm text-slate-600">
               All programs are designed with active recovery and workload management to maximize progress and prevent overtraining.
             </p>
           </div>
@@ -58,20 +58,20 @@ export default function ProgramsPage() {
             ].map((schedule) => (
               <div
                 key={schedule.day}
-                className="rounded-2xl border border-white/10 bg-[#121217] p-6"
+                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs hover:border-blue-300 hover:shadow-md transition-all"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-rose-400">
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
                     {schedule.day}
                   </span>
-                  <span className="rounded-md border border-white/15 bg-white/5 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-zinc-300">
+                  <span className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-700">
                     {schedule.tag}
                   </span>
                 </div>
-                <h3 className="mt-4 text-lg font-bold text-white uppercase">
+                <h3 className="mt-4 text-lg font-bold text-slate-900">
                   {schedule.focus}
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-zinc-400">
+                <p className="mt-2 text-xs leading-relaxed text-slate-600">
                   {schedule.desc}
                 </p>
               </div>

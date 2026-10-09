@@ -108,6 +108,8 @@ model Organization {
   attendance    Attendance[]
   expenses      Expense[]
   auditLogs     AuditLog[]
+  websiteConfig WebsiteConfig?
+  leadEnquiries LeadEnquiry[]
 
   @@map("organizations")
 }
@@ -339,3 +341,80 @@ model AuditLog {
   @@index([createdAt])
   @@map("audit_logs")
 }
+
+// ---------------------------------------------------------------------------
+// WebsiteConfig — Client-specific public website branding, copy, and layout.
+// 1-to-1 relationship with Organization for multi-gym white-labeling.
+// ---------------------------------------------------------------------------
+
+model WebsiteConfig {
+  id              String   @id @default(cuid())
+  organizationId  String   @unique
+  slug            String   @unique
+  isPublished     Boolean  @default(true)
+  gymName         String?
+  legalName       String?
+  tagline         String?
+  logoUrl         String?
+  brandColor      String?  @default("#2563EB")
+  heroHeadline    String?
+  heroSubheadline String?
+  heroDescription String?
+  heroImage       String?
+  aboutText       String?
+  phoneFormatted  String?
+  phoneRaw        String?
+  whatsappRaw     String?
+  whatsappMessage String?
+  email           String?
+  address         String?
+  city            String?
+  state           String?
+  pincode         String?
+  googleMapsUrl   String?
+  openingHours    Json?
+  socialLinks     Json?
+  programs        Json?
+  plans           Json?
+  trainers        Json?
+  facilities      Json?
+  gallery         Json?
+  testimonials    Json?
+  faqs            Json?
+  metaTitle       String?
+  metaDescription String?
+  showPoweredBy   Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([slug])
+  @@map("website_configs")
+}
+
+// ---------------------------------------------------------------------------
+// LeadEnquiry — Organization-scoped public website enquiry and trial pass lead.
+// ---------------------------------------------------------------------------
+
+model LeadEnquiry {
+  id             String   @id @default(cuid())
+  organizationId String
+  fullName       String
+  phone          String
+  email          String?
+  slot           String?
+  goal           String?
+  message        String?
+  status         String   @default("NEW")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@index([organizationId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("lead_enquiries")
+}
+

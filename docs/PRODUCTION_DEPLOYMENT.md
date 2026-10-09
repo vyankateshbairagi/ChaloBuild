@@ -1,199 +1,118 @@
-# Lifetime Fitness Gym production deployment
+# ChaloBuild Gym Platform — Production Deployment & Client Onboarding Guide
 
-This application uses Next.js, Vercel, Neon PostgreSQL, and Prisma. Keep local,
-E2E, and production environments separate throughout the deployment.
+This guide documents the production deployment architecture, domain setup for `chalobuild.in`, and the developer-controlled client onboarding process for new gym clients using the **ChaloBuild 2-in-1 Platform** (Public Gym Website + GymFlow Management Dashboard).
 
-## 1. Create the project repositories
+---
 
-1. Create or select the GitHub repository for the Lifetime Fitness Gym client.
-2. Confirm that `.env`, `.env.local`, and other secret-containing environment
-   files are ignored and are not tracked.
-3. Do not commit production credentials, database URLs, or session secrets.
+## 1. Architecture Overview
 
-## 2. Create a new production database
+- **Core Framework**: Next.js 16 (App Router), React 19, TypeScript.
+- **Styling**: Tailwind CSS v4 with unified **Premium White Theme** design tokens.
+- **Database & ORM**: Neon Serverless PostgreSQL with Prisma 7.
+- **Authentication**: Stateless, encrypted JWT sessions via `jose` and `bcryptjs` password hashing.
+- **Multi-Tenant Routing**:
+  - `/` — ChaloBuild Corporate Homepage (B2B SaaS product offering).
+  - `/demo/ironcore` — Interactive live demo for prospective gym clients.
+  - `/gym/[slug]` — Tenant-specific public gym website resolved from `website_configs` in PostgreSQL.
+  - `/dashboard/*` — Role-based (OWNER, STAFF) gym management platform with strict tenant isolation.
+  - `/login` — Secure staff/owner authentication portal.
 
-1. Create a new Neon production project/database for Lifetime Fitness Gym.
-2. Obtain its production `DATABASE_URL`.
-3. Confirm that it is not the old GymFlow database, a local database, or the
-   dedicated Playwright E2E database.
-4. Configure backups, access controls, and the required production retention
-   policy before onboarding users.
+---
 
-## 3. Generate production secrets
+## 2. Environment Variables Reference
 
-Generate a new production session secret locally:
+Configure these environment variables in your deployment platform (e.g., Vercel / Railway / AWS):
 
-```powershell
+| Variable | Description | Required In |
+| :--- | :--- | :--- |
+| `DATABASE_URL` | Pooled connection string to Neon PostgreSQL | Development, Production |
+| `SESSION_SECRET` | 64-character random hex string for JWT signing | Development, Production |
+| `NEXT_PUBLIC_APP_URL` | Canonical root domain (`https://chalobuild.in`) | Production |
+| `NEXT_PUBLIC_DEFAULT_GYM_SLUG`| Optional fallback slug for single-tenant domains (e.g. `ironcore`) | Optional |
+| `NODE_ENV` | `production` | Production |
+
+### Generating a Secure Session Secret
+Run this in PowerShell or bash:
+```bash
 node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 ```
 
-Use the generated value only in the Vercel Production Environment Variables.
-Do not commit it, put it in `.env.example`, or reuse a local or E2E secret.
+---
 
-## 4. Create and configure the Vercel project
+## 3. Database Migration & Deployment
 
-1. Create a new Vercel project connected to the Lifetime Fitness Gym GitHub
-   repository.
-2. Configure the production environment variables:
-
-   ```text
-   DATABASE_URL=<the new Lifetime Fitness Gym production database URL>
-   SESSION_SECRET=<a new production-only random secret>
-   PUBLIC_ORGANIZATION_SLUG=<the exact production Organization slug>
-   ```
-
-3. Do not configure production with `E2E_DATABASE_URL`, E2E credentials, or
-   the local `.env` values.
-4. `PUBLIC_ORGANIZATION_SLUG` is read only on the server and scopes the public
-   homepage's active membership plans to the intended Organization. Do not
-   rename it to a `NEXT_PUBLIC_*` variable.
-5. Leave `NODE_ENV` managed by Vercel as `production`.
-
-## 5. Deploy and apply migrations
-
-Deploy the application through Vercel, then apply the committed Prisma
-migrations to the confirmed production database:
-
-```powershell
+### Apply Committed Migrations
+To safely apply database migrations to the production database without data loss:
+```bash
 npx prisma migrate deploy
 ```
 
-Never run these commands against production:
+> **CRITICAL RULE**: Never run `npx prisma migrate reset` or `npx prisma db push` on a production database.
 
-```text
-npx prisma migrate dev
-npx prisma db push
-npx prisma migrate reset
+---
+
+## 4. Onboarding a New Gym Client
+
+ChaloBuild uses a developer-controlled, automated onboarding workflow via `scripts/onboard-client-gym.ts`.
+
+### Step 1: Prepare Client Metadata
+Collect from the gym owner:
+- Gym Name (e.g., "Apex Athletic Club")
+- Desired Slug (e.g., `apex-fitness`)
+- Owner Name & Email
+- Tagline & Training Philosophy
+- Contact Phone & WhatsApp number
+- Street Address & City
+- Membership Plans (monthly, quarterly, annual pricing)
+- Services / Programs Offered
+- Trainers & Gallery photo URLs
+
+### Step 2: Run the Onboarding Script
+Run the automated script against the configured database:
+```bash
+npx tsx scripts/onboard-client-gym.ts
 ```
 
-Never run the demo seed against production. `prisma/seed.ts` intentionally
-refuses to run when `NODE_ENV=production`.
+This script:
+1. Creates an isolated `Organization` record.
+2. Creates an `OWNER` user account with a secure temporary password.
+3. Provisions the gym's public membership plans in the `membership_plans` table.
+4. Generates a fully populated, published `WebsiteConfig` entry linking programs, trainers, gallery images, amenities, and contact details.
 
-## 6. Initial Production Owner Bootstrap
+### Step 3: Verify the New Gym Website & Dashboard
+1. Visit `https://chalobuild.in/gym/[slug]` (or client subdomain).
+2. Check that:
+   - Gym name, logo, and brand color match.
+   - Programs, pricing, and trainers render correctly.
+   - WhatsApp CTA buttons open with the gym's specific phone number.
+   - "Powered by ChaloBuild" links back to `https://chalobuild.in`.
+3. Log in at `https://chalobuild.in/login` with the newly generated owner credentials to confirm dashboard access.
 
-The repository includes a one-time, server-side administrative bootstrap
-script. It is not a Next.js route, API endpoint, Server Action, or public URL.
-Run it only from a controlled operator environment against a confirmed fresh
-production database.
+---
 
-Before running it:
+## 5. Domain & Subdomain Configuration (Vercel)
 
-1. Confirm `DATABASE_URL` points to the **new Lifetime Fitness Gym production
-   Neon database**.
-2. Confirm Prisma migrations have already been applied with
-   `npx prisma migrate deploy`.
-3. Set `NODE_ENV=production`.
-4. Set `BOOTSTRAP_PRODUCTION=true`.
-5. Set these values through the operator environment, without placing them in
-   source control:
+### Root Domain (`chalobuild.in`)
+1. In Vercel Project Settings > Domains, add:
+   - `chalobuild.in` (Primary)
+   - `www.chalobuild.in` (Redirects to `chalobuild.in`)
+2. In your DNS provider (e.g., Cloudflare, Namecheap, GoDaddy), create:
+   - `A` record: `@` -> `76.76.21.21` (or Vercel CNAME `cname.vercel-dns.com`)
+   - `CNAME` record: `www` -> `cname.vercel-dns.com`
 
-   ```text
-   BOOTSTRAP_ORG_NAME=<production organization name>
-   BOOTSTRAP_ORG_SLUG=<unique production organization slug>
-   BOOTSTRAP_OWNER_NAME=<initial owner name>
-   BOOTSTRAP_OWNER_EMAIL=<initial owner email>
-   BOOTSTRAP_OWNER_PASSWORD=<temporary unique owner password>
-   ```
+### Client Custom Subdomains or Wildcard Domains
+For client-specific subdomains (e.g., `apex.chalobuild.in`):
+1. Add `*.chalobuild.in` as a wildcard domain in Vercel.
+2. In Next.js middleware, resolve the subdomain into the corresponding gym slug query, transparently rewriting to `/gym/[slug]`.
 
-   Supply the password through an environment variable rather than a command
-   line argument so it does not become part of shell history. The script never
-   prints the password, hash, database URL, or session secret.
-6. Run:
+---
 
-   ```powershell
-   npm run bootstrap:production
-   ```
+## 6. Pre-Launch Verification Checklist
 
-The script refuses to run unless both `NODE_ENV=production` and
-`BOOTSTRAP_PRODUCTION=true` are present. It aborts if the organization slug or
-owner email already exists, and creates the Organization and OWNER User in one
-transaction. It never updates, deletes, deactivates, or resets existing
-records.
-
-After a successful bootstrap:
-
-1. Verify the Owner can log in at `/login`.
-2. Confirm the Owner can access Settings.
-3. Configure the organization.
-4. Create Staff accounts through the normal Settings UI.
-5. Remove or unset all `BOOTSTRAP_*` environment variables immediately.
-6. Never run the bootstrap script against an existing populated production
-   database, or again unless intentionally bootstrapping a new deployment
-   against a fresh database.
-
-After the initial Owner exists:
-
-1. Sign in as the Owner.
-2. Configure the Lifetime Fitness Gym name, logo, currency, timezone, and
-   other organization settings.
-3. Create Staff accounts from the protected Settings interface.
-4. Deliver credentials to staff through a secure channel, never through source
-   control or public documentation.
-
-## 7. Configure the domain
-
-1. Add the production domain in Vercel.
-2. Configure the required DNS records.
-3. Confirm HTTPS is active.
-4. Verify that production authentication cookies are marked `HttpOnly`,
-   `Secure`, `SameSite=Lax`, and scoped to `/`.
-
-## 8. Production smoke test
-
-Verify all of the following after deployment:
-
-- Login and logout work.
-- Invalid credentials do not reveal whether an account exists.
-- An inactive user cannot access the dashboard.
-- Owner-only Settings and staff-management actions reject Staff users.
-- Staff users retain only their intended permissions.
-- Organization-scoped records cannot be accessed across organizations.
-- Members, plans, subscriptions, payments, attendance, expenses, and reports
-  load correctly.
-- The Lifetime Fitness Gym logo appears on login, navigation, and loading
-  surfaces.
-- The Lifetime Fitness Gym favicon and page metadata appear correctly.
-- No demo organization or demo credentials exist in the production database.
-
-## 9. Backups and ownership transfer
-
-1. Verify the Neon backup and restore process.
-2. Record the production database, Vercel project, domain, and monitoring
-   ownership.
-3. Transfer ownership to the client through the approved organization process.
-4. Remove temporary deployment access and rotate any temporary credentials.
-
-## Environment reference
-
-### Local development
-
-```text
-DATABASE_URL=<local development database URL>
-SESSION_SECRET=<local-only random secret>
-```
-
-Never point local development at the production database.
-
-### Playwright E2E and CI
-
-```text
-E2E_DATABASE_URL=<dedicated disposable E2E database URL>
-E2E_SESSION_SECRET=<E2E-only secret>
-E2E_OWNER_EMAIL=<E2E owner email>
-E2E_OWNER_PASSWORD=<E2E owner password>
-E2E_STAFF_EMAIL=<E2E staff email>
-E2E_STAFF_PASSWORD=<E2E staff password>
-```
-
-The CI workflow provisions an isolated PostgreSQL service and applies
-migrations to that database only. Never use production credentials for E2E.
-
-### Production
-
-```text
-DATABASE_URL=<Lifetime Fitness Gym production database URL>
-SESSION_SECRET=<new production-only random secret>
-```
-
-Production values must be entered through Vercel Environment Variables and
-must not be committed to the repository.
+- [ ] `npm run lint` passes with 0 errors.
+- [ ] `npx tsc --noEmit` passes with 0 type errors.
+- [ ] `npm run build` generates all static and dynamic routes cleanly.
+- [ ] Inquiries submitted through `/gym/[slug]` persist to the `lead_enquiries` database table.
+- [ ] Dashboard routes (`/dashboard`, `/members`, `/attendance`, `/plans`, `/subscriptions`, `/payments`, `/expenses`, `/reports`, `/settings`) enforce strict organization ID isolation.
+- [ ] Session cookie is marked `HttpOnly; Secure; SameSite=Lax`.
+- [ ] Production logs do not output passwords, tokens, or raw secrets.

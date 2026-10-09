@@ -6,7 +6,7 @@ import {
   Target,
   Users,
 } from "lucide-react";
-import { gymConfig } from "@/config/gym";
+import { gymConfig, type GymConfig } from "@/config/gym";
 import { SectionHeading } from "@/components/public/public-ui";
 
 const iconMap = {
@@ -18,37 +18,41 @@ const iconMap = {
   Users,
 };
 
-export function WhyChooseUs() {
+export function WhyChooseUs({
+  config = gymConfig,
+}: {
+  config?: GymConfig;
+}) {
   return (
-    <section id="why-us" className="relative bg-[#0b0b0e] py-20 px-4 sm:px-6 lg:px-8">
+    <section id="why-us" className="relative bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          eyebrow="Why Choose IronCore"
+          eyebrow={`Why Choose ${config.name}`}
           title="Engineered for Real Physical Progress."
-          text="We built IronCore Fitness to solve everything frustrating about typical commercial gyms: no crowded racks, no broken machines, and no unhelpful staff."
+          text={`We built ${config.name} to deliver an optimal training environment: no crowded stations, high-performance equipment, and expert coaching.`}
           centered
         />
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {gymConfig.whyChooseUs.map((item, index) => {
+          {config.whyChooseUs.map((item, index) => {
             const Icon = iconMap[item.icon as keyof typeof iconMap] || Dumbbell;
             return (
               <div
                 key={item.title}
-                className="gym-glow-card group rounded-2xl p-7 transition-all duration-300"
+                className="group rounded-2xl border border-slate-200 bg-white p-7 shadow-xs hover:border-blue-300 hover:shadow-md transition-all duration-200"
               >
-                <div className="flex size-12 items-center justify-center rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-400 group-hover:bg-rose-600 group-hover:text-white transition-all">
+                <div className="flex size-12 items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
                   <Icon className="size-6" />
                 </div>
-                <h3 className="mt-6 text-xl font-bold uppercase tracking-tight text-white group-hover:text-rose-400 transition-colors">
+                <h3 className="mt-6 text-xl font-bold tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
                   {item.description}
                 </p>
-                <div className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 group-hover:text-rose-400/80 transition-colors">
-                  <span>Standard 0{index + 1}</span>
-                  <span className="h-px w-8 bg-zinc-800 group-hover:bg-rose-500/40 transition-colors" />
+                <div className="mt-6 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400 group-hover:text-blue-600 transition-colors">
+                  <span>Feature 0{index + 1}</span>
+                  <span className="h-px w-8 bg-slate-200 group-hover:bg-blue-300 transition-colors" />
                 </div>
               </div>
             );

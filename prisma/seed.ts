@@ -68,7 +68,32 @@ async function main() {
     },
   });
 
-  console.log("Seeded demo organization and users:");
+  await db.websiteConfig.upsert({
+    where: { organizationId: organization.id },
+    update: {
+      gymName: "IronCore Fitness",
+      slug: "demo-gym",
+      isPublished: true,
+    },
+    create: {
+      organizationId: organization.id,
+      slug: "demo-gym",
+      gymName: "IronCore Fitness",
+      tagline: "Train Strong. Live Strong.",
+      brandColor: "#2563EB",
+      heroHeadline: "BUILD YOUR STRONGEST SELF",
+      heroSubheadline: "Train smarter. Get stronger. A fitness club built for measurable results.",
+      phoneFormatted: "+91 98765 43210",
+      phoneRaw: "+919876543210",
+      whatsappRaw: "919876543210",
+      email: "hello@demogym.test",
+      city: "Pune",
+      isPublished: true,
+      showPoweredBy: true,
+    },
+  });
+
+  console.log("Seeded demo organization, website config, and users:");
   console.log(`  Owner: ${DEMO_OWNER_EMAIL} / ${DEMO_PASSWORD}`);
   console.log(`  Staff: ${DEMO_STAFF_EMAIL} / ${DEMO_PASSWORD}`);
 }

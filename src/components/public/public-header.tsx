@@ -13,88 +13,102 @@ import {
   Phone,
   Sparkles,
   X,
-  Zap,
 } from "lucide-react";
 
-import { gymConfig } from "@/config/gym";
+import { gymConfig, type GymConfig } from "@/config/gym";
 import { Button } from "@/components/ui/button";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Programs", href: "/programs" },
-  { label: "Plans", href: "/pricing" },
-  { label: "Trainers", href: "/trainers" },
-  { label: "Gallery", href: "/gallery" },
-  { label: "Contact", href: "/contact" },
-];
-
-export function PublicHeader() {
+export function PublicHeader({
+  config = gymConfig,
+  basePath = "",
+}: {
+  config?: GymConfig;
+  basePath?: string;
+}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // Create links dynamically supporting either root or subpath / demo route
+  const prefix = basePath ? basePath : "";
+  const navLinks = [
+    { label: "Home", href: prefix || "/" },
+    { label: "About", href: `${prefix}/about` },
+    { label: "Programs", href: `${prefix}/programs` },
+    { label: "Plans", href: `${prefix}/pricing` },
+    { label: "Trainers", href: `${prefix}/trainers` },
+    { label: "Gallery", href: `${prefix}/gallery` },
+    { label: "Contact", href: `${prefix}/contact` },
+  ];
+
   const isCurrent = (href: string) => {
-    if (href === "/") return pathname === "/";
+    if (href === "/" || href === prefix) return pathname === href;
     return pathname.startsWith(href);
   };
 
   return (
     <>
-      {/* Top Demo Bar — Shows ChaloBuild Provider context tastefully */}
-      <div className="border-b border-rose-950/40 bg-zinc-950/90 px-4 py-2 text-xs text-zinc-300">
+      {/* Top Bar — Subtle ChaloBuild Provider context and Quick Actions */}
+      <div className="border-b border-slate-200 bg-slate-50 px-4 py-2 text-xs text-slate-600">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/30 bg-rose-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-rose-300">
-              <Sparkles className="size-3 text-rose-400" />
-              {gymConfig.provider.badgeText}
-            </span>
-            <span className="hidden sm:inline text-zinc-400">
-              • Turnkey Website + GymFlow Management Software
+            <a
+              href="https://chalobuild.in"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold text-blue-700 hover:bg-blue-100 transition-colors"
+            >
+              <Sparkles className="size-3 text-blue-600" />
+              <span>ChaloBuild Platform</span>
+            </a>
+            <span className="hidden sm:inline text-slate-500">
+              Turnkey Gym Websites &amp; Management Platform
             </span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <a
-              href={`https://wa.me/${gymConfig.contact.whatsappRaw}?text=${encodeURIComponent(
-                "Hi ChaloBuild! I am a gym owner interested in getting a website like IronCore Fitness."
-              )}`}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1 font-semibold text-rose-400 hover:text-rose-300 transition-colors"
+              href={`tel:${config.contact.phoneRaw}`}
+              className="hidden md:inline-flex items-center gap-1 font-medium text-slate-600 hover:text-slate-900 transition-colors"
             >
-              <Zap className="size-3" />
-              <span>Get this for your gym →</span>
+              <Phone className="size-3 text-blue-600" />
+              <span>{config.contact.phoneFormatted}</span>
             </a>
-            <span className="text-zinc-600">|</span>
+            <span className="hidden md:inline text-slate-300">|</span>
             <Link
               href="/login"
-              className="inline-flex items-center gap-1 font-medium text-zinc-300 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 font-medium text-slate-700 hover:text-blue-600 transition-colors"
             >
-              <LogIn className="size-3 text-zinc-400" />
+              <LogIn className="size-3.5 text-slate-500" />
               <span>Staff Login</span>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Main Sticky Navbar */}
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-[#09090b]/95 backdrop-blur-xl">
+      {/* Main Sticky White Navbar */}
+      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          {/* Gym Logo */}
+          {/* Gym Logo / Identity */}
           <Link
-            href="/"
+            href={prefix || "/"}
             className="flex items-center gap-3 group"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <div className="relative h-12 w-48 sm:w-56 transition-transform group-hover:scale-[1.02]">
-              <Image
-                src={gymConfig.logo.svg}
-                alt={gymConfig.logo.alt}
-                fill
-                priority
-                className="object-contain object-left"
-              />
-            </div>
+            {config.logo.svg ? (
+              <div className="relative h-11 w-44 sm:w-52 transition-transform group-hover:scale-[1.01]">
+                <Image
+                  src={config.logo.svg}
+                  alt={config.logo.alt || config.name}
+                  fill
+                  priority
+                  className="object-contain object-left"
+                />
+              </div>
+            ) : (
+              <span className="text-xl font-black uppercase tracking-tight text-slate-900">
+                {config.name}
+              </span>
+            )}
           </Link>
 
           {/* Desktop Nav Links */}
@@ -110,8 +124,8 @@ export function PublicHeader() {
                   href={item.href}
                   className={`text-sm font-semibold uppercase tracking-wider transition-colors ${
                     active
-                      ? "text-rose-500 font-bold"
-                      : "text-zinc-300 hover:text-rose-400"
+                      ? "text-blue-600 font-bold"
+                      : "text-slate-600 hover:text-blue-600"
                   }`}
                 >
                   {item.label}
@@ -123,23 +137,23 @@ export function PublicHeader() {
           {/* Header CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href={`https://wa.me/${gymConfig.contact.whatsappRaw}?text=${encodeURIComponent(
-                gymConfig.contact.whatsappMessage
+              href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
+                config.contact.whatsappMessage
               )}`}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3.5 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-200 transition-all hover:border-emerald-500/50 hover:bg-emerald-950/30 hover:text-emerald-300"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-semibold uppercase tracking-wider text-slate-700 transition-all hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700"
               title="Chat with front desk on WhatsApp"
             >
-              <MessageCircle className="size-3.5 text-emerald-400" />
+              <MessageCircle className="size-3.5 text-emerald-600" />
               <span>WhatsApp</span>
             </a>
 
             <Button
               asChild
-              className="bg-rose-600 font-bold uppercase tracking-wider text-white shadow-lg shadow-rose-950/50 hover:bg-rose-500 transition-all hover:shadow-rose-600/25"
+              className="bg-blue-600 font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-blue-700 transition-all"
             >
-              <Link href="/contact#trial">
+              <Link href={`${prefix}/contact#trial`}>
                 <span>Free Trial Pass</span>
               </Link>
             </Button>
@@ -148,7 +162,7 @@ export function PublicHeader() {
           {/* Mobile Hamburger Button */}
           <button
             type="button"
-            className="inline-flex size-10 items-center justify-center rounded-lg border border-white/20 bg-white/5 text-white lg:hidden transition hover:bg-white/10"
+            className="inline-flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-700 lg:hidden transition hover:bg-slate-100"
             aria-label={
               mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
             }
@@ -163,9 +177,9 @@ export function PublicHeader() {
         {mobileMenuOpen && (
           <nav
             aria-label="Mobile navigation"
-            className="border-t border-white/10 bg-[#0d0d10] px-5 py-6 lg:hidden"
+            className="border-t border-slate-200 bg-white px-5 py-6 lg:hidden shadow-xl"
           >
-            <div className="mx-auto flex max-w-7xl flex-col gap-2">
+            <div className="mx-auto flex max-w-7xl flex-col gap-1.5">
               {navLinks.map((item) => {
                 const active = isCurrent(item.href);
                 return (
@@ -175,8 +189,8 @@ export function PublicHeader() {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`rounded-lg px-4 py-3 text-sm font-semibold uppercase tracking-wider transition ${
                       active
-                        ? "bg-rose-500/15 text-rose-400 border-l-2 border-rose-500"
-                        : "text-zinc-300 hover:bg-white/5 hover:text-white"
+                        ? "bg-blue-50 text-blue-700 font-bold border-l-3 border-blue-600"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
                     }`}
                   >
                     {item.label}
@@ -184,13 +198,13 @@ export function PublicHeader() {
                 );
               })}
 
-              <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-3">
+              <div className="mt-4 pt-4 border-t border-slate-200 flex flex-col gap-3">
                 <Button
                   asChild
-                  className="w-full bg-rose-600 py-3 font-bold uppercase tracking-wider text-white hover:bg-rose-500"
+                  className="w-full bg-blue-600 py-3 font-semibold uppercase tracking-wider text-white hover:bg-blue-700"
                 >
                   <Link
-                    href="/contact#trial"
+                    href={`${prefix}/contact#trial`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Claim 1-Day Free Trial
@@ -199,43 +213,43 @@ export function PublicHeader() {
 
                 <div className="grid grid-cols-2 gap-2">
                   <a
-                    href={`https://wa.me/${gymConfig.contact.whatsappRaw}?text=${encodeURIComponent(
-                      gymConfig.contact.whatsappMessage
+                    href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
+                      config.contact.whatsappMessage
                     )}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-950/20 py-2.5 text-xs font-semibold text-emerald-300"
+                    className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 py-2.5 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-300"
                   >
-                    <MessageCircle className="size-3.5" />
+                    <MessageCircle className="size-3.5 text-emerald-600" />
                     <span>WhatsApp</span>
                   </a>
                   <a
-                    href={`tel:${gymConfig.contact.phoneRaw}`}
-                    className="flex items-center justify-center gap-2 rounded-lg border border-white/15 bg-white/5 py-2.5 text-xs font-semibold text-zinc-200"
+                    href={`tel:${config.contact.phoneRaw}`}
+                    className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-100"
                   >
-                    <Phone className="size-3.5" />
+                    <Phone className="size-3.5 text-blue-600" />
                     <span>Call Us</span>
                   </a>
                 </div>
 
-                <div className="mt-2 text-xs text-zinc-400 space-y-1.5 px-1">
+                <div className="mt-2 text-xs text-slate-500 space-y-1.5 px-1">
                   <p className="flex items-center gap-2">
-                    <MapPin className="size-3.5 text-rose-500 shrink-0" />
-                    <span>{gymConfig.contact.city}, {gymConfig.contact.state}</span>
+                    <MapPin className="size-3.5 text-blue-600 shrink-0" />
+                    <span>{config.contact.city}, {config.contact.state}</span>
                   </p>
                   <p className="flex items-center gap-2">
-                    <Clock className="size-3.5 text-rose-500 shrink-0" />
-                    <span>{gymConfig.openingHours.weekdays}</span>
+                    <Clock className="size-3.5 text-blue-600 shrink-0" />
+                    <span>{config.openingHours.weekdays}</span>
                   </p>
                 </div>
 
                 <Link
                   href="/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="mt-2 flex items-center justify-center gap-2 py-2 text-xs font-semibold text-zinc-400 hover:text-zinc-200"
+                  className="mt-2 flex items-center justify-center gap-2 py-2 text-xs font-semibold text-slate-600 hover:text-blue-600"
                 >
                   <LogIn className="size-3.5" />
-                  <span>GymFlow Staff / Owner Sign In</span>
+                  <span>Management Staff / Owner Login</span>
                 </Link>
               </div>
             </div>

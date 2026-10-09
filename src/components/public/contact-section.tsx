@@ -1,126 +1,138 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
 import {
   ArrowRight,
   CheckCircle2,
   Clock,
+  Loader2,
   Mail,
   MapPin,
   MessageCircle,
   Phone,
   Sparkles,
 } from "lucide-react";
-import { gymConfig } from "@/config/gym";
+import { gymConfig, type GymConfig } from "@/config/gym";
 import { SectionHeading } from "@/components/public/public-ui";
 import { Button } from "@/components/ui/button";
+import { submitLeadEnquiryAction, type EnquiryActionState } from "@/actions/enquiry";
 
-export function ContactSection() {
-  const [fullName, setFullName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [slot, setSlot] = useState("Morning (6:00 AM – 10:00 AM)");
-  const [goal, setGoal] = useState("Muscle Building & Strength");
-  const [submitted, setSubmitted] = useState(false);
+const initialState: EnquiryActionState = {};
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-
-    const message = `Hi ${gymConfig.name}! My name is ${fullName} (Phone: ${phone}). I would like to book a 1-Day Free Trial Pass. Preferred Slot: ${slot}, Goal: ${goal}.`;
-    const waUrl = `https://wa.me/${gymConfig.contact.whatsappRaw}?text=${encodeURIComponent(
-      message
-    )}`;
-
-    // Open WhatsApp in a new tab
-    if (typeof window !== "undefined") {
-      window.open(waUrl, "_blank");
-    }
-  };
+export function ContactSection({
+  config = gymConfig,
+  slug,
+}: {
+  config?: GymConfig;
+  slug?: string;
+}) {
+  const [state, formAction, isPending] = useActionState(
+    submitLeadEnquiryAction,
+    initialState
+  );
 
   return (
-    <section id="contact" className="relative bg-[#0c0c10] py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="relative bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Visit & Connect"
           title="Start With a Free Trial Session."
-          text="Fill out the quick request below or drop by during visiting hours. No pressure, no awkward sales pitches."
+          text="Fill out the quick request below or drop by during visiting hours. No pressure, no aggressive sales pitches."
         />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-12 items-start">
-          {/* Left Column: Interactive Trial Request Form */}
+          {/* Left Column: Server-Validated Trial Request Form */}
           <div
             id="trial"
-            className="lg:col-span-7 rounded-3xl border border-white/10 bg-[#121217] p-7 sm:p-10 shadow-2xl"
+            className="lg:col-span-7 rounded-3xl border border-slate-200 bg-white p-7 sm:p-10 shadow-sm"
           >
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-rose-300">
-                <Sparkles className="size-3 text-rose-400" />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
+                <Sparkles className="size-3 text-blue-600" />
                 1-Day VIP Pass
               </span>
-              <span className="text-xs text-zinc-400">• 100% Free</span>
+              <span className="text-xs text-slate-500">• 100% Free</span>
             </div>
 
-            <h3 className="mt-4 text-2xl font-black uppercase text-white sm:text-3xl">
+            <h3 className="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
               Claim Your Free Workout Pass
             </h3>
-            <p className="mt-2 text-sm text-zinc-400">
-              Test out our equipment, check out the lockers, and experience the IronCore vibe before joining.
+            <p className="mt-2 text-sm text-slate-600">
+              Test out our equipment, check out the amenities, and experience the {config.name} training vibe before joining.
             </p>
 
-            {submitted ? (
-              <div className="mt-8 rounded-2xl border border-emerald-500/30 bg-emerald-950/20 p-6 text-center">
-                <CheckCircle2 className="mx-auto size-12 text-emerald-400" />
-                <h4 className="mt-3 text-lg font-bold text-white">
-                  Trial Request Created!
+            {state.success ? (
+              <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-center">
+                <CheckCircle2 className="mx-auto size-12 text-emerald-600" />
+                <h4 className="mt-3 text-lg font-bold text-slate-900">
+                  Trial Request Confirmed!
                 </h4>
-                <p className="mt-1 text-sm text-zinc-300">
-                  Opening WhatsApp to finalize your visit pass with the front desk.
+                <p className="mt-1 text-sm text-slate-600">
+                  Your request has been logged in our system. You can connect immediately with the front desk on WhatsApp.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setSubmitted(false)}
-                  className="mt-4 text-xs font-semibold uppercase tracking-wider text-emerald-400 hover:underline"
-                >
-                  Submit another inquiry
-                </button>
+                {state.whatsappUrl && (
+                  <div className="mt-5">
+                    <a
+                      href={state.whatsappUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-emerald-700 transition-colors"
+                    >
+                      <MessageCircle className="size-4" />
+                      <span>Chat on WhatsApp Front Desk</span>
+                    </a>
+                  </div>
+                )}
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+              <form action={formAction} className="mt-8 space-y-4">
+                <input type="hidden" name="slug" value={slug || ""} />
+
+                {state.error && (
+                  <div className="rounded-xl border border-rose-200 bg-rose-50 p-3.5 text-xs font-medium text-rose-700">
+                    {state.error}
+                  </div>
+                )}
+
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label
                       htmlFor="trial-name"
-                      className="block text-xs font-bold uppercase tracking-wider text-zinc-300"
+                      className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
                     >
-                      Your Full Name
+                      Full Name *
                     </label>
                     <input
                       id="trial-name"
+                      name="fullName"
                       type="text"
                       required
                       placeholder="e.g. Rahul Sharma"
-                      value={fullName}
-                      onChange={(e) => setFullName(e.target.value)}
-                      className="mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
                     />
+                    {state.fieldErrors?.fullName && (
+                      <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.fullName}</p>
+                    )}
                   </div>
 
                   <div>
                     <label
                       htmlFor="trial-phone"
-                      className="block text-xs font-bold uppercase tracking-wider text-zinc-300"
+                      className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
                     >
-                      WhatsApp / Phone
+                      WhatsApp / Phone *
                     </label>
                     <input
                       id="trial-phone"
+                      name="phone"
                       type="tel"
                       required
-                      placeholder="e.g. +91 98765 43210"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className="mt-2 w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-zinc-500 focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
+                      placeholder="e.g. 9876543210"
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
                     />
+                    {state.fieldErrors?.phone && (
+                      <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.phone}</p>
+                    )}
                   </div>
                 </div>
 
@@ -128,15 +140,15 @@ export function ContactSection() {
                   <div>
                     <label
                       htmlFor="trial-slot"
-                      className="block text-xs font-bold uppercase tracking-wider text-zinc-300"
+                      className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
                     >
                       Preferred Slot
                     </label>
                     <select
                       id="trial-slot"
-                      value={slot}
-                      onChange={(e) => setSlot(e.target.value)}
-                      className="mt-2 w-full rounded-xl border border-white/15 bg-zinc-900 px-4 py-3 text-sm text-white focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
+                      name="slot"
+                      defaultValue="Morning (6:00 AM – 10:00 AM)"
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
                     >
                       <option>Morning (6:00 AM – 10:00 AM)</option>
                       <option>Afternoon (11:00 AM – 4:00 PM)</option>
@@ -148,15 +160,15 @@ export function ContactSection() {
                   <div>
                     <label
                       htmlFor="trial-goal"
-                      className="block text-xs font-bold uppercase tracking-wider text-zinc-300"
+                      className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
                     >
                       Primary Goal
                     </label>
                     <select
                       id="trial-goal"
-                      value={goal}
-                      onChange={(e) => setGoal(e.target.value)}
-                      className="mt-2 w-full rounded-xl border border-white/15 bg-zinc-900 px-4 py-3 text-sm text-white focus:border-rose-500 focus:outline-none focus:ring-1 focus:ring-rose-500"
+                      name="goal"
+                      defaultValue="Muscle Building & Strength"
+                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
                     >
                       <option>Muscle Building & Strength</option>
                       <option>Fat Loss & Toning</option>
@@ -166,17 +178,46 @@ export function ContactSection() {
                   </div>
                 </div>
 
+                <div>
+                  <label
+                    htmlFor="trial-email"
+                    className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
+                  >
+                    Email Address (Optional)
+                  </label>
+                  <input
+                    id="trial-email"
+                    name="email"
+                    type="email"
+                    placeholder="e.g. rahul@example.com"
+                    className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                  />
+                  {state.fieldErrors?.email && (
+                    <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.email}</p>
+                  )}
+                </div>
+
                 <div className="pt-2">
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full bg-rose-600 py-6 text-sm font-bold uppercase tracking-wider text-white shadow-xl shadow-rose-950/70 hover:bg-rose-500 transition-all"
+                    disabled={isPending}
+                    className="w-full bg-blue-600 py-6 text-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 transition-all disabled:opacity-70"
                   >
-                    <span>Confirm Free Trial Pass on WhatsApp</span>
-                    <ArrowRight className="ml-2 size-4" />
+                    {isPending ? (
+                      <>
+                        <Loader2 className="mr-2 size-4 animate-spin" />
+                        <span>Submitting Pass Request...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Claim Free 1-Day Trial Pass</span>
+                        <ArrowRight className="ml-2 size-4" />
+                      </>
+                    )}
                   </Button>
-                  <p className="mt-2 text-center text-[11px] text-zinc-500">
-                    No spam. Your pass will be generated instantly for the front desk.
+                  <p className="mt-2 text-center text-[11px] text-slate-500">
+                    No spam. Your pass will be created and forwarded instantly to the front desk.
                   </p>
                 </div>
               </form>
@@ -186,82 +227,82 @@ export function ContactSection() {
           {/* Right Column: Location, Hours & Map Card */}
           <div className="lg:col-span-5 space-y-6">
             {/* Address & Hours */}
-            <div className="rounded-3xl border border-white/10 bg-[#121217] p-7">
-              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-rose-500">
-                Gym Location & Contact
+            <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">
+                Gym Location &amp; Contact
               </h4>
-              <div className="mt-5 space-y-4 text-sm text-zinc-300">
+              <div className="mt-5 space-y-4 text-sm text-slate-600">
                 <p className="flex items-start gap-3">
-                  <MapPin className="size-5 text-rose-500 shrink-0 mt-0.5" />
+                  <MapPin className="size-5 text-blue-600 shrink-0 mt-0.5" />
                   <span>
-                    <strong className="text-white block font-semibold">
-                      {gymConfig.name}
+                    <strong className="text-slate-900 block font-semibold">
+                      {config.name}
                     </strong>
-                    {gymConfig.contact.address}
+                    {config.contact.address}
                     <br />
-                    <span className="text-xs text-zinc-400">
-                      Landmark: {gymConfig.contact.landmark}
+                    <span className="text-xs text-slate-500">
+                      Landmark: {config.contact.landmark}
                     </span>
                   </span>
                 </p>
 
                 <p className="flex items-center gap-3">
-                  <Phone className="size-4 text-rose-500 shrink-0" />
+                  <Phone className="size-4 text-blue-600 shrink-0" />
                   <a
-                    href={`tel:${gymConfig.contact.phoneRaw}`}
-                    className="hover:text-rose-400 transition-colors font-medium text-white"
+                    href={`tel:${config.contact.phoneRaw}`}
+                    className="hover:text-blue-600 transition-colors font-medium text-slate-900"
                   >
-                    {gymConfig.contact.phoneFormatted}
+                    {config.contact.phoneFormatted}
                   </a>
                 </p>
 
                 <p className="flex items-center gap-3">
-                  <MessageCircle className="size-4 text-emerald-400 shrink-0" />
+                  <MessageCircle className="size-4 text-emerald-600 shrink-0" />
                   <a
-                    href={`https://wa.me/${gymConfig.contact.whatsappRaw}?text=${encodeURIComponent(
-                      gymConfig.contact.whatsappMessage
+                    href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
+                      config.contact.whatsappMessage
                     )}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-emerald-300 transition-colors font-medium text-white"
+                    className="hover:text-emerald-700 transition-colors font-medium text-slate-900"
                   >
                     WhatsApp Front Desk
                   </a>
                 </p>
 
                 <p className="flex items-center gap-3">
-                  <Mail className="size-4 text-rose-500 shrink-0" />
+                  <Mail className="size-4 text-blue-600 shrink-0" />
                   <a
-                    href={`mailto:${gymConfig.contact.email}`}
-                    className="hover:text-rose-400 transition-colors"
+                    href={`mailto:${config.contact.email}`}
+                    className="hover:text-blue-600 transition-colors"
                   >
-                    {gymConfig.contact.email}
+                    {config.contact.email}
                   </a>
                 </p>
               </div>
 
               {/* Operating Hours Box */}
-              <div className="mt-6 rounded-2xl border border-white/10 bg-black/40 p-4">
-                <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-400">
-                  <Clock className="size-3.5" /> Facility Operating Hours
+              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900">
+                  <Clock className="size-3.5 text-blue-600" /> Facility Operating Hours
                 </p>
-                <div className="mt-2 space-y-1 text-xs text-zinc-300">
-                  <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-zinc-400">Monday – Friday</span>
-                    <span className="font-semibold text-white">
-                      {gymConfig.openingHours.weekdays}
+                <div className="mt-2 space-y-1 text-xs text-slate-600">
+                  <div className="flex justify-between py-1 border-b border-slate-200">
+                    <span className="text-slate-500">Monday – Friday</span>
+                    <span className="font-semibold text-slate-900">
+                      {config.openingHours.weekdays}
                     </span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-zinc-400">Saturday</span>
-                    <span className="font-semibold text-white">
-                      {gymConfig.openingHours.saturday}
+                  <div className="flex justify-between py-1 border-b border-slate-200">
+                    <span className="text-slate-500">Saturday</span>
+                    <span className="font-semibold text-slate-900">
+                      {config.openingHours.saturday}
                     </span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-zinc-400">Sunday</span>
-                    <span className="font-semibold text-white">
-                      {gymConfig.openingHours.sunday}
+                    <span className="text-slate-500">Sunday</span>
+                    <span className="font-semibold text-slate-900">
+                      {config.openingHours.sunday}
                     </span>
                   </div>
                 </div>
@@ -270,12 +311,12 @@ export function ContactSection() {
               {/* Direct Maps Link */}
               <div className="mt-5">
                 <a
-                  href={gymConfig.contact.googleMapsUrl}
+                  href={config.contact.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-white/10 transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 py-3 text-xs font-semibold uppercase tracking-wider text-slate-800 hover:bg-slate-100 transition-colors"
                 >
-                  <MapPin className="size-4 text-rose-500" />
+                  <MapPin className="size-4 text-blue-600" />
                   <span>Open in Google Maps</span>
                   <ArrowRight className="size-3.5" />
                 </a>
@@ -283,13 +324,13 @@ export function ContactSection() {
             </div>
 
             {/* Embedded Google Map preview */}
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-zinc-900 shadow-xl h-56 relative">
+            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 shadow-sm h-56 relative">
               <iframe
-                title="IronCore Fitness Gym Map Location"
-                src={gymConfig.contact.googleMapsEmbedUrl}
+                title={`${config.name} Map Location`}
+                src={config.contact.googleMapsEmbedUrl}
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "grayscale(0.8) contrast(1.2) invert(0.9)" }}
+                style={{ border: 0 }}
                 allowFullScreen={false}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

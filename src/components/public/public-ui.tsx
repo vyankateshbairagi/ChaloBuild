@@ -4,15 +4,23 @@ import { Button } from "@/components/ui/button";
 import { PublicFooter } from "@/components/public/public-footer";
 import { PublicHeader } from "@/components/public/public-header";
 import { FloatingCta } from "@/components/public/floating-cta";
-import { gymConfig } from "@/config/gym";
+import { gymConfig, type GymConfig } from "@/config/gym";
 
-export function PublicPage({ children }: { children: React.ReactNode }) {
+export function PublicPage({
+  children,
+  config = gymConfig,
+  basePath = "",
+}: {
+  children: React.ReactNode;
+  config?: GymConfig;
+  basePath?: string;
+}) {
   return (
-    <div className="public-site min-h-screen flex flex-col bg-[#09090b] text-zinc-100 selection:bg-rose-600/30 selection:text-white">
-      <PublicHeader />
+    <div className="public-site min-h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
+      <PublicHeader config={config} basePath={basePath} />
       <main className="flex-1">{children}</main>
-      <FloatingCta />
-      <PublicFooter />
+      <FloatingCta config={config} />
+      <PublicFooter config={config} basePath={basePath} />
     </div>
   );
 }
@@ -31,19 +39,19 @@ export function SectionHeading({
   return (
     <div className={`max-w-3xl ${centered ? "mx-auto text-center" : ""}`}>
       <div
-        className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-rose-500 ${
+        className={`inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 ${
           centered ? "justify-center" : ""
         }`}
       >
-        <span className="h-px w-6 bg-rose-500" />
+        <span className="h-px w-6 bg-blue-600" />
         <span>{eyebrow}</span>
-        {centered && <span className="h-px w-6 bg-rose-500" />}
+        {centered && <span className="h-px w-6 bg-blue-600" />}
       </div>
-      <h2 className="mt-3 text-3xl font-black uppercase tracking-tight text-white sm:text-4xl lg:text-5xl">
+      <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       {text && (
-        <p className="mt-4 text-base leading-relaxed text-zinc-400 sm:text-lg">
+        <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
           {text}
         </p>
       )}
@@ -61,22 +69,17 @@ export function PageIntro({
   text: string;
 }) {
   return (
-    <section className="relative isolate overflow-hidden border-b border-white/10 bg-[#0d0d11] py-16 sm:py-24">
-      {/* Ambient background glows */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(225,29,72,0.15),transparent_50%),radial-gradient(circle_at_bottom_left,rgba(225,29,72,0.06),transparent_40%)]"
-      />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden border-b border-slate-200 bg-slate-50 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-rose-300">
-            <Sparkles className="size-3 text-rose-400" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
+            <Sparkles className="size-3.5 text-blue-600" />
             {eyebrow}
           </div>
-          <h1 className="mt-5 text-4xl font-black uppercase tracking-tight text-white sm:text-6xl">
+          <h1 className="mt-5 text-4xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
             {title}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-zinc-300">
+          <p className="mt-6 text-lg leading-relaxed text-slate-600">
             {text}
           </p>
         </div>
@@ -87,30 +90,28 @@ export function PageIntro({
 
 export function CtaSection({
   title = "Ready to Build Your Strongest Routine?",
-  text = "Claim your complimentary 1-Day Trial Pass and experience the difference first-hand.",
+  text = "Claim your complimentary 1-Day Trial Pass and experience our athletic training facility first-hand.",
   primary = "Claim Free Trial Pass",
-  href = "/contact#trial",
+  href = "#contact",
+  config = gymConfig,
 }: {
   title?: string;
   text?: string;
   primary?: string;
   href?: string;
+  config?: GymConfig;
 }) {
   return (
-    <section className="relative overflow-hidden border-t border-white/10 bg-[#0d0d12] py-20 px-4 sm:px-6 lg:px-8">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(225,29,72,0.18),transparent_60%)]"
-      />
-      <div className="relative mx-auto max-w-5xl rounded-3xl border border-rose-500/30 bg-gradient-to-b from-rose-950/20 via-zinc-900/60 to-zinc-950/90 p-8 sm:p-14 text-center backdrop-blur-xl shadow-2xl shadow-rose-950/40">
-        <div className="inline-flex items-center gap-2 rounded-full border border-rose-500/40 bg-rose-500/10 px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-rose-300">
-          <Sparkles className="size-3.5" />
+    <section className="relative overflow-hidden border-t border-slate-200 bg-white py-20 px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-5xl rounded-3xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-8 sm:p-14 text-center shadow-lg shadow-slate-900/5">
+        <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
+          <Sparkles className="size-3.5 text-blue-600" />
           START YOUR JOURNEY TODAY
         </div>
-        <h2 className="mt-5 text-3xl font-black uppercase tracking-tight text-white sm:text-5xl">
+        <h2 className="mt-5 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
           {title}
         </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-300 sm:text-lg">
+        <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
           {text}
         </p>
 
@@ -118,21 +119,21 @@ export function CtaSection({
           <Button
             asChild
             size="lg"
-            className="bg-rose-600 px-8 py-6 font-bold uppercase tracking-wider text-white shadow-xl shadow-rose-950/60 hover:bg-rose-500 transition-all hover:scale-[1.02]"
+            className="bg-blue-600 px-8 py-6 font-semibold uppercase tracking-wider text-white shadow-md shadow-blue-600/20 hover:bg-blue-700 transition-all hover:scale-[1.01]"
           >
             <Link href={href}>
               {primary} <ArrowRight className="ml-2 size-4" />
             </Link>
           </Button>
           <a
-            href={`https://wa.me/${gymConfig.contact.whatsappRaw}?text=${encodeURIComponent(
-              gymConfig.contact.whatsappMessage
+            href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
+              config.contact.whatsappMessage
             )}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-white hover:border-emerald-500/50 hover:bg-emerald-950/30 hover:text-emerald-300 transition-all"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-slate-700 hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700 transition-all shadow-sm"
           >
-            <MessageCircle className="size-4 text-emerald-400" />
+            <MessageCircle className="size-4 text-emerald-600" />
             <span>Chat on WhatsApp</span>
           </a>
         </div>
@@ -141,11 +142,11 @@ export function CtaSection({
   );
 }
 
-export function BackLink() {
+export function BackLink({ href = "/" }: { href?: string }) {
   return (
     <Link
-      href="/"
-      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-rose-400 transition-colors"
+      href={href}
+      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500 hover:text-blue-600 transition-colors"
     >
       <ArrowLeft className="size-3.5" /> Back to Home
     </Link>
