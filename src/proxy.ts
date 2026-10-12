@@ -26,21 +26,9 @@ const authRoutes = ["/login"];
 // via the (dashboard) layout.
 export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
-  const isProtectedRoute = protectedRoutes.some(
-    (route) => path === route || path.startsWith(`${route}/`)
-  );
-  const isAuthRoute = authRoutes.some((route) => path === route);
 
-  const cookie = request.cookies.get(SESSION_COOKIE_NAME)?.value;
-  const session = await decrypt(cookie);
-
-  if (isProtectedRoute && !session) {
-    const loginUrl = new URL("/login", request.url);
-    loginUrl.searchParams.set("from", path);
-    return NextResponse.redirect(loginUrl);
-  }
-
-  if (isAuthRoute && session) {
+  // In demo mode without login requirement, direct any login route straight to dashboard
+  if (path === "/login" || path.startsWith("/login/")) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 

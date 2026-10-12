@@ -1,6 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" fill="none">
-  <rect width="160" height="40" rx="8" fill="#18181b"/>
-  <circle cx="20" cy="20" r="8" fill="#2563eb"/>
-  <path d="M16 20 L19 23 L25 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="36" y="24" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Chalo<tspan fill="#60a5fa">Build</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" fill="none">
+  <defs>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#0070F3"/>
+    </linearGradient>
+    <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#94A3B8"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Badge Container -->
+  <rect width="240" height="50" rx="10" fill="#030712" stroke="#00E5FF" stroke-opacity="0.3" stroke-width="1"/>
+  
+  <!-- Icon Emblem Group -->
+  <g transform="translate(10, 5)">
+    <!-- Outer Cyan Ring Arc -->
+    <path d="M 20 5 A 15 15 0 1 0 35 20" stroke="url(#cyanGrad)" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <!-- Upward Arrow -->
+    <path d="M 28 25 L 35 15 L 24 18" fill="#00E5FF"/>
+    <!-- Runner Silhouette (Stylized) -->
+    <circle cx="20" cy="14" r="2.5" fill="#FFFFFF"/>
+    <path d="M 18 18 L 22 22 L 20 28 M 22 22 L 25 19 M 18 20 L 15 23" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Dumbbell -->
+    <rect x="25" y="12" width="2" height="6" rx="0.5" fill="#00E5FF"/>
+    <rect x="29" y="12" width="2" height="6" rx="0.5" fill="#00E5FF"/>
+    <line x1="26" y1="15" x2="30" y2="15" stroke="#00E5FF" stroke-width="1.5"/>
+    <!-- Silver Gear/Bars -->
+    <rect x="18" y="30" width="2.5" height="6" fill="url(#silverGrad)"/>
+    <rect x="22" y="27" width="2.5" height="9" fill="url(#silverGrad)"/>
+    <rect x="26" y="24" width="2.5" height="12" fill="url(#silverGrad)"/>
+  </g>
+
+  <!-- Wordmark -->
+  <!-- "Chalo" in bold white -->
+  <text x="56" y="27" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="800" letter-spacing="-0.5">Chalo<tspan fill="url(#cyanGrad)">Build</tspan></text>
+  
+  <!-- Divider Line -->
+  <line x1="56" y1="33" x2="140" y2="33" stroke="url(#silverGrad)" stroke-width="1" stroke-opacity="0.8"/>
+  
+  <!-- Subtitle: by ThinkBuild -->
+  <text x="145" y="36" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="500">by <tspan fill="#00E5FF" font-weight="700">ThinkBuild</tspan></text>
 </svg>

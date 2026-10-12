@@ -148,6 +148,15 @@ export function PublicFooter({
                   Contact &amp; Location
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="text-red-600 hover:text-red-700 font-semibold transition-colors inline-flex items-center gap-1"
+                >
+                  <span>Gym Management Portal</span>
+                  <ArrowUpRight className="size-3" />
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -221,46 +230,47 @@ export function PublicFooter({
         </div>
 
         {/* ChaloBuild Commercial Platform Callout */}
-        <div className="mt-12 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xs">
+        <div className="mt-12 rounded-2xl border border-cyan-500/20 bg-[#090d16] p-6 sm:p-8 shadow-xl">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="space-y-1.5 max-w-xl">
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-red-50 border border-red-200 px-2 py-0.5 text-xs font-bold text-red-700">
-                  <Sparkles className="size-3 text-red-600" />
-                  ChaloBuild Commercial Solution
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 text-xs font-bold text-cyan-400 shadow-[0_0_10px_rgba(0,229,255,0.15)]">
+                  <Sparkles className="size-3 text-cyan-400" />
+                  ChaloBuild by ThinkBuild
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  For Gym Owners
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                  Commercial Solution
                 </span>
               </div>
-              <p className="text-sm text-slate-600">
+              <p className="text-sm text-slate-300">
                 Want a high-converting website and complete member management software for your gym?
-                Launch your branded website in days with <strong>ChaloBuild</strong>.
+                Launch your branded website in days with <strong className="text-cyan-400">ChaloBuild</strong>.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/90 px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-200 hover:bg-slate-700 hover:text-white transition-all shadow-xs"
+              >
+                <span>Enter Gym Management (No Login)</span>
+                <ArrowUpRight className="size-3.5 text-cyan-400" />
+              </Link>
               <a
                 href="https://chalobuild.in"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-xs font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-red-700 transition-all"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-[0_0_15px_rgba(0,229,255,0.3)] hover:shadow-[0_0_22px_rgba(0,229,255,0.45)] hover:from-cyan-400 hover:to-blue-500 transition-all"
               >
                 <span>Explore ChaloBuild</span>
                 <ArrowUpRight className="size-4" />
               </a>
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase tracking-wider text-slate-700 hover:bg-slate-100 transition-all"
-              >
-                <span>Gym Dashboard</span>
-              </Link>
             </div>
           </div>
         </div>
 
         {/* Bottom Legal & Mandatory ChaloBuild Provider Credit */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
           <p>© {new Date().getFullYear()} {config.name}. All rights reserved.</p>
           <div className="flex items-center gap-2">
             <span>Powered by</span>
@@ -268,12 +278,12 @@ export function PublicFooter({
               href="https://chalobuild.in"
               target="_blank"
               rel="noreferrer"
-              className="font-semibold text-red-600 hover:text-red-700 hover:underline transition-colors"
+              className="font-semibold text-cyan-400 hover:text-cyan-300 hover:underline transition-colors"
             >
-              ChaloBuild
+              ChaloBuild by ThinkBuild
             </a>
-            <span className="text-slate-300">•</span>
-            <span className="text-slate-600 font-medium">{config.tagline}</span>
+            <span className="text-slate-600">•</span>
+            <span className="text-slate-400 font-medium">{config.tagline}</span>
           </div>
         </div>
       </div>

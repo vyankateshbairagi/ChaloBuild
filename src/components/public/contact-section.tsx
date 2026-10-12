@@ -127,7 +127,7 @@ export function ContactSection({
                       name="phone"
                       type="tel"
                       required
-                      placeholder="e.g. 9876543210"
+                      placeholder="e.g. 9075097235"
                       className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
                     />
                     {state.fieldErrors?.phone && (

@@ -19,21 +19,62 @@ import type { UserRole } from "@prisma/client";
 // once.
 // ---------------------------------------------------------------------------
 
+// Automatic fallback to demo owner so any visitor can access gym management without login
+async function getDemoFallbackUser() {
+  const demoOwner = await db.user.findFirst({
+    where: { email: "owner@demogym.test", isActive: true },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      isActive: true,
+      organizationId: true,
+      organization: { select: { id: true, name: true, slug: true, currency: true, timezone: true } },
+    },
+  });
+
+  if (demoOwner) return demoOwner;
+
+  return db.user.findFirst({
+    where: { isActive: true },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      isActive: true,
+      organizationId: true,
+      organization: { select: { id: true, name: true, slug: true, currency: true, timezone: true } },
+    },
+  });
+}
+
 export const verifySession = cache(async () => {
   const cookie = await getSessionCookie();
   const session = await decrypt(cookie);
 
-  if (!session?.userId) {
-    redirect("/login");
+  if (session?.userId) {
+    return session;
   }
 
-  return session;
+  // Automatic demo session fallback — direct access without login
+  const demoUser = await getDemoFallbackUser();
+  if (demoUser) {
+    return {
+      userId: demoUser.id,
+      role: demoUser.role,
+      organizationId: demoUser.organizationId,
+    };
+  }
+
+  redirect("/");
 });
 
 export const getCurrentUser = cache(async () => {
   const session = await verifySession();
 
-  const user = await db.user.findUnique({
+  let user = await db.user.findUnique({
     where: { id: session.userId },
     select: {
       id: true,
@@ -46,10 +87,12 @@ export const getCurrentUser = cache(async () => {
     },
   });
 
-  // Covers the case where a valid token refers to a user that was
-  // deactivated or deleted after the token was issued.
   if (!user || !user.isActive) {
-    redirect("/login");
+    user = await getDemoFallbackUser();
+  }
+
+  if (!user) {
+    redirect("/");
   }
 
   return user;

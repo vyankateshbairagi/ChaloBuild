@@ -13,7 +13,7 @@ import { FaqSection } from "@/components/public/faq-section";
 import { ContactSection } from "@/components/public/contact-section";
 import { gymConfig } from "@/config/gym";
 import Link from "next/link";
-import { ArrowLeft, Sparkles } from "lucide-react";
+import { ArrowLeft, Sparkles, LayoutDashboard, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: `Live Demo: ${gymConfig.name} — Powered by ChaloBuild`,
@@ -38,16 +38,20 @@ export default function IronCoreDemoPage() {
             <ArrowLeft className="size-3.5" />
             <span>Back to ChaloBuild Homepage</span>
           </Link>
-          <div className="flex items-center gap-2">
-            <Sparkles className="size-3.5" />
-            <span>Interactive Demo: IronCore Fitness Club</span>
+          <div className="flex items-center gap-2.5">
+            <div className="hidden sm:flex items-center gap-1.5 text-red-100">
+              <Sparkles className="size-3.5" />
+              <span>Interactive Public Demo</span>
+            </div>
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1 text-xs font-bold text-red-700 hover:bg-red-50 shadow-xs transition-colors"
+            >
+              <LayoutDashboard className="size-3.5 text-red-600" />
+              <span>Enter Gym Management (No Login)</span>
+              <ArrowRight className="size-3" />
+            </Link>
           </div>
-          <Link
-            href="/login"
-            className="hidden sm:inline-flex rounded bg-white/20 px-2.5 py-0.5 text-[11px] font-bold text-white hover:bg-white/30 transition-colors"
-          >
-            Explore GymFlow Dashboard →
-          </Link>
         </div>
       </div>
 

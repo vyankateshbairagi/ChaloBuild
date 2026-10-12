@@ -184,10 +184,10 @@ export const gymConfig: GymConfig = {
     height: 55,
   },
   contact: {
-    phoneFormatted: "+91 98765 43210",
-    phoneRaw: "+919876543210",
-    whatsappFormatted: "+91 98765 43210",
-    whatsappRaw: "919876543210",
+    phoneFormatted: "+91 90750 97235",
+    phoneRaw: "+919075097235",
+    whatsappFormatted: "+91 90750 97235",
+    whatsappRaw: "919075097235",
     whatsappMessage:
       "Hi IronCore Fitness! I saw your website and would like to claim my free 1-day guest pass.",
     email: "info@ironcorefitness.demo",
@@ -709,16 +709,16 @@ export const gymConfig: GymConfig = {
     },
   ],
   provider: {
-    name: "ChaloBuild",
-    brandText: "ChaloBuild",
+    name: "ChaloBuild by ThinkBuild",
+    brandText: "ChaloBuild by ThinkBuild",
     badgeText: "ChaloBuild Gym Website Template",
-    url: "https://chalobuild.com",
-    poweredByText: "Powered by ChaloBuild",
-    footerText: "Website & Gym Management by ChaloBuild",
+    url: "https://chalobuild.in",
+    poweredByText: "Powered by ChaloBuild by ThinkBuild",
+    footerText: "Website & Gym Management by ChaloBuild by ThinkBuild",
     demoNotice:
-      "Demo Website Template • Created by ChaloBuild for Fitness Centers & Gym Owners",
+      "Demo Website Template • Created by ChaloBuild by ThinkBuild for Fitness Centers & Gym Owners",
     ctaText: "Get This Website & Management System for Your Gym",
     ctaWhatsappLink:
-      "https://wa.me/919876543210?text=Hi%20ChaloBuild!%20I%20love%20the%20IronCore%20gym%20website%20template%20and%20want%20to%20discuss%20setting%20up%20a%20website%20and%20management%20system%20for%20my%20gym.",
+      "https://wa.me/919075097235?text=Hi%20ChaloBuild!%20I%20love%20the%20IronCore%20gym%20website%20template%20and%20want%20to%20discuss%20setting%20up%20a%20website%20and%20management%20system%20for%20my%20gym.",
   },
 };

@@ -79,10 +79,10 @@ export const resolveGymConfig = cache(
         socialLinks,
         provider: {
           ...defaultGymConfig.provider,
-          name: "ChaloBuild",
+          name: "ChaloBuild by ThinkBuild",
           url: "https://chalobuild.in",
-          poweredByText: "Powered by ChaloBuild",
-          footerText: "Crafted with ChaloBuild",
+          poweredByText: "Powered by ChaloBuild by ThinkBuild",
+          footerText: "Crafted with ChaloBuild by ThinkBuild",
           badgeText: "ChaloBuild Partner Gym",
         },
       };

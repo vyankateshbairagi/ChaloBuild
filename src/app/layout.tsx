@@ -29,6 +29,10 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://chalobuild.in",
   },
+  icons: {
+    icon: "/images/chalobuild-icon-transparent.png",
+    apple: "/images/chalobuild-icon-transparent.png",
+  },
   twitter: {
     card: "summary_large_image",
     title: "ChaloBuild — Turnkey Gym Websites & Management Platform",
@@ -44,7 +48,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-scroll-behavior="smooth" className="h-full antialiased">
-      <body className="min-h-full flex flex-col font-sans bg-white text-slate-900">{children}</body>
+      <body className="min-h-full flex flex-col font-sans bg-white text-slate-900 selection:bg-cyan-100 selection:text-cyan-900">
+        {children}
+      </body>
     </html>
   );
 }

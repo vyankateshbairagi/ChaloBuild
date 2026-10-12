@@ -13,6 +13,7 @@ import {
   Phone,
   Sparkles,
   X,
+  LayoutDashboard,
 } from "lucide-react";
 
 import { gymConfig, type GymConfig } from "@/config/gym";
@@ -55,17 +56,17 @@ export function PublicHeader({
               href="https://chalobuild.in"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-2.5 py-0.5 text-[11px] font-semibold text-red-700 hover:bg-red-100 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 px-2.5 py-0.5 text-[11px] font-semibold text-cyan-400 hover:bg-cyan-900/60 transition-colors shadow-[0_0_10px_rgba(0,229,255,0.12)]"
             >
-              <Sparkles className="size-3 text-red-600" />
-              <span>ChaloBuild Platform</span>
+              <Sparkles className="size-3 text-cyan-400" />
+              <span>ChaloBuild by ThinkBuild</span>
             </a>
             <span className="hidden sm:inline text-slate-500">
               Turnkey Gym Websites &amp; Management Platform
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <a
               href={`tel:${config.contact.phoneRaw}`}
               className="hidden md:inline-flex items-center gap-1 font-medium text-slate-600 hover:text-slate-900 transition-colors"
@@ -73,13 +74,12 @@ export function PublicHeader({
               <Phone className="size-3 text-red-600" />
               <span>{config.contact.phoneFormatted}</span>
             </a>
-            <span className="hidden md:inline text-slate-300">|</span>
             <Link
-              href="/login"
-              className="inline-flex items-center gap-1.5 font-medium text-slate-700 hover:text-red-600 transition-colors"
+              href="/dashboard"
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-2.5 py-0.5 text-[11px] font-bold text-slate-700 hover:border-red-500 hover:text-red-700 shadow-2xs transition-all"
             >
-              <LogIn className="size-3.5 text-slate-500" />
-              <span>Staff Login</span>
+              <LayoutDashboard className="size-3 text-red-600" />
+              <span>Gym Management</span>
             </Link>
           </div>
         </div>
@@ -136,6 +136,14 @@ export function PublicHeader({
 
           {/* Header CTAs */}
           <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 hover:border-red-500 hover:text-red-600 shadow-2xs transition-all"
+            >
+              <LayoutDashboard className="size-3.5 text-red-600" />
+              <span>Gym Management</span>
+            </Link>
+
             <a
               href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
                 config.contact.whatsappMessage
@@ -199,6 +207,15 @@ export function PublicHeader({
               })}
 
               <div className="mt-4 pt-4 border-t border-slate-200 flex flex-col gap-3">
+                <Link
+                  href="/dashboard"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 rounded-lg border border-red-200 bg-red-50 py-2.5 text-xs font-bold uppercase tracking-wider text-red-700 hover:bg-red-100"
+                >
+                  <LayoutDashboard className="size-3.5 text-red-600" />
+                  <span>Enter Gym Management (No Login)</span>
+                </Link>
+
                 <Button
                   asChild
                   className="w-full bg-red-600 py-3 font-semibold uppercase tracking-wider text-white hover:bg-red-700"
@@ -242,15 +259,6 @@ export function PublicHeader({
                     <span>{config.openingHours.weekdays}</span>
                   </p>
                 </div>
-
-                <Link
-                  href="/login"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="mt-2 flex items-center justify-center gap-2 py-2 text-xs font-semibold text-slate-600 hover:text-red-600"
-                >
-                  <LogIn className="size-3.5" />
-                  <span>Management Staff / Owner Login</span>
-                </Link>
               </div>
             </div>
           </nav>

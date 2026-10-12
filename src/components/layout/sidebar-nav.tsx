@@ -46,15 +46,15 @@ export function SidebarNav({
       {/* Brand Header */}
       <div className="flex items-center justify-between border-b border-slate-200 px-4 py-4">
         <Link href="/dashboard" className="flex items-center gap-2.5 min-w-0" onClick={onNavigate}>
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white font-bold text-sm shadow-xs">
+          <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white font-bold text-sm shadow-[0_0_12px_rgba(0,229,255,0.3)]">
             <Dumbbell className="size-4" />
           </div>
           <div className="min-w-0">
             <h2 className="truncate text-sm font-bold text-slate-900 leading-tight">
               {orgName}
             </h2>
-            <p className="flex items-center gap-1 text-[11px] font-semibold text-blue-600">
-              <Sparkles className="size-3" />
+            <p className="flex items-center gap-1 text-[11px] font-semibold text-cyan-600">
+              <Sparkles className="size-3 text-cyan-500" />
               <span>ChaloBuild GymFlow</span>
             </p>
           </div>
