@@ -139,7 +139,7 @@ export function HeroSection({
                     {config.tagline}
                   </p>
                   <p className="text-[10px] text-slate-400 mt-0.5">
-                    {config.contact.address.area}, {config.contact.address.city}
+                    {config.contact.address}, {config.contact.city}
                   </p>
                 </div>
                 <Link

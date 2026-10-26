@@ -187,7 +187,7 @@ export function PublicFooter({
               <p className="flex items-start gap-2.5">
                 <MapPin className="size-4 text-red-400 shrink-0 mt-0.5" />
                 <span className="leading-snug text-slate-300">
-                  {config.contact.address.line1}, {config.contact.address.area}, {config.contact.address.city}
+                  {config.contact.address}, {config.contact.city}
                 </span>
               </p>
               <p className="flex items-center gap-2.5">

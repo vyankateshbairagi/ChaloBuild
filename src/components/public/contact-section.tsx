@@ -240,11 +240,15 @@ export function ContactSection({
                     <strong className="text-white block font-bold">
                       {config.name}
                     </strong>
-                    {config.contact.address.line1}, {config.contact.address.area}
-                    <br />
-                    <span className="text-xs text-slate-400">
-                      Landmark: {config.contact.address.landmark}
-                    </span>
+                    {config.contact.address}, {config.contact.city}
+                    {config.contact.landmark && (
+                      <>
+                        <br />
+                        <span className="text-xs text-slate-400">
+                          Landmark: {config.contact.landmark}
+                        </span>
+                      </>
+                    )}
                   </span>
                 </p>
 
