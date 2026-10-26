@@ -1,4 +1,5 @@
-import PricingPage, { metadata } from "@/app/pricing/page";
+import { redirect } from "next/navigation";
 
-export { metadata };
-export default PricingPage;
+export default function MembershipRedirect() {
+  redirect("/demo/ironcore/pricing");
+}
