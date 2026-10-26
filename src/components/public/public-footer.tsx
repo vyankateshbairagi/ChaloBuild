@@ -22,9 +22,9 @@ export function PublicFooter({
   const prefix = basePath ? basePath : "";
 
   return (
-    <footer className="relative border-t border-slate-200 bg-slate-50 text-slate-700">
+    <footer className="relative border-t border-white/[0.08] bg-[#06080d] text-slate-400 font-sans">
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-12 border-b border-slate-200 pb-16 lg:grid-cols-4 sm:grid-cols-2">
+        <div className="grid gap-12 border-b border-white/[0.08] pb-16 lg:grid-cols-4 sm:grid-cols-2">
           {/* Gym Identity Column */}
           <div className="space-y-4 lg:pr-4">
             <Link href={prefix || "/"} className="inline-block">
@@ -38,15 +38,15 @@ export function PublicFooter({
                   />
                 </div>
               ) : (
-                <span className="text-xl font-black uppercase text-slate-900">
+                <span className="text-xl font-black uppercase text-white">
                   {config.name}
                 </span>
               )}
             </Link>
-            <p className="text-xs font-bold uppercase tracking-wider text-red-600">
+            <p className="text-xs font-bold uppercase tracking-wider text-red-400">
               {config.tagline}
             </p>
-            <p className="text-sm leading-relaxed text-slate-600">
+            <p className="text-xs sm:text-sm leading-relaxed text-slate-400">
               {config.shortDescription}
             </p>
             <div className="pt-2 flex items-center gap-2.5">
@@ -54,7 +54,7 @@ export function PublicFooter({
                 href={config.socialLinks.instagram}
                 target="_blank"
                 rel="noreferrer"
-                className="flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-red-500 hover:bg-red-50 hover:text-red-600 transition-all shadow-xs"
+                className="flex size-9 items-center justify-center rounded-xl border border-white/[0.08] bg-slate-900 text-slate-300 hover:border-red-500 hover:bg-red-950/40 hover:text-red-400 transition-all shadow-xs"
                 title="Instagram"
               >
                 <svg
@@ -74,44 +74,44 @@ export function PublicFooter({
                 )}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700 transition-all shadow-xs"
+                className="flex size-9 items-center justify-center rounded-xl border border-white/[0.08] bg-slate-900 text-slate-300 hover:border-emerald-500 hover:bg-emerald-950/40 hover:text-emerald-400 transition-all shadow-xs"
                 title="WhatsApp"
               >
-                <MessageCircle className="size-4" />
+                <MessageCircle className="size-4 fill-current text-emerald-400" />
               </a>
               <a
                 href={`tel:${config.contact.phoneRaw}`}
-                className="flex size-9 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-600 hover:border-red-500 hover:bg-red-50 hover:text-red-600 transition-all shadow-xs"
+                className="flex size-9 items-center justify-center rounded-xl border border-white/[0.08] bg-slate-900 text-slate-300 hover:border-red-500 hover:bg-red-950/40 hover:text-red-400 transition-all shadow-xs"
                 title="Call"
               >
-                <Phone className="size-4" />
+                <Phone className="size-4 text-red-400" />
               </a>
             </div>
           </div>
 
           {/* Quick Explore Links */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-900">
-              Quick Navigation
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-white">
+              Navigation
             </h3>
-            <ul className="mt-5 space-y-3 text-sm text-slate-600">
+            <ul className="mt-5 space-y-2.5 text-xs sm:text-sm text-slate-400">
               <li>
-                <Link href={prefix || "/"} className="hover:text-red-600 transition-colors">
-                  Home
+                <Link href={prefix || "/"} className="hover:text-red-400 transition-colors">
+                  Home Arena
                 </Link>
               </li>
               <li>
                 <Link
                   href={`${prefix}/about`}
-                  className="hover:text-red-600 transition-colors"
+                  className="hover:text-red-400 transition-colors"
                 >
-                  About the Gym
+                  About the Facility
                 </Link>
               </li>
               <li>
                 <Link
                   href={`${prefix}/programs`}
-                  className="hover:text-red-600 transition-colors"
+                  className="hover:text-red-400 transition-colors"
                 >
                   Training Programs
                 </Link>
@@ -119,7 +119,7 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/pricing`}
-                  className="hover:text-red-600 transition-colors"
+                  className="hover:text-red-400 transition-colors"
                 >
                   Membership Plans
                 </Link>
@@ -127,50 +127,41 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/trainers`}
-                  className="hover:text-red-600 transition-colors"
+                  className="hover:text-red-400 transition-colors"
                 >
-                  Elite Coaches
+                  Coaching Staff
                 </Link>
               </li>
               <li>
                 <Link
                   href={`${prefix}/gallery`}
-                  className="hover:text-red-600 transition-colors"
+                  className="hover:text-red-400 transition-colors"
                 >
-                  Photo Gallery
+                  Arena Photo Gallery
                 </Link>
               </li>
               <li>
                 <Link
                   href={`${prefix}/contact`}
-                  className="hover:text-red-600 transition-colors"
+                  className="hover:text-red-400 transition-colors"
                 >
-                  Contact &amp; Location
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/dashboard"
-                  className="text-red-600 hover:text-red-700 font-semibold transition-colors inline-flex items-center gap-1"
-                >
-                  <span>Gym Management Portal</span>
-                  <ArrowUpRight className="size-3" />
+                  Visiting &amp; Trial Pass
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Programs */}
+          {/* Featured Programs */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-900">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-white">
               Featured Programs
             </h3>
-            <ul className="mt-5 space-y-3 text-sm text-slate-600">
+            <ul className="mt-5 space-y-2.5 text-xs sm:text-sm text-slate-400">
               {config.programs.slice(0, 5).map((p) => (
                 <li key={p.id}>
                   <Link
                     href={`${prefix}/programs#${p.id}`}
-                    className="hover:text-red-600 transition-colors flex items-center gap-1.5"
+                    className="hover:text-red-400 transition-colors flex items-center gap-1.5"
                   >
                     <span>{p.title}</span>
                   </Link>
@@ -179,7 +170,7 @@ export function PublicFooter({
               <li>
                 <Link
                   href={`${prefix}/programs`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-red-600 hover:text-red-700 pt-2"
+                  className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-red-400 hover:text-red-300 pt-1"
                 >
                   <span>View all programs →</span>
                 </Link>
@@ -189,100 +180,96 @@ export function PublicFooter({
 
           {/* Location & Opening Hours */}
           <div className="space-y-4">
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-slate-900">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-white">
               Visit &amp; Timings
             </h3>
-            <div className="space-y-3 text-sm text-slate-600">
+            <div className="space-y-3 text-xs sm:text-sm text-slate-400">
               <p className="flex items-start gap-2.5">
-                <MapPin className="size-4 text-red-600 shrink-0 mt-0.5" />
-                <span className="leading-snug">
-                  {config.contact.address}, {config.contact.city}
+                <MapPin className="size-4 text-red-400 shrink-0 mt-0.5" />
+                <span className="leading-snug text-slate-300">
+                  {config.contact.address.line1}, {config.contact.address.area}, {config.contact.address.city}
                 </span>
               </p>
               <p className="flex items-center gap-2.5">
-                <Phone className="size-4 text-red-600 shrink-0" />
+                <Phone className="size-4 text-red-400 shrink-0" />
                 <a
                   href={`tel:${config.contact.phoneRaw}`}
-                  className="hover:text-red-600 transition-colors"
+                  className="hover:text-red-400 transition-colors"
                 >
                   {config.contact.phoneFormatted}
                 </a>
               </p>
               <p className="flex items-center gap-2.5">
-                <Mail className="size-4 text-red-600 shrink-0" />
+                <Mail className="size-4 text-red-400 shrink-0" />
                 <a
                   href={`mailto:${config.contact.email}`}
-                  className="hover:text-red-600 transition-colors"
+                  className="hover:text-red-400 transition-colors"
                 >
                   {config.contact.email}
                 </a>
               </p>
-              <div className="pt-2 border-t border-slate-200 space-y-1 text-xs">
-                <p className="font-semibold text-slate-900 flex items-center gap-1.5">
-                  <Clock className="size-3.5 text-red-600" /> Opening Hours
+              <div className="pt-2 border-t border-white/[0.06] space-y-1 text-xs">
+                <p className="font-bold text-white flex items-center gap-1.5">
+                  <Clock className="size-3.5 text-red-400" /> Facility Operating Hours
                 </p>
-                <p className="text-slate-500">Mon – Fri: {config.openingHours.weekdays}</p>
-                <p className="text-slate-500">Saturday: {config.openingHours.saturday}</p>
-                <p className="text-slate-500">Sunday: {config.openingHours.sunday}</p>
+                <p className="text-slate-400">Mon – Fri: {config.openingHours.weekdays}</p>
+                <p className="text-slate-400">Saturday: {config.openingHours.saturday}</p>
+                <p className="text-slate-400">Sunday: {config.openingHours.sunday}</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* ChaloBuild Commercial Platform Callout */}
-        <div className="mt-12 rounded-2xl border border-cyan-500/20 bg-[#090d16] p-6 sm:p-8 shadow-xl">
+        <div className="mt-12 rounded-2xl border border-cyan-500/30 bg-[#090d16] p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="space-y-1.5 max-w-xl">
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-md bg-cyan-950/60 border border-cyan-500/30 px-2.5 py-0.5 text-xs font-bold text-cyan-400 shadow-[0_0_10px_rgba(0,229,255,0.15)]">
+                <span className="inline-flex items-center gap-1.5 rounded-md bg-cyan-950/80 border border-cyan-500/40 px-2.5 py-0.5 text-xs font-bold text-cyan-300 shadow-[0_0_10px_rgba(0,245,255,0.15)]">
                   <Sparkles className="size-3 text-cyan-400" />
-                  ChaloBuild by ThinkBuild
+                  ChaloBuild Studio
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                  Commercial Solution
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                  Turnkey One-Time Build
                 </span>
               </div>
-              <p className="text-sm text-slate-300">
-                Want a high-converting website and complete member management software for your gym?
-                Launch your branded website in days with <strong className="text-cyan-400">ChaloBuild</strong>.
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Want a custom athletic website and connected member management software for your gym?
+                Get a one-time turnkey build with zero recurring subscriptions from <strong className="text-cyan-400 font-bold">ChaloBuild</strong>.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
               <Link
                 href="/dashboard"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/90 px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-200 hover:bg-slate-700 hover:text-white transition-all shadow-xs"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/[0.12] bg-slate-800 px-4 py-3 text-xs font-bold uppercase tracking-wider text-slate-200 hover:bg-slate-700 hover:text-white transition-all shadow-xs"
               >
-                <span>Enter Gym Management (No Login)</span>
+                <span>Enter Staff Console (No Login)</span>
                 <ArrowUpRight className="size-3.5 text-cyan-400" />
               </Link>
-              <a
-                href="https://chalobuild.in"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-[0_0_15px_rgba(0,229,255,0.3)] hover:shadow-[0_0_22px_rgba(0,229,255,0.45)] hover:from-cyan-400 hover:to-blue-500 transition-all"
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-5 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-[0_0_15px_rgba(0,245,255,0.3)] hover:shadow-[0_0_22px_rgba(0,245,255,0.45)] hover:from-cyan-400 hover:to-blue-500 transition-all"
               >
-                <span>Explore ChaloBuild</span>
+                <span>Explore ChaloBuild Studio</span>
                 <ArrowUpRight className="size-4" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
 
-        {/* Bottom Legal & Mandatory ChaloBuild Provider Credit */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© {new Date().getFullYear()} {config.name}. All rights reserved.</p>
+        {/* Bottom Legal & ChaloBuild Provider Credit */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <p>&copy; {new Date().getFullYear()} {config.name}. All rights reserved.</p>
           <div className="flex items-center gap-2">
             <span>Powered by</span>
-            <a
-              href="https://chalobuild.in"
-              target="_blank"
-              rel="noreferrer"
-              className="font-semibold text-cyan-400 hover:text-cyan-300 hover:underline transition-colors"
+            <Link
+              href="/"
+              className="font-bold text-cyan-400 hover:text-cyan-300 hover:underline transition-colors"
             >
-              ChaloBuild by ThinkBuild
-            </a>
-            <span className="text-slate-600">•</span>
+              ChaloBuild
+            </Link>
+            <span className="text-slate-700">&bull;</span>
             <span className="text-slate-400 font-medium">{config.tagline}</span>
           </div>
         </div>

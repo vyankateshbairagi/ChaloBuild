@@ -34,41 +34,43 @@ export function AboutSection({
   ];
 
   return (
-    <section id="about" className="relative bg-white py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
-      <div className="mx-auto max-w-7xl">
+    <section id="about" className="relative bg-[#090b11] py-20 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08] text-white font-sans overflow-hidden">
+      <div className="absolute top-1/2 right-1/4 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.06),transparent_70%)] pointer-events-none blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column: Visual Collage */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 shadow-xl shadow-slate-900/5 group">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl border border-white/[0.08] bg-slate-950 shadow-2xl group">
               <Image
                 src="/images/strength-zone.jpg"
                 alt={`${config.name} Training Floor`}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#090b11] via-transparent to-black/30" />
               <div className="absolute bottom-5 left-5 right-5 text-white">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-rose-300">
-                  Built For Lifters
+                <span className="text-[10px] font-black uppercase tracking-wider text-red-400">
+                  Built For Real Lifters
                 </span>
-                <p className="text-base font-bold">
-                  Heavy iron, calibrated bumpers &amp; precision racks.
+                <p className="text-base font-bold text-white">
+                  Heavy iron, calibrated bumpers &amp; competition power racks.
                 </p>
               </div>
             </div>
 
             {/* Stat Callout Cards */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-3xl font-extrabold text-red-600">5,000+</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  Sq Ft Training Floor
+              <div className="rounded-2xl border border-white/[0.08] bg-slate-900/60 backdrop-blur-xl p-5 shadow-xl">
+                <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">5,000+</p>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  Sq Ft Training Arena
                 </p>
               </div>
-              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-3xl font-extrabold text-red-600">100%</p>
-                <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-slate-500">
-                  Certified Coaches
+              <div className="rounded-2xl border border-white/[0.08] bg-slate-900/60 backdrop-blur-xl p-5 shadow-xl">
+                <p className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">100%</p>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                  CSCS-Certified Coaches
                 </p>
               </div>
             </div>
@@ -86,28 +88,28 @@ export function AboutSection({
               {standards.map((s) => (
                 <div
                   key={s.title}
-                  className="rounded-xl border border-slate-200 bg-slate-50/70 p-4 transition-colors hover:border-slate-300 hover:bg-slate-50"
+                  className="rounded-2xl border border-white/[0.08] bg-slate-900/50 backdrop-blur-xl p-5 transition-all hover:border-red-500/40 hover:bg-slate-900/80"
                 >
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="size-4 text-red-600 shrink-0" />
-                    <h4 className="text-sm font-bold text-slate-900">
+                    <CheckCircle2 className="size-4 text-red-400 shrink-0" />
+                    <h4 className="text-sm font-black uppercase tracking-tight text-white">
                       {s.title}
                     </h4>
                   </div>
-                  <p className="mt-1.5 text-xs leading-relaxed text-slate-600">
+                  <p className="mt-2 text-xs leading-relaxed text-slate-400">
                     {s.desc}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <Button
                 asChild
-                className="bg-red-600 px-6 py-6 font-semibold uppercase tracking-wider text-white hover:bg-red-700 shadow-sm"
+                className="bg-gradient-to-r from-red-600 via-rose-600 to-red-700 font-bold uppercase text-xs tracking-wider text-white shadow-lg shadow-red-600/30 hover:from-red-500 hover:to-red-600 border border-red-500/40 py-6 px-6"
               >
-                <Link href={`${prefix}/pricing`}>
-                  <span>Explore Membership Options</span>
+                <Link href={`${prefix}/contact#trial`}>
+                  <span>Book Free Trial Tour</span>
                   <ArrowRight className="ml-2 size-4" />
                 </Link>
               </Button>
@@ -115,10 +117,10 @@ export function AboutSection({
               <Button
                 asChild
                 variant="outline"
-                className="border-slate-300 bg-white px-6 py-6 font-semibold uppercase tracking-wider text-slate-700 hover:bg-slate-50 shadow-xs"
+                className="border-white/[0.12] bg-slate-900/80 text-slate-200 hover:bg-slate-800 hover:text-white hover:border-red-500/40 py-6 px-6 text-xs font-bold uppercase tracking-wider"
               >
                 <Link href={`${prefix}/trainers`}>
-                  <span>Meet Our Coaches</span>
+                  <span>Meet Our Coaching Team</span>
                 </Link>
               </Button>
             </div>

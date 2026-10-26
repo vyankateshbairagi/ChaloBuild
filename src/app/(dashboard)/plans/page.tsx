@@ -17,11 +17,18 @@ export default async function PlansPage() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground">Catalog</p>
-        <h1 className="mt-1 text-3xl font-semibold tracking-tight">Membership Plans</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Manage the plans offered by your gym.</p>
+        <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400">
+          <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          <span>Tier Catalog</span>
+        </div>
+        <h1 className="mt-1 text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">
+          Membership Plans &amp; Tiers
+        </h1>
+        <p className="text-xs text-slate-400">
+          Configure membership packages, pricing tiers, and validity cycles.
+        </p>
       </div>
-      <Card>
+      <Card className="border border-white/[0.08] bg-slate-900/60 backdrop-blur-xl shadow-xl overflow-hidden">
         <CardContent className="p-0">
           <PlanWorkspace
             plans={plans.map((plan) => ({ ...plan, price: plan.price.toString(), createdAt: plan.createdAt.toISOString(), updatedAt: plan.updatedAt.toISOString() }))}

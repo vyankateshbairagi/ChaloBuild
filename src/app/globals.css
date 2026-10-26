@@ -6,7 +6,7 @@
 :root {
   --radius: 0.625rem;
 
-  /* ChaloBuild Electric Cyan & Crisp Light Theme Tokens (Matches Logo) */
+  /* ChaloBuild Electric Cyan & Obsidian Studio Tokens */
   --background: #ffffff;
   --foreground: #0f172a;
   --card: #ffffff;
@@ -114,40 +114,64 @@ body {
 }
 
 /* ==========================================================================
-   ChaloBuild Electric Cyan & Obsidian Design System (Matches New Logo)
-   High-tech, energetic, dark-mode athletic SaaS aesthetic.
+   ChaloBuild Production Studio Design System (Carbon, Titanium & Electric Cyan)
+   World-class product aesthetic inspired by Linear, Stripe & Vercel.
    ========================================================================== */
 
+.chalobuild-bg {
+  background-color: #080a0f;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 245, 255, 0.08) 0px, transparent 45%),
+    radial-gradient(at 100% 0%, rgba(2, 132, 199, 0.09) 0px, transparent 45%),
+    radial-gradient(at 50% 50%, rgba(14, 165, 233, 0.04) 0px, transparent 55%),
+    radial-gradient(at 80% 100%, rgba(16, 185, 129, 0.06) 0px, transparent 45%);
+}
+
 .chalobuild-glow-cyan {
-  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.25);
+  box-shadow: 0 0 24px rgba(0, 245, 255, 0.22);
 }
 
-.chalobuild-glow-cyan-lg {
-  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.2);
+.chalobuild-glow-subtle {
+  box-shadow: 0 8px 30px rgba(0, 245, 255, 0.12);
 }
 
-.chalobuild-text-gradient {
-  background: linear-gradient(135deg, #0f172a 0%, #0284c7 60%, #00b4d8 100%);
+.chalobuild-heading-gradient {
+  background: linear-gradient(180deg, #ffffff 10%, #f1f5f9 60%, #cbd5e1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .chalobuild-cyan-gradient {
-  background: linear-gradient(135deg, #00e5ff 0%, #00b4d8 50%, #0284c7 100%);
+  background: linear-gradient(135deg, #00f5ff 0%, #38bdf8 50%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.chalobuild-brand-gradient {
+  background: linear-gradient(135deg, #00f5ff 0%, #0284c7 50%, #2563eb 100%);
 }
 
 .chalobuild-card {
-  background: #ffffff;
-  border: 1px solid rgba(2, 132, 199, 0.18);
+  background: rgba(13, 17, 27, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1rem;
-  box-shadow: 0 4px 20px -2px rgba(2, 132, 199, 0.08);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), 0 16px 36px -10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .chalobuild-card:hover {
-  border-color: rgba(2, 132, 199, 0.45);
-  box-shadow: 0 12px 30px -4px rgba(2, 132, 199, 0.16);
+  border-color: rgba(0, 245, 255, 0.35);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 20px 45px -8px rgba(0, 245, 255, 0.15);
   transform: translateY(-2px);
+}
+
+.chalobuild-card-highlight {
+  background: linear-gradient(180deg, rgba(16, 24, 40, 0.9) 0%, rgba(10, 14, 26, 0.95) 100%);
+  border: 1px solid rgba(0, 245, 255, 0.4);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(20px);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 20px 50px -10px rgba(0, 245, 255, 0.2);
 }
 
 .chalobuild-badge {
@@ -160,9 +184,53 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background-color: rgba(2, 132, 199, 0.08);
-  color: #0284c7;
-  border: 1px solid rgba(2, 132, 199, 0.25);
+  background: rgba(0, 245, 255, 0.08);
+  color: #38bdf8;
+  border: 1px solid rgba(0, 245, 255, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.chalobuild-badge-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(16, 185, 129, 0.1);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* ChaloBuild UI utilities */
+.chalobuild-mesh-bg {
+  background-color: #080a0f;
+}
+.chalobuild-card {
+  background: rgba(13, 17, 27, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  backdrop-filter: blur(16px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.chalobuild-card:hover {
+  border-color: rgba(0, 245, 255, 0.35);
+  transform: translateY(-2px);
+}
+.chalobuild-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(0, 245, 255, 0.08);
+  color: #38bdf8;
+  border: 1px solid rgba(0, 245, 255, 0.25);
 }
 
 .public-site {
@@ -189,20 +257,4 @@ body {
   border-color: #cbd5e1;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
   transform: translateY(-2px);
-}
-
-/* Subtle badge pulse */
-.premium-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background-color: rgba(2, 132, 199, 0.08);
-  color: #0284c7;
-  border: 1px solid rgba(2, 132, 199, 0.25);
 }

@@ -1,110 +1,112 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Phone, ShieldCheck, Heart } from "lucide-react";
 
 export function ChaloBuildFooter() {
   return (
-    <footer className="border-t border-slate-800 bg-[#070b14] pt-10 pb-8 px-4 sm:px-6 lg:px-8 text-slate-400 text-xs">
+    <footer className="border-t border-white/[0.08] bg-[#06080d] pt-12 pb-8 px-4 sm:px-6 lg:px-8 text-slate-400 text-xs font-sans">
       <div className="mx-auto max-w-7xl">
         {/* Main Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-8 border-b border-slate-800/80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-white/[0.08]">
           {/* Brand Info (Span 2) */}
-          <div className="lg:col-span-2 space-y-3">
-            <Link href="/" className="inline-block relative h-9 w-42 transition-transform hover:scale-[1.02]">
+          <div className="lg:col-span-2 space-y-4">
+            <Link href="/" className="inline-block relative h-10 w-44 transition-transform hover:scale-[1.02]">
               <Image
-                src="/images/chalobuild-logo-transparent.png"
-                alt="ChaloBuild by ThinkBuild"
+                src="/images/chalobuild-logo.svg"
+                alt="ChaloBuild — Turnkey Gym Applications"
                 fill
-                sizes="168px"
+                priority
                 className="object-contain object-left"
               />
             </Link>
             <p className="text-xs text-slate-400 max-w-sm leading-relaxed">
-              Turnkey gym websites connected with modern front-desk management, attendance tracking, and digital payments. Engineered for ambitious fitness club owners.
+              We engineer custom-branded athletic gym websites connected with real-time front-desk member management, attendance tracking, and UPI fee collection as a <strong className="text-slate-200">one-time turnkey build</strong>. Zero monthly SaaS subscriptions.
             </p>
 
             <div className="pt-1 flex items-center gap-2">
-              <span className="flex size-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-semibold text-slate-300">
-                All Systems Operational • Cloud Hosted
+              <span className="flex size-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] font-semibold text-slate-300">
+                Turnkey Engineering Studio • Live &amp; Accepting Gym Clients
               </span>
             </div>
 
-            <div className="pt-1 text-slate-400 text-[11px] space-y-0.5">
-              <p className="font-semibold text-slate-300">
-                A Product of{" "}
-                <a
-                  href="https://www.thinkbuild.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-cyan-400 hover:text-cyan-300 hover:underline font-bold"
-                >
-                  Think Build
-                </a>
+            <div className="pt-2 text-slate-400 text-xs space-y-1">
+              <p className="font-bold text-slate-200">
+                ChaloBuild Engineering Studio
               </p>
-              <p className="text-[10px] text-slate-500">
-                Yashoda Heights, Lawathe Nagar, Nashik, Maharashtra
+              <p className="text-[11px] text-slate-500">
+                Nashik • Pune • Mumbai • Bengaluru • Delhi NCR
               </p>
             </div>
           </div>
 
-          {/* Column 1: Product */}
-          <div className="space-y-2">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-slate-200">Product</p>
-            <ul className="space-y-1.5 text-xs">
+          {/* Column 1: Platform Capabilities */}
+          <div className="space-y-3">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-white">Platform</p>
+            <ul className="space-y-2 text-xs">
               <li>
                 <a href="#platform" className="hover:text-cyan-400 transition-colors">
-                  Public Gym Website
+                  Branded Gym Website
                 </a>
               </li>
               <li>
                 <Link href="/dashboard" className="hover:text-cyan-400 transition-colors">
-                  Staff Management Portal
+                  GymFlow Staff Console
                 </Link>
               </li>
               <li>
                 <a href="#features" className="hover:text-cyan-400 transition-colors">
-                  Daily Attendance Tracker
+                  1-Tap Daily Attendance
                 </a>
               </li>
               <li>
                 <a href="#features" className="hover:text-cyan-400 transition-colors">
-                  WhatsApp 1-Day Passes
+                  WhatsApp 1-Day Trial Passes
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="hover:text-cyan-400 transition-colors">
-                  Pricing Plans
+                <a href="#features" className="hover:text-cyan-400 transition-colors">
+                  Membership Expiry Hub
+                </a>
+              </li>
+              <li>
+                <a href="#features" className="hover:text-cyan-400 transition-colors">
+                  UPI &amp; Cash Payment Ledger
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Column 2: Live Demos */}
-          <div className="space-y-2">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-slate-200">Live Demos</p>
-            <ul className="space-y-1.5 text-xs">
+          {/* Column 2: Live Hands-on Demos */}
+          <div className="space-y-3">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-white">Live Test Demos</p>
+            <ul className="space-y-2 text-xs">
               <li>
                 <Link
                   href="/demo/ironcore"
-                  className="hover:text-cyan-400 transition-colors inline-flex items-center gap-1 text-cyan-400 font-semibold"
+                  className="hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 text-cyan-400 font-semibold"
                 >
-                  <span>IronCore Fitness Website</span>
+                  <span>IronCore Website Demo</span>
                   <ArrowUpRight className="size-3" />
                 </Link>
               </li>
               <li>
                 <Link
                   href="/dashboard"
-                  className="hover:text-cyan-400 transition-colors inline-flex items-center gap-1 text-slate-300 hover:text-white font-semibold"
+                  className="hover:text-cyan-400 transition-colors inline-flex items-center gap-1.5 text-slate-300 hover:text-white font-semibold"
                 >
-                  <span>Gym Management Portal</span>
+                  <span>Front-Desk Console Demo</span>
                   <ArrowUpRight className="size-3 text-cyan-400" />
                 </Link>
               </li>
               <li>
-                <a href="#how-it-works" className="hover:text-cyan-400 transition-colors">
-                  48-Hour Launch Guide
+                <a href="#workflow" className="hover:text-cyan-400 transition-colors">
+                  48-Hour Turnkey Workflow
+                </a>
+              </li>
+              <li>
+                <a href="#pricing" className="hover:text-cyan-400 transition-colors">
+                  One-Time Build Pricing
                 </a>
               </li>
               <li>
@@ -115,71 +117,66 @@ export function ChaloBuildFooter() {
             </ul>
           </div>
 
-          {/* Column 3: Contact & Company */}
-          <div className="space-y-2">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-slate-200">Connect</p>
-            <ul className="space-y-1.5 text-xs">
+          {/* Column 3: Direct Consultation */}
+          <div className="space-y-3">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-white">Direct Connect</p>
+            <ul className="space-y-2.5 text-xs">
               <li>
                 <a
-                  href="https://wa.me/919075097235"
+                  href="https://wa.me/919075097235?text=Hi%20ChaloBuild!%20I%20am%20interested%20in%20a%20one-time%20turnkey%20build%20for%20my%20gym."
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-cyan-400 transition-colors"
+                  className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors font-semibold"
                 >
-                  WhatsApp: +91 9075097235
+                  <MessageCircle className="size-3.5 fill-current" />
+                  <span>WhatsApp: +91 90750 97235</span>
                 </a>
               </li>
               <li>
                 <a
-                  href="https://www.thinkbuild.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-cyan-400 transition-colors inline-flex items-center gap-1"
+                  href="tel:+919075097235"
+                  className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
                 >
-                  <span>thinkbuild.in</span>
-                  <ArrowUpRight className="size-2.5" />
+                  <Phone className="size-3.5 text-cyan-400" />
+                  <span>Call: +91 90750 97235</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href="mailto:contact@thinkbuild.in"
-                  className="hover:text-cyan-400 transition-colors"
-                >
-                  contact@thinkbuild.in
-                </a>
-              </li>
-              <li>
-                <span className="text-slate-500 text-[11px]">Nashik • Pune • Mumbai</span>
+              <li className="pt-1">
+                <div className="rounded-lg border border-white/[0.08] bg-slate-900/60 p-2 text-[11px] space-y-1">
+                  <div className="flex items-center gap-1.5 text-cyan-400 font-bold">
+                    <ShieldCheck className="size-3.5" />
+                    <span>One-Time Guarantee</span>
+                  </div>
+                  <p className="text-slate-400 text-[10px] leading-tight">
+                    100% full source code &amp; PostgreSQL database handover upon launch.
+                  </p>
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Credits */}
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+        {/* Bottom Bar: Copyright & Badges */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p className="text-[11px]">
-            © {new Date().getFullYear()} ChaloBuild by{" "}
+            &copy; {new Date().getFullYear()} <strong className="text-slate-300 font-semibold">ChaloBuild</strong>. All rights reserved. Built with precision for modern gyms.
+          </p>
+          <div className="flex items-center gap-4 text-slate-400 text-[11px]">
+            <a href="#faq" className="hover:text-cyan-400 transition-colors">
+              Terms &amp; Delivery
+            </a>
+            <span className="text-slate-700">&bull;</span>
+            <a href="#faq" className="hover:text-cyan-400 transition-colors">
+              Code Ownership Agreement
+            </a>
+            <span className="text-slate-700">&bull;</span>
             <a
-              href="https://www.thinkbuild.in"
+              href="https://wa.me/919075097235"
               target="_blank"
               rel="noreferrer"
-              className="text-slate-300 hover:text-cyan-400 transition-colors font-medium"
+              className="hover:text-emerald-400 transition-colors"
             >
-              ThinkBuild
-            </a>
-            . All rights reserved.
-          </p>
-          <div className="flex items-center gap-3 text-slate-500 text-[10px]">
-            <a href="#faq" className="hover:text-slate-300 transition-colors">
-              Terms &amp; Conditions
-            </a>
-            <span>•</span>
-            <a href="#faq" className="hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </a>
-            <span>•</span>
-            <a href="#enquire" className="hover:text-slate-300 transition-colors">
-              Partner With Us
+              Direct WhatsApp Support
             </a>
           </div>
         </div>

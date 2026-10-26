@@ -12,12 +12,10 @@ import { TestimonialsSection } from "@/components/public/testimonials-section";
 import { FaqSection } from "@/components/public/faq-section";
 import { ContactSection } from "@/components/public/contact-section";
 import { gymConfig } from "@/config/gym";
-import Link from "next/link";
-import { ArrowLeft, Sparkles, LayoutDashboard, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: `Live Demo: ${gymConfig.name} — Powered by ChaloBuild`,
-  description: `Interactive preview of a commercial gym website powered by ChaloBuild. Features membership plans, trainer profiles, photo gallery, and connected management tools.`,
+  description: `Interactive preview of a commercial gym website engineered by ChaloBuild. Features membership plans, trainer profiles, photo gallery, and connected management tools.`,
   openGraph: {
     title: `Live Demo: ${gymConfig.name} — Powered by ChaloBuild`,
     description: gymConfig.shortDescription,
@@ -28,33 +26,6 @@ export const metadata: Metadata = {
 export default function IronCoreDemoPage() {
   return (
     <PublicPage config={gymConfig} basePath="/demo/ironcore">
-      {/* Top Demo Explainer Banner */}
-      <div className="bg-red-600 px-4 py-2 text-center text-xs font-semibold text-white">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-3">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 text-red-100 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="size-3.5" />
-            <span>Back to ChaloBuild Homepage</span>
-          </Link>
-          <div className="flex items-center gap-2.5">
-            <div className="hidden sm:flex items-center gap-1.5 text-red-100">
-              <Sparkles className="size-3.5" />
-              <span>Interactive Public Demo</span>
-            </div>
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3 py-1 text-xs font-bold text-red-700 hover:bg-red-50 shadow-xs transition-colors"
-            >
-              <LayoutDashboard className="size-3.5 text-red-600" />
-              <span>Enter Gym Management (No Login)</span>
-              <ArrowRight className="size-3" />
-            </Link>
-          </div>
-        </div>
-      </div>
-
       {/* 1. Hero Section */}
       <HeroSection config={gymConfig} basePath="/demo/ironcore" />
 

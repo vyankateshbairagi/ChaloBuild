@@ -3,41 +3,39 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "ChaloBuild — Turnkey Gym Websites & Management Platform",
+    default: "ChaloBuild — One-Time Turnkey Gym Websites & Management Platforms",
     template: "%s | ChaloBuild",
   },
   description:
-    "Commercial platform for gym owners. Launch a high-converting branded website and an all-in-one gym management system in 48 hours.",
+    "Inspect our live gym demo. We engineer custom-branded websites and connected member management software for gym owners as a flat one-time build. Zero monthly subscriptions, 100% source code ownership, live in 48 hours.",
   applicationName: "ChaloBuild",
   keywords: [
-    "Gym Website",
-    "Gym Management System",
-    "Gym Software",
-    "Fitness Club Website",
+    "Gym Website Builder",
+    "One Time Gym Software Build",
+    "Gym Management System India",
+    "No Subscription Gym Software",
     "ChaloBuild",
     "GymFlow",
-    "Gym Attendance Software",
-    "Gym Membership Management",
+    "Fitness Club Operating System",
   ],
-  authors: [{ name: "ChaloBuild", url: "https://chalobuild.in" }],
+  authors: [{ name: "ChaloBuild Studio", url: "/" }],
   openGraph: {
-    title: "ChaloBuild — Turnkey Gym Websites & Management Platform",
+    title: "ChaloBuild — One-Time Turnkey Gym Websites & Management Platforms",
     description:
-      "Commercial platform for gym owners: professional public website plus connected member management software.",
+      "Explore live demos. Own your gym's custom website and member management system with a flat one-time build. Zero monthly subscriptions.",
     siteName: "ChaloBuild",
     type: "website",
     locale: "en_IN",
-    url: "https://chalobuild.in",
   },
   icons: {
-    icon: "/images/chalobuild-icon-transparent.png",
-    apple: "/images/chalobuild-icon-transparent.png",
+    icon: "/images/chalobuild-badge.svg",
+    apple: "/images/chalobuild-badge.svg",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ChaloBuild — Turnkey Gym Websites & Management Platform",
+    title: "ChaloBuild — One-Time Turnkey Gym Websites & Management Platforms",
     description:
-      "Commercial platform for gym owners: professional public website plus connected member management software.",
+      "Explore live demos. Own your gym's custom website and member management system with a flat one-time build. Zero monthly subscriptions.",
   },
 };
 
@@ -47,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className="h-full antialiased">
-      <body className="min-h-full flex flex-col font-sans bg-white text-slate-900 selection:bg-cyan-100 selection:text-cyan-900">
+    <html lang="en" data-scroll-behavior="smooth" className="h-full antialiased dark">
+      <body className="min-h-full flex flex-col font-sans bg-[#050811] text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200">
         {children}
       </body>
     </html>

@@ -18,12 +18,19 @@ export default async function MembersPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-sm font-medium uppercase tracking-[0.16em] text-muted-foreground">People</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-tight">Members</h1>
-          <p className="mt-1 text-sm text-muted-foreground">Find, update, and manage your gym members.</p>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400">
+            <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span>Roster &amp; Profiles</span>
+          </div>
+          <h1 className="mt-1 text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">
+            Athletes &amp; Members
+          </h1>
+          <p className="text-xs text-slate-400">
+            Directory of registered gym members, membership statuses, and contact records.
+          </p>
         </div>
       </div>
-      <Card>
+      <Card className="border border-white/[0.08] bg-slate-900/60 backdrop-blur-xl shadow-xl overflow-hidden">
         <CardContent className="p-0">
           <MemberWorkspace
             members={members.map((member) => ({ ...member, joiningDate: member.joiningDate.toISOString(), dateOfBirth: member.dateOfBirth?.toISOString() ?? null }))}

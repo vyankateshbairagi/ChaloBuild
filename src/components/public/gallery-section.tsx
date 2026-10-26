@@ -33,19 +33,21 @@ export function GallerySection({
   const displayItems = limit ? filtered.slice(0, limit) : filtered;
 
   return (
-    <section id="gallery" className="relative bg-white py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
-      <div className="mx-auto max-w-7xl">
+    <section id="gallery" className="relative bg-[#090b11] py-20 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08] text-white font-sans overflow-hidden">
+      <div className="absolute top-1/2 left-1/3 w-[600px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.06),transparent_70%)] pointer-events-none blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <SectionHeading
             eyebrow="Visual Experience"
             title="A Space Built for Showing Up."
-            text="High ceilings, competition equipment, clean amenities, and an inspiring atmosphere. Take a look inside our gym."
+            text="High ceilings, Olympic competition platforms, specialized dumbbell stations, and an electrifying atmosphere."
           />
           {showAllLink && (
             <Button
               asChild
               variant="outline"
-              className="border-slate-300 bg-white text-slate-700 hover:bg-slate-50 hover:border-red-500 hover:text-red-600 shrink-0 self-start md:self-auto shadow-xs"
+              className="border-white/[0.12] bg-slate-900/80 text-slate-200 hover:bg-slate-800 hover:border-red-500/50 hover:text-white shrink-0 self-start md:self-auto shadow-xs text-xs font-bold uppercase tracking-wider"
             >
               <Link href={`${prefix}/gallery`}>
                 <span>View Full Gallery</span>
@@ -64,10 +66,10 @@ export function GallerySection({
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-all ${
+                className={`rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wider transition-all ${
                   active
-                    ? "bg-red-600 text-white shadow-xs"
-                    : "border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                    ? "bg-gradient-to-r from-red-600 to-rose-600 text-white shadow-md shadow-red-600/30 border border-red-400/40"
+                    : "border border-white/[0.08] bg-slate-900/80 text-slate-400 hover:bg-slate-800 hover:text-white"
                 }`}
               >
                 {cat}
@@ -82,77 +84,75 @@ export function GallerySection({
             <div
               key={item.id}
               onClick={() => setActiveImage(item)}
-              className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-xs transition-all duration-300 hover:border-red-300 hover:shadow-md"
+              className="group relative aspect-[4/3] cursor-pointer overflow-hidden rounded-2xl border border-white/[0.08] bg-slate-950 shadow-xl transition-all duration-300 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10"
             >
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity" />
 
               {/* View Overlay Icon */}
-              <div className="absolute right-3 top-3 flex size-8 items-center justify-center rounded-full bg-white/80 text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
-                <Eye className="size-4" />
+              <div className="absolute right-3 top-3 flex size-8 items-center justify-center rounded-full bg-slate-950/80 border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-opacity shadow-sm backdrop-blur-md">
+                <Eye className="size-4 text-red-400" />
               </div>
 
               {/* Image Caption */}
-              <div className="absolute bottom-3 left-3 right-3 text-white">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-rose-300">
+              <div className="absolute bottom-3 left-3 right-3">
+                <span className="text-[9px] font-bold uppercase tracking-wider text-red-400">
                   {item.category}
                 </span>
-                <h4 className="text-sm font-bold">
+                <p className="text-sm font-bold text-white truncate">
                   {item.title}
-                </h4>
+                </p>
               </div>
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Lightbox Modal */}
-        {activeImage && (
+      {/* Lightbox Modal */}
+      {activeImage && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md animate-in fade-in"
+          onClick={() => setActiveImage(null)}
+        >
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm"
-            onClick={() => setActiveImage(null)}
+            className="relative max-h-[90vh] max-w-4xl overflow-hidden rounded-2xl border border-white/20 bg-slate-950 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
           >
-            <div
-              className="relative max-w-4xl w-full overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className="relative aspect-[16/10] w-[80vw] max-w-4xl">
+              <Image
+                src={activeImage.image}
+                alt={activeImage.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="flex items-center justify-between p-4 bg-slate-900 border-t border-white/10">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-red-400">
+                  {activeImage.category}
+                </span>
+                <p className="text-sm font-bold text-white">
+                  {activeImage.title}
+                </p>
+              </div>
               <button
                 type="button"
                 onClick={() => setActiveImage(null)}
-                className="absolute right-4 top-4 z-10 flex size-9 items-center justify-center rounded-full bg-slate-900/80 text-white hover:bg-slate-900 transition-colors shadow-sm"
-                aria-label="Close image modal"
+                className="rounded-lg p-2 text-slate-400 hover:bg-slate-800 hover:text-white"
               >
                 <X className="size-5" />
               </button>
-
-              <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-100">
-                <Image
-                  src={activeImage.image}
-                  alt={activeImage.title}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="p-4 sm:p-6 bg-white">
-                <span className="text-xs font-bold uppercase tracking-wider text-red-600">
-                  {activeImage.category}
-                </span>
-                <h3 className="mt-1 text-xl font-bold tracking-tight text-slate-900">
-                  {activeImage.title}
-                </h3>
-                <p className="mt-2 text-sm text-slate-600">
-                  {activeImage.caption}
-                </p>
-              </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </section>
   );
 }

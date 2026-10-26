@@ -14,6 +14,8 @@ import {
   Sparkles,
   X,
   LayoutDashboard,
+  ArrowRight,
+  ArrowLeft,
 } from "lucide-react";
 
 import { gymConfig, type GymConfig } from "@/config/gym";
@@ -35,8 +37,8 @@ export function PublicHeader({
     { label: "Home", href: prefix || "/" },
     { label: "About", href: `${prefix}/about` },
     { label: "Programs", href: `${prefix}/programs` },
-    { label: "Plans", href: `${prefix}/pricing` },
-    { label: "Trainers", href: `${prefix}/trainers` },
+    { label: "Plans & Pricing", href: `${prefix}/pricing` },
+    { label: "Coaches", href: `${prefix}/trainers` },
     { label: "Gallery", href: `${prefix}/gallery` },
     { label: "Contact", href: `${prefix}/contact` },
   ];
@@ -48,45 +50,44 @@ export function PublicHeader({
 
   return (
     <>
-      {/* Top Bar — Subtle ChaloBuild Provider context and Quick Actions */}
-      <div className="border-b border-slate-200 bg-slate-50 px-4 py-2 text-xs text-slate-600">
+      {/* Top Demo & Studio Status Bar */}
+      <div className="border-b border-white/[0.08] bg-[#06080d] px-4 py-2 text-xs text-slate-400 font-sans">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <a
-              href="https://chalobuild.in"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 px-2.5 py-0.5 text-[11px] font-semibold text-cyan-400 hover:bg-cyan-900/60 transition-colors shadow-[0_0_10px_rgba(0,229,255,0.12)]"
+          <div className="flex items-center gap-2.5">
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/60 px-2.5 py-0.5 text-[11px] font-bold text-cyan-300 hover:bg-cyan-900/80 transition-colors shadow-[0_0_10px_rgba(0,245,255,0.15)]"
             >
-              <Sparkles className="size-3 text-cyan-400" />
-              <span>ChaloBuild by ThinkBuild</span>
-            </a>
-            <span className="hidden sm:inline text-slate-500">
-              Turnkey Gym Websites &amp; Management Platform
+              <ArrowLeft className="size-3" />
+              <span>← Back to ChaloBuild</span>
+            </Link>
+            <span className="hidden sm:inline text-slate-500 text-[11px]">
+              Turnkey Gym Website &amp; Connected Console Demo
             </span>
           </div>
 
           <div className="flex items-center gap-3">
             <a
               href={`tel:${config.contact.phoneRaw}`}
-              className="hidden md:inline-flex items-center gap-1 font-medium text-slate-600 hover:text-slate-900 transition-colors"
+              className="hidden md:inline-flex items-center gap-1 text-[11px] font-medium text-slate-400 hover:text-white transition-colors"
             >
-              <Phone className="size-3 text-red-600" />
+              <Phone className="size-3 text-red-500" />
               <span>{config.contact.phoneFormatted}</span>
             </a>
             <Link
               href="/dashboard"
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-2.5 py-0.5 text-[11px] font-bold text-slate-700 hover:border-red-500 hover:text-red-700 shadow-2xs transition-all"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-red-500/40 bg-red-950/40 hover:bg-red-900/60 px-3 py-1 text-[11px] font-bold text-red-300 transition-all shadow-[0_0_10px_rgba(239,68,68,0.2)]"
             >
-              <LayoutDashboard className="size-3 text-red-600" />
-              <span>Gym Management</span>
+              <LayoutDashboard className="size-3 text-red-400" />
+              <span>Open Staff Console</span>
+              <ArrowRight className="size-3" />
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Main Sticky White Navbar */}
-      <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
+      {/* Main Sticky Dark Athletic Glass Navbar */}
+      <header className="sticky top-0 z-40 border-b border-white/[0.08] bg-[#090b11]/95 backdrop-blur-xl shadow-xl shadow-black/40 font-sans text-white">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Gym Logo / Identity */}
           <Link
@@ -95,7 +96,7 @@ export function PublicHeader({
             onClick={() => setMobileMenuOpen(false)}
           >
             {config.logo.svg ? (
-              <div className="relative h-11 w-44 sm:w-52 transition-transform group-hover:scale-[1.01]">
+              <div className="relative h-11 w-44 sm:w-52 transition-transform group-hover:scale-[1.02]">
                 <Image
                   src={config.logo.svg}
                   alt={config.logo.alt || config.name}
@@ -105,7 +106,7 @@ export function PublicHeader({
                 />
               </div>
             ) : (
-              <span className="text-xl font-black uppercase tracking-tight text-slate-900">
+              <span className="text-xl font-black uppercase tracking-tight text-white">
                 {config.name}
               </span>
             )}
@@ -122,13 +123,18 @@ export function PublicHeader({
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`text-sm font-semibold uppercase tracking-wider transition-colors ${
+                  className={`text-xs font-bold uppercase tracking-wider transition-colors relative py-1 group ${
                     active
-                      ? "text-red-600 font-bold"
-                      : "text-slate-600 hover:text-red-600"
+                      ? "text-red-400"
+                      : "text-slate-300 hover:text-white"
                   }`}
                 >
-                  {item.label}
+                  <span>{item.label}</span>
+                  <span
+                    className={`absolute bottom-0 left-0 right-0 h-0.5 bg-red-500 transition-transform duration-200 ${
+                      active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                    }`}
+                  />
                 </Link>
               );
             })}
@@ -136,58 +142,58 @@ export function PublicHeader({
 
           {/* Header CTAs */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-xs font-bold uppercase tracking-wider text-slate-700 hover:border-red-500 hover:text-red-600 shadow-2xs transition-all"
-            >
-              <LayoutDashboard className="size-3.5 text-red-600" />
-              <span>Gym Management</span>
-            </Link>
-
             <a
               href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
                 config.contact.whatsappMessage
               )}`}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-2 text-xs font-semibold uppercase tracking-wider text-slate-700 transition-all hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700"
+              className="inline-flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-950/40 hover:bg-emerald-900/60 px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider text-emerald-300 transition-all shadow-[0_0_10px_rgba(16,185,129,0.15)]"
               title="Chat with front desk on WhatsApp"
             >
-              <MessageCircle className="size-3.5 text-emerald-600" />
+              <MessageCircle className="size-3.5 fill-current" />
               <span>WhatsApp</span>
             </a>
 
             <Button
               asChild
-              className="bg-red-600 font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-red-700 transition-all"
+              className="bg-gradient-to-r from-red-600 via-rose-600 to-red-700 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-red-600/30 hover:from-red-500 hover:to-red-600 transition-all hover:scale-[1.02] border border-red-500/40"
             >
               <Link href={`${prefix}/contact#trial`}>
-                <span>Free Trial Pass</span>
+                <span>Claim Free Pass</span>
               </Link>
             </Button>
           </div>
 
           {/* Mobile Hamburger Button */}
-          <button
-            type="button"
-            className="inline-flex size-10 items-center justify-center rounded-lg border border-slate-200 bg-slate-50 text-slate-700 lg:hidden transition hover:bg-slate-100"
-            aria-label={
-              mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
-            }
-            aria-expanded={mobileMenuOpen}
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <Link
+              href="/dashboard"
+              className="inline-flex items-center gap-1 rounded-lg border border-red-500/40 bg-red-950/40 px-2.5 py-1.5 text-[11px] font-bold text-red-300"
+            >
+              <LayoutDashboard className="size-3" />
+              <span>Console</span>
+            </Link>
+
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="inline-flex items-center justify-center rounded-xl p-2.5 text-slate-300 hover:bg-slate-800 hover:text-white"
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="size-6" />
+              ) : (
+                <Menu className="size-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <nav
-            aria-label="Mobile navigation"
-            className="border-t border-slate-200 bg-white px-5 py-6 lg:hidden shadow-xl"
-          >
-            <div className="mx-auto flex max-w-7xl flex-col gap-1.5">
+          <div className="lg:hidden border-t border-white/[0.08] bg-[#0c0e17] px-4 pt-3 pb-6 space-y-3">
+            <div className="space-y-1">
               {navLinks.map((item) => {
                 const active = isCurrent(item.href);
                 return (
@@ -195,73 +201,44 @@ export function PublicHeader({
                     key={item.href}
                     href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`rounded-lg px-4 py-3 text-sm font-semibold uppercase tracking-wider transition ${
+                    className={`block rounded-xl px-3 py-2 text-sm font-bold uppercase tracking-wider ${
                       active
-                        ? "bg-red-50 text-red-700 font-bold border-l-3 border-red-600"
-                        : "text-slate-700 hover:bg-slate-50 hover:text-slate-900"
+                        ? "bg-red-950/60 text-red-400 border border-red-500/30"
+                        : "text-slate-300 hover:bg-slate-800 hover:text-white"
                     }`}
                   >
                     {item.label}
                   </Link>
                 );
               })}
-
-              <div className="mt-4 pt-4 border-t border-slate-200 flex flex-col gap-3">
-                <Link
-                  href="/dashboard"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 rounded-lg border border-red-200 bg-red-50 py-2.5 text-xs font-bold uppercase tracking-wider text-red-700 hover:bg-red-100"
-                >
-                  <LayoutDashboard className="size-3.5 text-red-600" />
-                  <span>Enter Gym Management (No Login)</span>
-                </Link>
-
-                <Button
-                  asChild
-                  className="w-full bg-red-600 py-3 font-semibold uppercase tracking-wider text-white hover:bg-red-700"
-                >
-                  <Link
-                    href={`${prefix}/contact#trial`}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    Claim 1-Day Free Trial
-                  </Link>
-                </Button>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <a
-                    href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
-                      config.contact.whatsappMessage
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 py-2.5 text-xs font-semibold text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-300"
-                  >
-                    <MessageCircle className="size-3.5 text-emerald-600" />
-                    <span>WhatsApp</span>
-                  </a>
-                  <a
-                    href={`tel:${config.contact.phoneRaw}`}
-                    className="flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-slate-50 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-100"
-                  >
-                    <Phone className="size-3.5 text-red-600" />
-                    <span>Call Us</span>
-                  </a>
-                </div>
-
-                <div className="mt-2 text-xs text-slate-500 space-y-1.5 px-1">
-                  <p className="flex items-center gap-2">
-                    <MapPin className="size-3.5 text-red-600 shrink-0" />
-                    <span>{config.contact.city}, {config.contact.state}</span>
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Clock className="size-3.5 text-red-600 shrink-0" />
-                    <span>{config.openingHours.weekdays}</span>
-                  </p>
-                </div>
-              </div>
             </div>
-          </nav>
+
+            <div className="pt-3 border-t border-white/[0.08] space-y-2">
+              <Button
+                asChild
+                className="w-full bg-red-600 text-white font-bold uppercase text-xs tracking-wider py-3"
+              >
+                <Link
+                  href={`${prefix}/contact#trial`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Claim 1-Day Free Trial Pass
+                </Link>
+              </Button>
+
+              <a
+                href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
+                  config.contact.whatsappMessage
+                )}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2 rounded-xl border border-emerald-500/40 bg-emerald-950/40 py-2.5 text-xs font-bold text-emerald-300"
+              >
+                <MessageCircle className="size-4 fill-current" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+          </div>
         )}
       </header>
     </>

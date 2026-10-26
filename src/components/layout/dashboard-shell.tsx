@@ -2,7 +2,18 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ChevronDown, Dumbbell, Globe, Menu, Search } from "lucide-react";
+import {
+  ChevronDown,
+  Dumbbell,
+  Globe,
+  Menu,
+  Search,
+  Sparkles,
+  CalendarCheck,
+  ArrowUpRight,
+  ShieldCheck,
+  Clock,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -36,18 +47,18 @@ export function DashboardShell({
   const orgName = user.organization?.name || gymConfig.name;
 
   return (
-    <div className="flex min-h-screen bg-slate-50 text-slate-900">
+    <div className="flex min-h-screen bg-[#080a11] text-slate-100 font-sans dark selection:bg-cyan-500/30 selection:text-cyan-200">
       {/* Desktop Fixed Sidebar */}
-      <aside className="hidden w-72 shrink-0 border-r border-slate-200 bg-white md:block">
-        <div className="fixed inset-y-0 left-0 flex w-72 flex-col border-r border-slate-200 bg-white">
+      <aside className="hidden w-72 shrink-0 border-r border-white/[0.08] bg-[#0b0e18] md:block">
+        <div className="fixed inset-y-0 left-0 flex w-72 flex-col border-r border-white/[0.08] bg-[#0b0e18]">
           <SidebarNav user={user} />
         </div>
       </aside>
 
       {/* Main Content Area */}
       <div className="flex min-w-0 flex-1 flex-col">
-        {/* Sticky Header */}
-        <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md">
+        {/* Sticky Dark Glass Header */}
+        <header className="sticky top-0 z-40 border-b border-white/[0.08] bg-[#0b0e18]/90 backdrop-blur-xl">
           <div className="flex h-16 items-center gap-3 px-4 md:px-6">
             {/* Mobile Sidebar Trigger */}
             <Sheet open={open} onOpenChange={setOpen}>
@@ -55,13 +66,13 @@ export function DashboardShell({
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="md:hidden text-slate-700"
+                  className="md:hidden text-slate-300 hover:bg-slate-800 hover:text-white"
                   aria-label="Open navigation"
                 >
                   <Menu className="size-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-72 p-0 bg-white">
+              <SheetContent side="left" className="w-72 p-0 bg-[#0b0e18] border-r border-white/[0.08] text-white">
                 <SheetTitle className="sr-only">Navigation</SheetTitle>
                 <SidebarNav user={user} onNavigate={() => setOpen(false)} />
               </SheetContent>
@@ -69,10 +80,10 @@ export function DashboardShell({
 
             {/* Mobile Gym Identity */}
             <div className="flex items-center gap-2 md:hidden">
-              <div className="flex size-8 items-center justify-center rounded-lg bg-blue-600 text-white">
+              <div className="flex size-8 items-center justify-center rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 text-white font-bold text-xs shadow-[0_0_10px_rgba(0,245,255,0.3)]">
                 <Dumbbell className="size-4" />
               </div>
-              <span className="truncate text-sm font-bold text-slate-900 max-w-36">
+              <span className="truncate text-sm font-bold text-white max-w-36">
                 {orgName}
               </span>
             </div>
@@ -83,68 +94,94 @@ export function DashboardShell({
                 <Search className="absolute left-3 top-2.5 size-4 text-slate-400" />
                 <input
                   aria-label="Global search"
-                  placeholder="Search members, plans, payments..."
-                  className="h-9 w-full rounded-lg border border-slate-200 bg-slate-50 pl-9 pr-3 text-sm text-slate-900 outline-none transition focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-100"
+                  placeholder="Search members by name, phone, code..."
+                  className="h-9 w-full rounded-xl border border-white/[0.08] bg-slate-900/80 pl-9 pr-12 text-xs text-white placeholder-slate-500 outline-none transition focus:border-cyan-400 focus:bg-slate-900 focus:ring-1 focus:ring-cyan-400"
                 />
+                <span className="absolute right-2.5 top-2 text-[10px] font-bold text-slate-400 bg-slate-800 border border-slate-700 px-1.5 py-0.5 rounded">
+                  ⌘K
+                </span>
               </div>
             </div>
 
             {/* Right Header Navigation & Actions */}
-            <div className="ml-auto flex items-center gap-2">
+            <div className="ml-auto flex items-center gap-2.5">
               {/* Public Website Preview Link */}
               <Button
                 variant="ghost"
                 size="sm"
                 asChild
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-blue-600"
+                className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-300 hover:text-white hover:bg-slate-800/80 rounded-xl border border-cyan-500/20"
               >
-                <Link href="/" target="_blank">
-                  <Globe className="size-3.5 text-slate-500" />
-                  <span>Public Site</span>
+                <Link href="/demo/ironcore" target="_blank">
+                  <Globe className="size-3.5 text-cyan-400" />
+                  <span>View Public Website</span>
+                  <ArrowUpRight className="size-3 text-slate-400" />
+                </Link>
+              </Button>
+
+              {/* Fast Attendance Check-In Pill */}
+              <Button
+                asChild
+                size="sm"
+                className="hidden lg:inline-flex items-center gap-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-md shadow-emerald-600/20"
+              >
+                <Link href="/attendance">
+                  <CalendarCheck className="size-3.5" />
+                  <span>1-Tap Check-In</span>
                 </Link>
               </Button>
 
               {/* Date Badge */}
-              <div className="hidden rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-600 lg:block">
-                {new Date().toLocaleDateString("en-IN", {
-                  weekday: "short",
-                  day: "numeric",
-                  month: "short",
-                })}
+              <div className="hidden rounded-xl border border-white/[0.08] bg-slate-900/60 px-3 py-1.5 text-xs font-medium text-slate-300 lg:flex items-center gap-1.5">
+                <Clock className="size-3 text-cyan-400" />
+                <span>
+                  {new Date().toLocaleDateString("en-IN", {
+                    weekday: "short",
+                    day: "numeric",
+                    month: "short",
+                  })}
+                </span>
               </div>
 
               {/* User Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="h-10 gap-2 px-2 hover:bg-slate-100">
+                  <Button variant="ghost" className="h-10 gap-2 px-2 hover:bg-slate-800 text-white rounded-xl">
                     <Avatar className="size-8">
-                      <AvatarFallback className="bg-blue-100 text-blue-700 text-xs font-bold">
+                      <AvatarFallback className="bg-gradient-to-tr from-cyan-600 to-blue-600 text-white text-xs font-black shadow-xs">
                         {user.name.slice(0, 2).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
-                    <span className="hidden max-w-28 truncate text-sm font-semibold text-slate-900 lg:block">
+                    <span className="hidden max-w-28 truncate text-xs font-bold text-white lg:block">
                       {user.name}
                     </span>
-                    <ChevronDown className="size-4 text-slate-400" />
+                    <ChevronDown className="size-3.5 text-slate-400" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56 border-slate-200 bg-white">
+                <DropdownMenuContent align="end" className="w-56 border-white/[0.08] bg-[#0c101c] text-white backdrop-blur-2xl shadow-2xl">
                   <DropdownMenuLabel>
-                    <p className="truncate font-semibold text-slate-900">{user.name}</p>
-                    <p className="truncate text-xs font-normal text-slate-500">{user.email}</p>
-                    <span className="mt-1 inline-block rounded bg-blue-50 px-1.5 py-0.5 text-[10px] font-semibold text-blue-700">
+                    <p className="truncate font-bold text-white">{user.name}</p>
+                    <p className="truncate text-xs font-normal text-slate-400">{user.email}</p>
+                    <span className="mt-1.5 inline-block rounded-md bg-cyan-950/80 border border-cyan-500/40 px-2 py-0.5 text-[10px] font-bold text-cyan-300">
                       {user.role} • {orgName}
                     </span>
                   </DropdownMenuLabel>
-                  <DropdownMenuSeparator className="bg-slate-100" />
+                  <DropdownMenuSeparator className="bg-white/[0.08]" />
                   <DropdownMenuItem asChild>
-                    <Link href="/settings" className="cursor-pointer text-slate-700 hover:text-slate-900">
-                      Gym Settings
+                    <Link href="/settings" className="cursor-pointer text-slate-300 hover:text-white hover:bg-slate-800/80 text-xs">
+                      Gym Settings &amp; Profile
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
+                    <Link href="/" className="cursor-pointer text-cyan-400 hover:text-cyan-300 hover:bg-slate-800/80 text-xs flex items-center justify-between">
+                      <span>ChaloBuild Studio</span>
+                      <ArrowUpRight className="size-3" />
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="bg-white/[0.08]" />
+                  <DropdownMenuItem asChild>
                     <form action={logoutAction} className="w-full">
-                      <button type="submit" className="w-full text-left text-rose-600 font-medium">
+                      <button type="submit" className="w-full text-left text-rose-400 hover:text-rose-300 text-xs font-semibold py-1">
                         Log out
                       </button>
                     </form>

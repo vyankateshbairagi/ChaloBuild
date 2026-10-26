@@ -22,17 +22,19 @@ export default function DemoAboutPage() {
       <AboutSection config={gymConfig} basePath="/demo/ironcore" />
       <WhyChooseUs config={gymConfig} />
 
-      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 border-t border-slate-200">
-        <div className="mx-auto max-w-7xl">
+      <section className="relative bg-[#090b11] py-20 px-4 sm:px-6 lg:px-8 border-t border-white/[0.08] overflow-hidden">
+        <div className="absolute top-1/2 left-0 w-[500px] h-[300px] bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.06),transparent_70%)] pointer-events-none blur-3xl" />
+        <div className="relative mx-auto max-w-7xl">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-600">
-                Core Gym Standards
-              </p>
-              <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+              <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-red-500">
+                <span className="h-px w-6 bg-red-500/80" />
+                <span>Core Gym Standards</span>
+              </div>
+              <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-white sm:text-4xl lg:text-5xl leading-tight">
                 The Principles That Guide Every Workout.
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-slate-600">
+              <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-400">
                 We believe that fitness should elevate your daily life, not wear you down with injuries or burnout. Every squat rack, dumbbell set, and training session is designed around longevity, joint integrity, and measurable performance.
               </p>
             </div>
@@ -62,13 +64,15 @@ export default function DemoAboutPage() {
               ].map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}
-                  className="rounded-2xl border border-slate-200 bg-slate-50 p-5 shadow-xs transition-colors hover:border-red-300 hover:bg-white"
+                  className="group rounded-2xl border border-white/[0.08] bg-slate-900/50 backdrop-blur-xl p-5 shadow-xl transition-all hover:border-red-500/40 hover:bg-slate-900/80"
                 >
-                  <Icon className="size-6 text-red-600" />
-                  <h3 className="mt-3 text-base font-bold text-slate-900">
+                  <div className="flex size-10 items-center justify-center rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 shadow-[0_0_12px_rgba(239,68,68,0.2)] group-hover:scale-110 transition-transform">
+                    <Icon className="size-5" />
+                  </div>
+                  <h3 className="mt-3 text-base font-black uppercase tracking-tight text-white">
                     {title}
                   </h3>
-                  <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                  <p className="mt-1.5 text-xs text-slate-400 leading-relaxed">
                     {desc}
                   </p>
                 </div>

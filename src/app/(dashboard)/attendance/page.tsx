@@ -1,6 +1,8 @@
 import { Prisma } from "@prisma/client";
 import { redirect } from "next/navigation";
+import { Activity, CheckCircle2, UserCheck, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { StatCard } from "@/components/shared/stat-card";
 import { AttendanceWorkspace } from "@/components/attendance/attendance-workspace";
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
@@ -38,5 +40,45 @@ export default async function AttendancePage({ searchParams }: { searchParams: P
     db.attendance.count({ where: { organizationId: user.organizationId, date: { gte: currentDay, lt: currentNextDay }, checkOutTime: { not: null } } }),
     db.member.findMany({ where: { organizationId: user.organizationId }, orderBy: { name: "asc" }, select: { id: true, name: true, phone: true } }),
   ]);
-  return <div className="space-y-6"><div><h1 className="text-2xl font-semibold tracking-tight">Attendance</h1><p className="text-sm text-muted-foreground">Track member check-ins and attendance history.</p></div><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><Card><CardContent className="p-5"><p className="text-sm text-muted-foreground">Today&apos;s check-ins</p><p className="mt-2 text-2xl font-semibold">{totalToday}</p></CardContent></Card><Card><CardContent className="p-5"><p className="text-sm text-muted-foreground">Currently in</p><p className="mt-2 text-2xl font-semibold">{currentToday}</p></CardContent></Card><Card><CardContent className="p-5"><p className="text-sm text-muted-foreground">Today&apos;s completed</p><p className="mt-2 text-2xl font-semibold">{completedToday}</p></CardContent></Card><Card><CardContent className="p-5"><p className="text-sm text-muted-foreground">Total attendance</p><p className="mt-2 text-2xl font-semibold">{total}</p></CardContent></Card></div><Card><CardContent className="p-0"><AttendanceWorkspace records={records.map((record) => ({ ...record, date: record.date.toISOString(), checkInTime: record.checkInTime?.toISOString() ?? null, checkOutTime: record.checkOutTime?.toISOString() ?? null }))} members={members} canCreate={can(user.role, "attendance:create")} canUpdate={can(user.role, "attendance:update")} search={search} selectedDate={selectedDate} status={status} page={page} totalPages={Math.max(1, Math.ceil(total / pageSize))} /></CardContent></Card></div>;
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400">
+            <span className="size-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span>Front Desk Terminal</span>
+          </div>
+          <h1 className="mt-1 text-2xl sm:text-3xl font-black uppercase tracking-tight text-white">
+            Attendance &amp; Check-Ins
+          </h1>
+          <p className="text-xs text-slate-400">
+            Live floor occupancy, biometric scan log, and athlete arrival tracking.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StatCard label="Today's Check-Ins" value={String(totalToday)} icon={Activity} tone="default" />
+        <StatCard label="Currently In Arena" value={String(currentToday)} icon={Users} tone="positive" />
+        <StatCard label="Completed Sessions" value={String(completedToday)} icon={CheckCircle2} tone="default" />
+        <StatCard label="Total Logged" value={String(total)} icon={UserCheck} tone="default" />
+      </div>
+
+      <Card className="border border-white/[0.08] bg-slate-900/60 backdrop-blur-xl shadow-xl overflow-hidden">
+        <CardContent className="p-0">
+          <AttendanceWorkspace
+            records={records.map((record) => ({ ...record, date: record.date.toISOString(), checkInTime: record.checkInTime?.toISOString() ?? null, checkOutTime: record.checkOutTime?.toISOString() ?? null }))}
+            members={members}
+            canCreate={can(user.role, "attendance:create")}
+            canUpdate={can(user.role, "attendance:update")}
+            search={search}
+            selectedDate={selectedDate}
+            status={status}
+            page={page}
+            totalPages={Math.max(1, Math.ceil(total / pageSize))}
+          />
+        </CardContent>
+      </Card>
+    </div>
+  );
 }

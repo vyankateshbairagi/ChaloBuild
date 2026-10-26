@@ -32,43 +32,45 @@ export function ContactSection({
   );
 
   return (
-    <section id="contact" className="relative bg-slate-50 py-20 px-4 sm:px-6 lg:px-8 border-b border-slate-200">
-      <div className="mx-auto max-w-7xl">
+    <section id="contact" className="relative bg-[#07090e] py-20 px-4 sm:px-6 lg:px-8 border-b border-white/[0.08] text-white font-sans overflow-hidden">
+      <div className="absolute top-1/2 left-1/4 w-[700px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.08),transparent_70%)] pointer-events-none blur-3xl" />
+
+      <div className="relative mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Visit & Connect"
           title="Start With a Free Trial Session."
-          text="Fill out the quick request below or drop by during visiting hours. No pressure, no aggressive sales pitches."
+          text="Fill out the quick request below or drop by during visiting hours. Zero aggressive sales pitches, 100% free workout."
         />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-12 items-start">
           {/* Left Column: Server-Validated Trial Request Form */}
           <div
             id="trial"
-            className="lg:col-span-7 rounded-3xl border border-slate-200 bg-white p-7 sm:p-10 shadow-sm"
+            className="lg:col-span-7 rounded-3xl border border-white/[0.08] bg-gradient-to-b from-[#101422]/95 to-[#0b0e17]/95 p-7 sm:p-10 shadow-2xl backdrop-blur-xl"
           >
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-red-200 bg-red-50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-red-700">
-                <Sparkles className="size-3 text-red-600" />
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-red-500/30 bg-red-950/60 px-3 py-1 text-xs font-bold uppercase tracking-wider text-red-400 shadow-[0_0_10px_rgba(239,68,68,0.2)]">
+                <Sparkles className="size-3 text-red-400" />
                 1-Day VIP Pass
               </span>
-              <span className="text-xs text-slate-500">• 100% Free</span>
+              <span className="text-xs text-slate-400">• 100% Free • No Lock-in</span>
             </div>
 
-            <h3 className="mt-4 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            <h3 className="mt-4 text-2xl font-black uppercase tracking-tight text-white sm:text-3xl">
               Claim Your Free Workout Pass
             </h3>
-            <p className="mt-2 text-sm text-slate-600">
-              Test out our equipment, check out the amenities, and experience the {config.name} training vibe before joining.
+            <p className="mt-2 text-xs sm:text-sm text-slate-400">
+              Test out our Olympic platforms, free weights, and coaching vibe at {config.name} before committing.
             </p>
 
             {state.success ? (
-              <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-center">
-                <CheckCircle2 className="mx-auto size-12 text-emerald-600" />
-                <h4 className="mt-3 text-lg font-bold text-slate-900">
+              <div className="mt-8 rounded-2xl border border-emerald-500/40 bg-emerald-950/40 p-6 text-center backdrop-blur-md">
+                <CheckCircle2 className="mx-auto size-12 text-emerald-400" />
+                <h4 className="mt-3 text-lg font-bold text-white">
                   Trial Request Confirmed!
                 </h4>
-                <p className="mt-1 text-sm text-slate-600">
-                  Your request has been logged in our system. You can connect immediately with the front desk on WhatsApp.
+                <p className="mt-1 text-xs sm:text-sm text-slate-300">
+                  Your pass has been recorded in our system. Tap below to connect directly with the front desk on WhatsApp.
                 </p>
                 {state.whatsappUrl && (
                   <div className="mt-5">
@@ -76,9 +78,9 @@ export function ContactSection({
                       href={state.whatsappUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-sm hover:bg-emerald-700 transition-colors"
+                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-3 text-xs font-bold uppercase tracking-wider text-white shadow-lg shadow-emerald-600/30 transition-all"
                     >
-                      <MessageCircle className="size-4" />
+                      <MessageCircle className="size-4 fill-current" />
                       <span>Chat on WhatsApp Front Desk</span>
                     </a>
                   </div>
@@ -89,7 +91,7 @@ export function ContactSection({
                 <input type="hidden" name="slug" value={slug || ""} />
 
                 {state.error && (
-                  <div className="rounded-xl border border-rose-200 bg-rose-50 p-3.5 text-xs font-medium text-rose-700">
+                  <div className="rounded-xl border border-rose-500/40 bg-rose-950/60 p-3.5 text-xs font-bold text-rose-300">
                     {state.error}
                   </div>
                 )}
@@ -98,7 +100,7 @@ export function ContactSection({
                   <div>
                     <label
                       htmlFor="trial-name"
-                      className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
+                      className="block text-[11px] font-bold uppercase tracking-wider text-slate-300"
                     >
                       Full Name *
                     </label>
@@ -108,17 +110,17 @@ export function ContactSection({
                       type="text"
                       required
                       placeholder="e.g. Rahul Sharma"
-                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                      className="mt-2 w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors"
                     />
                     {state.fieldErrors?.fullName && (
-                      <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.fullName}</p>
+                      <p className="mt-1 text-xs text-rose-400">{state.fieldErrors.fullName}</p>
                     )}
                   </div>
 
                   <div>
                     <label
                       htmlFor="trial-phone"
-                      className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
+                      className="block text-[11px] font-bold uppercase tracking-wider text-slate-300"
                     >
                       WhatsApp / Phone *
                     </label>
@@ -127,11 +129,11 @@ export function ContactSection({
                       name="phone"
                       type="tel"
                       required
-                      placeholder="e.g. 9075097235"
-                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                      placeholder="e.g. 9876543210"
+                      className="mt-2 w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors"
                     />
                     {state.fieldErrors?.phone && (
-                      <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.phone}</p>
+                      <p className="mt-1 text-xs text-rose-400">{state.fieldErrors.phone}</p>
                     )}
                   </div>
                 </div>
@@ -140,7 +142,7 @@ export function ContactSection({
                   <div>
                     <label
                       htmlFor="trial-slot"
-                      className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
+                      className="block text-[11px] font-bold uppercase tracking-wider text-slate-300"
                     >
                       Preferred Slot
                     </label>
@@ -148,19 +150,19 @@ export function ContactSection({
                       id="trial-slot"
                       name="slot"
                       defaultValue="Morning (6:00 AM – 10:00 AM)"
-                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                      className="mt-2 w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-xs sm:text-sm text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors"
                     >
-                      <option>Morning (6:00 AM – 10:00 AM)</option>
-                      <option>Afternoon (11:00 AM – 4:00 PM)</option>
-                      <option>Evening (5:00 PM – 10:00 PM)</option>
-                      <option>Weekend Flexible</option>
+                      <option className="bg-slate-900 text-white">Morning (6:00 AM – 10:00 AM)</option>
+                      <option className="bg-slate-900 text-white">Afternoon (11:00 AM – 4:00 PM)</option>
+                      <option className="bg-slate-900 text-white">Evening (5:00 PM – 10:00 PM)</option>
+                      <option className="bg-slate-900 text-white">Weekend Flexible</option>
                     </select>
                   </div>
 
                   <div>
                     <label
                       htmlFor="trial-goal"
-                      className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
+                      className="block text-[11px] font-bold uppercase tracking-wider text-slate-300"
                     >
                       Primary Goal
                     </label>
@@ -168,12 +170,12 @@ export function ContactSection({
                       id="trial-goal"
                       name="goal"
                       defaultValue="Muscle Building & Strength"
-                      className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                      className="mt-2 w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-xs sm:text-sm text-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors"
                     >
-                      <option>Muscle Building & Strength</option>
-                      <option>Fat Loss & Toning</option>
-                      <option>Athletic Conditioning</option>
-                      <option>Personal Training Guidance</option>
+                      <option className="bg-slate-900 text-white">Muscle Building &amp; Strength</option>
+                      <option className="bg-slate-900 text-white">Fat Loss &amp; Toning</option>
+                      <option className="bg-slate-900 text-white">Athletic Conditioning</option>
+                      <option className="bg-slate-900 text-white">Personal Training Guidance</option>
                     </select>
                   </div>
                 </div>
@@ -181,7 +183,7 @@ export function ContactSection({
                 <div>
                   <label
                     htmlFor="trial-email"
-                    className="block text-xs font-semibold uppercase tracking-wider text-slate-700"
+                    className="block text-[11px] font-bold uppercase tracking-wider text-slate-300"
                   >
                     Email Address (Optional)
                   </label>
@@ -190,10 +192,10 @@ export function ContactSection({
                     name="email"
                     type="email"
                     placeholder="e.g. rahul@example.com"
-                    className="mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:border-red-600 focus:outline-none focus:ring-1 focus:ring-red-600"
+                    className="mt-2 w-full rounded-xl border border-slate-800 bg-slate-900/80 px-4 py-3 text-xs sm:text-sm text-white placeholder-slate-500 focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors"
                   />
                   {state.fieldErrors?.email && (
-                    <p className="mt-1 text-xs text-rose-600">{state.fieldErrors.email}</p>
+                    <p className="mt-1 text-xs text-rose-400">{state.fieldErrors.email}</p>
                   )}
                 </div>
 
@@ -202,12 +204,12 @@ export function ContactSection({
                     type="submit"
                     size="lg"
                     disabled={isPending}
-                    className="w-full bg-red-600 py-6 text-sm font-semibold uppercase tracking-wider text-white shadow-md shadow-red-600/20 hover:bg-red-700 transition-all disabled:opacity-70"
+                    className="w-full bg-gradient-to-r from-red-600 via-rose-600 to-red-700 py-6 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-lg shadow-red-600/30 hover:from-red-500 hover:to-red-600 transition-all disabled:opacity-70 border border-red-500/40"
                   >
                     {isPending ? (
                       <>
                         <Loader2 className="mr-2 size-4 animate-spin" />
-                        <span>Submitting Pass Request...</span>
+                        <span>Generating VIP Pass...</span>
                       </>
                     ) : (
                       <>
@@ -216,8 +218,8 @@ export function ContactSection({
                       </>
                     )}
                   </Button>
-                  <p className="mt-2 text-center text-[11px] text-slate-500">
-                    No spam. Your pass will be created and forwarded instantly to the front desk.
+                  <p className="mt-2 text-center text-[10px] text-slate-400">
+                    No spam. Your pass will be created and forwarded instantly to the front desk console.
                   </p>
                 </div>
               </form>
@@ -227,54 +229,54 @@ export function ContactSection({
           {/* Right Column: Location, Hours & Map Card */}
           <div className="lg:col-span-5 space-y-6">
             {/* Address & Hours */}
-            <div className="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
-              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-red-600">
+            <div className="rounded-3xl border border-white/[0.08] bg-slate-900/60 p-7 shadow-xl backdrop-blur-xl">
+              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-red-400">
                 Gym Location &amp; Contact
               </h4>
-              <div className="mt-5 space-y-4 text-sm text-slate-600">
+              <div className="mt-5 space-y-4 text-xs sm:text-sm text-slate-300">
                 <p className="flex items-start gap-3">
-                  <MapPin className="size-5 text-red-600 shrink-0 mt-0.5" />
+                  <MapPin className="size-5 text-red-500 shrink-0 mt-0.5" />
                   <span>
-                    <strong className="text-slate-900 block font-semibold">
+                    <strong className="text-white block font-bold">
                       {config.name}
                     </strong>
-                    {config.contact.address}
+                    {config.contact.address.line1}, {config.contact.address.area}
                     <br />
-                    <span className="text-xs text-slate-500">
-                      Landmark: {config.contact.landmark}
+                    <span className="text-xs text-slate-400">
+                      Landmark: {config.contact.address.landmark}
                     </span>
                   </span>
                 </p>
 
                 <p className="flex items-center gap-3">
-                  <Phone className="size-4 text-red-600 shrink-0" />
+                  <Phone className="size-4 text-red-500 shrink-0" />
                   <a
                     href={`tel:${config.contact.phoneRaw}`}
-                    className="hover:text-red-600 transition-colors font-medium text-slate-900"
+                    className="hover:text-red-400 transition-colors font-medium text-white"
                   >
                     {config.contact.phoneFormatted}
                   </a>
                 </p>
 
                 <p className="flex items-center gap-3">
-                  <MessageCircle className="size-4 text-emerald-600 shrink-0" />
+                  <MessageCircle className="size-4 text-emerald-400 shrink-0" />
                   <a
                     href={`https://wa.me/${config.contact.whatsappRaw}?text=${encodeURIComponent(
                       config.contact.whatsappMessage
                     )}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="hover:text-emerald-700 transition-colors font-medium text-slate-900"
+                    className="hover:text-emerald-300 transition-colors font-semibold text-emerald-400"
                   >
-                    WhatsApp Front Desk
+                    WhatsApp Front Desk (+91 {config.contact.whatsappRaw})
                   </a>
                 </p>
 
                 <p className="flex items-center gap-3">
-                  <Mail className="size-4 text-red-600 shrink-0" />
+                  <Mail className="size-4 text-red-500 shrink-0" />
                   <a
                     href={`mailto:${config.contact.email}`}
-                    className="hover:text-red-600 transition-colors"
+                    className="hover:text-red-400 transition-colors text-slate-300"
                   >
                     {config.contact.email}
                   </a>
@@ -282,26 +284,26 @@ export function ContactSection({
               </div>
 
               {/* Operating Hours Box */}
-              <div className="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900">
-                  <Clock className="size-3.5 text-red-600" /> Facility Operating Hours
+              <div className="mt-6 rounded-2xl border border-white/[0.06] bg-slate-950/60 p-4">
+                <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-white">
+                  <Clock className="size-3.5 text-red-500" /> Facility Operating Hours
                 </p>
-                <div className="mt-2 space-y-1 text-xs text-slate-600">
-                  <div className="flex justify-between py-1 border-b border-slate-200">
-                    <span className="text-slate-500">Monday – Friday</span>
-                    <span className="font-semibold text-slate-900">
+                <div className="mt-2 space-y-1 text-xs text-slate-400">
+                  <div className="flex justify-between py-1 border-b border-white/[0.06]">
+                    <span className="text-slate-400">Monday – Friday</span>
+                    <span className="font-bold text-white">
                       {config.openingHours.weekdays}
                     </span>
                   </div>
-                  <div className="flex justify-between py-1 border-b border-slate-200">
-                    <span className="text-slate-500">Saturday</span>
-                    <span className="font-semibold text-slate-900">
+                  <div className="flex justify-between py-1 border-b border-white/[0.06]">
+                    <span className="text-slate-400">Saturday</span>
+                    <span className="font-bold text-white">
                       {config.openingHours.saturday}
                     </span>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-slate-500">Sunday</span>
-                    <span className="font-semibold text-slate-900">
+                    <span className="text-slate-400">Sunday</span>
+                    <span className="font-bold text-white">
                       {config.openingHours.sunday}
                     </span>
                   </div>
@@ -314,9 +316,9 @@ export function ContactSection({
                   href={config.contact.googleMapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 py-3 text-xs font-semibold uppercase tracking-wider text-slate-800 hover:bg-slate-100 transition-colors"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/[0.12] bg-slate-800/80 hover:bg-slate-700 py-3 text-xs font-bold uppercase tracking-wider text-white transition-colors shadow-sm"
                 >
-                  <MapPin className="size-4 text-red-600" />
+                  <MapPin className="size-4 text-red-500" />
                   <span>Open in Google Maps</span>
                   <ArrowRight className="size-3.5" />
                 </a>
@@ -324,7 +326,7 @@ export function ContactSection({
             </div>
 
             {/* Embedded Google Map preview */}
-            <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 shadow-sm h-56 relative">
+            <div className="overflow-hidden rounded-3xl border border-white/[0.08] bg-slate-950 shadow-xl h-56 relative">
               <iframe
                 title={`${config.name} Map Location`}
                 src={config.contact.googleMapsEmbedUrl}

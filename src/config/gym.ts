@@ -709,16 +709,16 @@ export const gymConfig: GymConfig = {
     },
   ],
   provider: {
-    name: "ChaloBuild by ThinkBuild",
-    brandText: "ChaloBuild by ThinkBuild",
-    badgeText: "ChaloBuild Gym Website Template",
-    url: "https://chalobuild.in",
-    poweredByText: "Powered by ChaloBuild by ThinkBuild",
-    footerText: "Website & Gym Management by ChaloBuild by ThinkBuild",
+    name: "ChaloBuild",
+    brandText: "ChaloBuild",
+    badgeText: "ChaloBuild Turnkey Gym Solution",
+    url: "/",
+    poweredByText: "Engineered by ChaloBuild",
+    footerText: "Turnkey Website & Management System by ChaloBuild",
     demoNotice:
-      "Demo Website Template • Created by ChaloBuild by ThinkBuild for Fitness Centers & Gym Owners",
-    ctaText: "Get This Website & Management System for Your Gym",
+      "Demo Website Template • Engineered by ChaloBuild for Fitness Centers & Gym Owners",
+    ctaText: "Get This One-Time Turnkey Build for Your Gym",
     ctaWhatsappLink:
-      "https://wa.me/919075097235?text=Hi%20ChaloBuild!%20I%20love%20the%20IronCore%20gym%20website%20template%20and%20want%20to%20discuss%20setting%20up%20a%20website%20and%20management%20system%20for%20my%20gym.",
+      "https://wa.me/919075097235?text=Hi%20ChaloBuild!%20I%20love%20the%20IronCore%20gym%20demo%20template%20and%20want%20to%20discuss%20a%20one-time%20turnkey%20build%20for%20my%20gym.",
   },
 };

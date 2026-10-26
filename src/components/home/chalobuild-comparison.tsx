@@ -3,109 +3,120 @@ import { Check, X, Sparkles } from "lucide-react";
 export function ChaloBuildComparison() {
   const comparisons = [
     {
-      feature: "Custom Branded Gym Website",
-      oldWay: "Generic Wix template or no website at all",
-      chaloBuild: "Athletic, conversion-focused website deployed in 48 hours",
+      feature: "Cost Over 2 Years",
+      saas: "₹72,000 – ₹1,20,000 (Locked into endless monthly bills)",
+      freelancer: "₹50,000+ with surprise bugfix invoices",
+      chaloBuild: "₹24,999 One-Time Fixed (Save ₹50,000+)",
+      highlight: true,
     },
     {
-      feature: "WhatsApp 1-Day Pass Lead Magnet",
-      oldWay: "Manual phone calls or walk-ins slipping away",
-      chaloBuild: "Instant 1-tap pass generation sent directly to gym's WhatsApp",
+      feature: "Code & Data Ownership",
+      saas: "Zero ownership. Cancel subscription and lose all your data",
+      freelancer: "Scattered code on personal laptop, no documentation",
+      chaloBuild: "100% Full Codebase & PostgreSQL Database Handover",
+      highlight: true,
     },
     {
-      feature: "Daily Attendance Tracking",
-      oldWay: "Paper register notebook or lost biometric punch card",
-      chaloBuild: "1-Tap search & check-in with duplicate protection per day",
+      feature: "Launch Turnaround",
+      saas: "Immediate generic template with clunky manual setup",
+      freelancer: "3 to 6 months of endless delays and missed dates",
+      chaloBuild: "Live on your custom domain in 48 Hours turnkey",
+      highlight: false,
     },
     {
-      feature: "Membership Expiry Follow-ups",
-      oldWay: "Forgot to check, leading to missed subscription renewals",
-      chaloBuild: "Automated alert dashboard highlighting 7d & 30d expiries",
+      feature: "Commission on Member Dues",
+      saas: "Often 2% to 15% aggregator cuts on payment transactions",
+      freelancer: "Varies, often broken payment gateways",
+      chaloBuild: "0% Commission. Direct UPI / Cash into your bank",
+      highlight: false,
     },
     {
-      feature: "Payment Recording & Invoicing",
-      oldWay: "Scattered UPI screenshots and paper receipt books",
-      chaloBuild: "Digital payment logs (UPI, Cash, Card) with sequential receipts",
+      feature: "Front-Desk + Website Sync",
+      saas: "Either website builder without attendance, or CRM without modern site",
+      freelancer: "Separate disjointed tools that don't talk to each other",
+      chaloBuild: "2-in-1 Unified System: Athletic Website + Connected Dashboard",
+      highlight: false,
     },
     {
-      feature: "Ongoing Technical Support",
-      oldWay: "Freelancer disappears after delivering buggy code",
-      chaloBuild: "Direct support from ThinkBuild engineering team in Nashik",
+      feature: "Engineering Support",
+      saas: "Slow automated ticket bot or endless email back-and-forth",
+      freelancer: "Disappears after payment or charges for every simple edit",
+      chaloBuild: "Direct WhatsApp & Phone support from dedicated engineers",
+      highlight: false,
     },
   ];
 
   return (
-    <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-b border-slate-200 overflow-hidden">
+    <section className="relative py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#080a10] border-b border-white/[0.08] overflow-hidden text-white font-sans">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-200 bg-cyan-100/70 px-3 py-0.5 text-[10px] font-bold uppercase tracking-widest text-cyan-800 shadow-2xs">
-            <Sparkles className="size-3 text-cyan-600" />
+        <div className="text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/60 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-cyan-300 shadow-[0_0_12px_rgba(0,245,255,0.15)]">
+            <Sparkles className="size-3 text-cyan-400" />
             <span>THE REALITY CHECK</span>
           </div>
-          <h2 className="mt-2.5 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
-            Why Modern Gyms Upgrade to ChaloBuild.
+          <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+            Why Smart Gym Owners Choose One-Time Builds.
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-slate-600">
-            See how ChaloBuild eliminates operational headaches and protects recurring gym revenue compared to old-school methods.
+          <p className="mt-3 text-xs sm:text-sm text-slate-400">
+            Compare ChaloBuild against recurring subscription traps and unreliable freelance developers.
           </p>
         </div>
 
-        {/* Comparison Table / Cards */}
-        <div className="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5">
-          <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-slate-200">
-            {/* Left Header: Old Way */}
-            <div className="md:col-span-5 bg-slate-50/80 p-4 sm:p-5 flex items-center justify-between">
-              <div>
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-rose-600">
-                  <X className="size-3.5" />
-                  The Old Fragmented Way
-                </span>
-                <h3 className="text-base font-bold text-slate-900 mt-0.5">
-                  Notebooks, Excel Sheets &amp; Disjointed Tools
-                </h3>
-              </div>
+        {/* Comparison Table */}
+        <div className="mt-10 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0c101c] shadow-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-slate-800 text-xs font-bold uppercase tracking-wider">
+            <div className="md:col-span-3 bg-slate-900/90 p-4 text-slate-300">
+              Capability
             </div>
-
-            {/* Right Header: ChaloBuild */}
-            <div className="md:col-span-7 bg-gradient-to-r from-cyan-50/70 to-blue-50/70 p-4 sm:p-5 flex items-center justify-between border-t md:border-t-0">
-              <div>
-                <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-cyan-700">
-                  <Sparkles className="size-3.5 text-cyan-600" />
-                  The ChaloBuild Way
-                </span>
-                <h3 className="text-base font-bold text-slate-900 mt-0.5">
-                  All-in-One Turnkey Growth Platform
-                </h3>
-              </div>
+            <div className="md:col-span-3 bg-rose-950/30 p-4 text-rose-300">
+              Monthly SaaS Platforms
+            </div>
+            <div className="md:col-span-3 bg-slate-900/60 p-4 text-slate-400">
+              Unreliable Freelancers
+            </div>
+            <div className="md:col-span-3 bg-gradient-to-r from-cyan-950/80 to-blue-950/80 p-4 text-cyan-300 border-l border-cyan-500/30 flex items-center gap-1.5">
+              <Sparkles className="size-3.5 text-cyan-400" />
+              <span>ChaloBuild (One-Time)</span>
             </div>
           </div>
 
-          {/* Rows */}
-          <div className="divide-y divide-slate-100 text-xs sm:text-sm">
-            {comparisons.map((item, index) => (
+          <div className="divide-y divide-slate-800/80 text-xs sm:text-sm">
+            {comparisons.map((row, index) => (
               <div
-                key={item.feature}
-                className={`grid grid-cols-1 md:grid-cols-12 items-center divide-y md:divide-y-0 md:divide-x divide-slate-100 ${
-                  index % 2 === 0 ? "bg-white" : "bg-slate-50/40"
-                } hover:bg-cyan-50/30 transition-colors`}
+                key={row.feature}
+                className={`grid grid-cols-1 md:grid-cols-12 items-center divide-y md:divide-y-0 md:divide-x divide-slate-800/80 ${
+                  index % 2 === 0 ? "bg-[#0c101c]" : "bg-slate-900/30"
+                } hover:bg-slate-800/40 transition-colors`}
               >
-                {/* Feature Name & Old Way */}
-                <div className="md:col-span-5 p-3.5 sm:p-4 space-y-0.5">
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    {item.feature}
-                  </p>
-                  <div className="flex items-start gap-2 text-slate-600">
-                    <X className="size-3.5 text-rose-500 shrink-0 mt-0.5" />
-                    <span className="text-xs">{item.oldWay}</span>
+                {/* Feature Name */}
+                <div className="md:col-span-3 p-3.5 sm:p-4 text-xs font-bold text-white">
+                  {row.feature}
+                </div>
+
+                {/* SaaS Way */}
+                <div className="md:col-span-3 p-3.5 sm:p-4 text-slate-400">
+                  <div className="flex items-start gap-2">
+                    <X className="size-4 text-rose-500 shrink-0 mt-0.5" />
+                    <span className="text-xs">{row.saas}</span>
+                  </div>
+                </div>
+
+                {/* Freelancer Way */}
+                <div className="md:col-span-3 p-3.5 sm:p-4 text-slate-400">
+                  <div className="flex items-start gap-2">
+                    <X className="size-4 text-amber-500 shrink-0 mt-0.5" />
+                    <span className="text-xs">{row.freelancer}</span>
                   </div>
                 </div>
 
                 {/* ChaloBuild Way */}
-                <div className="md:col-span-7 p-3.5 sm:p-4 bg-cyan-50/20">
-                  <div className="flex items-start gap-2 text-slate-900 font-semibold">
-                    <Check className="size-3.5 text-cyan-600 shrink-0 mt-0.5 font-bold" />
-                    <span className="text-xs">{item.chaloBuild}</span>
+                <div className="md:col-span-3 p-3.5 sm:p-4 bg-cyan-950/20 text-white font-medium">
+                  <div className="flex items-start gap-2">
+                    <Check className="size-4 text-emerald-400 shrink-0 mt-0.5 font-bold" />
+                    <span className={`text-xs ${row.highlight ? "text-cyan-300 font-bold" : "text-slate-100"}`}>
+                      {row.chaloBuild}
+                    </span>
                   </div>
                 </div>
               </div>

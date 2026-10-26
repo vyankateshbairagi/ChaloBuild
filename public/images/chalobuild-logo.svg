@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" fill="none">
+  <defs>
+    <linearGradient id="cbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F5FF"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="cbGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F5FF" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.1"/>
+    </linearGradient>
+    <filter id="cbFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Modern Athletic Geometric Emblem (C + Forward Motion Arrow) -->
+  <g transform="translate(8, 7)">
+    <!-- Ambient subtle glow -->
+    <circle cx="23" cy="23" r="19" fill="url(#cbGlow)" filter="url(#cbFilter)" opacity="0.4"/>
+    
+    <!-- Outer Dynamic C-Arc -->
+    <path d="M 32 9 C 29 7 24 6 19 8 C 11 11 7 18 8 26 C 9 34 16 40 24 39 C 29 38 33 35 36 31" 
+          stroke="url(#cbGrad)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+    
+    <!-- Inner Forward Acceleration Arrow / Lightning -->
+    <path d="M 18 16 L 28 23 L 20 23 L 26 31 L 16 23 L 22 23 Z" 
+          fill="#FFFFFF" filter="url(#cbFilter)"/>
+    
+    <!-- Micro Accent Dot -->
+    <circle cx="36" cy="11" r="2.5" fill="#00F5FF"/>
+  </g>
+
+  <!-- Wordmark: ChaloBuild -->
+  <text x="62" y="36" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Inter', 'Segoe UI', sans-serif" font-size="28" font-weight="900" letter-spacing="-0.8">
+    Chalo<tspan fill="url(#cbGrad)">Build</tspan>
+  </text>
+
+  <!-- Clean Subtitle Badge -->
+  <rect x="63" y="42" width="142" height="12" rx="3" fill="#0c1322" fill-opacity="0.8"/>
+  <text x="67" y="51" fill="#7DD3FC" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.2">
+    TURNKEY BUILD STUDIO
+  </text>
+</svg>
